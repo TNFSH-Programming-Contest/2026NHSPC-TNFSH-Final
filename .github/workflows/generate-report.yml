@@ -1,4 +1,4 @@
-name: Generate report
+name: TPS verify
 
 on:
   push:
@@ -7,7 +7,13 @@ on:
     paths:
       - 'p*/**'
   workflow_dispatch:
+    inputs:
+      problems:
+        description: 'Problem labels to verify'
 
 jobs:
   run:
-    uses: TNFSH-Programming-Contest/tps-actions/.github/workflows/generate-report.yml@main
+    uses: tobiichi3227/tps-actions/.github/workflows/tps-verify.yml@main
+    with:
+      problems: ${{ github.event.inputs.problems }}
+      runs-on: 'self-hosted'
