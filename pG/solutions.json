@@ -1,5 +1,39 @@
 {
 	"correct.cpp": {
 		"verdict": "model_solution"
+	},
+	"list.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"list": "correct"
+		}
+	},
+	"ce1.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"ce1": "correct"
+		}
+	},
+	"m20.cpp": {
+		"verdict": "time_limit",
+		"except": {
+			"samples": "correct",
+			"m20": "correct"
+		}
+	},
+	"unicyclic.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct",
+			"unicyclic": "correct"
+		}
+	},
+	"cactus.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct",
+			"unicyclic": "correct",
+			"cactus": "correct"
+		}
 	}
 }

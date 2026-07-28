@@ -3,6 +3,16 @@
 @subtask samples
 manual example-1.in
 
+@subtask m20
+manual example-2.in
+
+@subtask unicyclic
+manual example-3.in
+
+@subtask cactus
+manual example-4.in
+
 @subtask full
-gen	20
-gen	30
+@include m20
+@include unicyclic
+@include cactus
