@@ -14,7 +14,7 @@
 | name |  [:x:](pA/problem.json) | [:x:](pB/problem.json) | [:x:](pC/problem.json) | [:white_check_mark:](pD/problem.json)<br>Git | [:x:](pE/problem.json) | [:x:](pF/problem.json) | [:x:](pG/problem.json) |
 | title |  [:x:](pA/problem.json) | [:x:](pB/problem.json) | [:x:](pC/problem.json) | [:white_check_mark:](pD/problem.json)<br>Merge, Rebase, Squash! | [:x:](pE/problem.json) | [:x:](pF/problem.json) | [:x:](pG/problem.json) |
 | memory_limit |  512 | 512 | 512 | 512 | 512 | 512 | 512 |
-| time_limit |  1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 |
+| time_limit |  1.0 | 1.0 | 1.0 | 2.5 | 1.0 | 1.0 | 1.0 |
 | has_checker |  False | False | False | False | False | False | False |
 | gen | [:x:](pA/gen)<br>[data](pA/gen/data)<br>[gen.cpp](pA/gen/gen.cpp) | [:x:](pB/gen)<br>[data](pB/gen/data)<br>[gen.cpp](pB/gen/gen.cpp) | [:x:](pC/gen)<br>[data](pC/gen/data)<br>[gen.cpp](pC/gen/gen.cpp) | [:white_check_mark:](pD/gen) | [:x:](pE/gen)<br>[data](pE/gen/data)<br>[gen.cpp](pE/gen/gen.cpp) | [:x:](pF/gen)<br>[data](pF/gen/data)<br>[gen.cpp](pF/gen/gen.cpp) | [:x:](pG/gen)<br>[data](pG/gen/data)<br>[gen.cpp](pG/gen/gen.cpp) |
 | solution | [:x:](pA/solution)<br>[correct.cpp](pA/solution/correct.cpp) | [:x:](pB/solution)<br>[correct.cpp](pB/solution/correct.cpp) | [:x:](pC/solution)<br>[correct.cpp](pC/solution/correct.cpp) | [:white_check_mark:](pD/solution) | [:x:](pE/solution)<br>[correct.cpp](pE/solution/correct.cpp) | [:x:](pF/solution)<br>[correct.cpp](pF/solution/correct.cpp) | [:x:](pG/solution)<br>[correct.cpp](pG/solution/correct.cpp) |
