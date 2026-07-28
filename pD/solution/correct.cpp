@@ -4,9 +4,12 @@ using namespace std;
 using loli = long long;
 const loli INF = (1LL << 62);
 
+loli minimum_[200005 * 4];
+loli lazy_[200005 * 4];
+
 class SegmentTree {
 public:
-    SegmentTree(int n) : n_(n), minimum_(4 * n), lazy_(4 * n) {}
+    SegmentTree(int n) : n_(n) {}
 
     void build(const std::vector<loli>& values) {
         build(1, 0, n_ - 1, values);
@@ -24,8 +27,6 @@ public:
 
 private:
     int n_;
-    vector<loli> minimum_;
-    vector<loli> lazy_;
 
     void apply(int node, loli delta) {
         minimum_[node] += delta;
