@@ -2,35 +2,100 @@
 	"correct.cpp": {
 		"verdict": "model_solution"
 	},
-	"nk15.cpp": {
-		"verdict": "time_limit",
+	"fake-int32.cpp": {
+		"verdict": "incorrect"
+	},
+	"fake-even-cuts.cpp": {
+		"verdict": "incorrect",
 		"except": {
-			"samples": "correct",
-			"nk15": "correct"
+			"k1": "correct",
+			"kn": "correct",
+			"hunkonce": "correct"
 		}
 	},
-	"k1.cpp": {
+	"fake-beam-dp.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct",
+			"k1": "correct",
+			"kn": "correct",
+			"hunkonce": "correct"
+		}
+	},
+	"fake-independent-cuts.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct",
+			"k1": "correct",
+			"kn": "correct",
+			"hunkonce": "correct"
+		}
+	},
+	"fake-independent-hunks.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct",
+			"k1": "correct",
+			"kn": "correct",
+			"hunkonce": "correct"
+		}
+	},
+	"fake-no-negative-delta.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"hunkonce": "correct"
+		}
+	},
+	"fake-running-min.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct",
+			"k1": "correct",
+			"kn": "correct",
+			"hunkonce": "correct"
+		}
+	},
+	"fake-wrong-prefix.cpp": {
 		"verdict": "incorrect",
 		"except": {
 			"k1": "correct"
 		}
 	},
+	"nk15.cpp": {
+		"verdict": "time_limit",
+		"except": {
+			"samples": "correct",
+			"nh15": "correct",
+			"kn": "correct"
+		}
+	},
+	"k1.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"k1": "correct",
+			"hunkonce": "correct"
+		}
+	},
 	"kn.cpp": {
 		"verdict": "incorrect",
 		"except": {
-			"kn": "correct"
+			"kn": "correct",
+			"hunkonce": "correct"
 		}
 	},
 	"hunkonce.cpp": {
 		"verdict": "incorrect",
 		"except": {
-			"kunkonce": "correct"
+			"hunkonce": "correct"
 		}
 	},
 	"n1000-dp.cpp": {
-		"verdict": "correct",
+		"verdict": "time_limit",
 		"except": {
-			"full": "time_limit"
+			"samples": "correct",
+			"nh15": "correct",
+			"kn": "correct",
+			"n1000": "correct"
 		}
 	}
 }
