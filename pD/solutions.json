@@ -1,5 +1,36 @@
 {
 	"correct.cpp": {
 		"verdict": "model_solution"
+	},
+	"nk15.cpp": {
+		"verdict": "time_limit",
+		"except": {
+			"samples": "correct",
+			"nk15": "correct"
+		}
+	},
+	"k1.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"k1": "correct"
+		}
+	},
+	"kn.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"kn": "correct"
+		}
+	},
+	"hunkonce.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"kunkonce": "correct"
+		}
+	},
+	"n1000-dp.cpp": {
+		"verdict": "correct",
+		"except": {
+			"full": "time_limit"
+		}
 	}
 }

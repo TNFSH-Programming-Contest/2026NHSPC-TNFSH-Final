@@ -2,7 +2,8 @@
 # TODO
 @subtask samples
 manual example-1.in
+manual example-2.in
+manual example-3.in
 
 @subtask full
-gen	20
-gen	30
+@include samples

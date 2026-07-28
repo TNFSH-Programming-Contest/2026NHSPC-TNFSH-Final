@@ -1,18 +1,61 @@
 {
     "global_validators": [
-        "validator.cpp"
+        "base-validator.cpp 200000 200000"
     ],
     "subtasks": {
         "samples": {
             "index": 0,
             "score": 0,
             "text": "範例輸入輸出",
-            "validators": []
+            "validators": ["base-validator.cpp 200000 200000"]
+        },
+        "nh15": {
+            "index": 1,
+            "score": 8,
+            "text": "$N,\\ H \\le 15$",
+            "validators": [
+                "base-validator.cpp 15 15"
+            ]
+        },
+        "k1": {
+            "index": 2,
+            "score": 8,
+            "text": "$K = 1$",
+            "validators": [
+                "base-validator.cpp 200000 200000",
+                "k-limit-validator.cpp 200000 200000 1"
+            ]
+        },
+        "kn": {
+            "index": 3,
+            "score": 8,
+            "text": "$K = N$",
+            "validators": [
+                "base-validator.cpp 200000 200000",
+                "k-limit-validator.cpp 200000 200000 -1"
+            ]
+        },
+        "hunkonce": {
+            "index": 4,
+            "score": 10,
+            "text": "每個 hunk 最多只被修改一次",
+            "validators": [
+                "base-validator.cpp 200000 200000",
+                "hunk-change-once-validator.cpp 200000 200000"
+            ]
+        },
+        "n1000": {
+            "index": 5,
+            "score": 26,
+            "text": "$N \\le 1000$",
+            "validators": [
+                "base-validator.cpp 1000 200000"
+            ]
         },
         "full": {
-            "index": 1,
-            "score": 100,
-            "text": "無額外限制",
+            "index": 6,
+            "score": 40,
+            "text": "無限制",
             "validators": []
         }
     }
