@@ -4,13 +4,13 @@
 \centering
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[width=\linewidth,height=2.2in,keepaspectratio]{db-force-push-1.png}\\
+\includegraphics[width=\linewidth,height=2.2in,keepaspectratio]{db-force-push-1.jpg}\\
 \textbf{Force push 1}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[width=\linewidth,height=2.2in,keepaspectratio]{db-force-push-2.png}\\
+\includegraphics[width=\linewidth,height=2.2in,keepaspectratio]{db-force-push-2.jpg}\\
 \textbf{Force push 2}
 \end{minipage}
 \caption{不要學 DB force push (他現在已經不會了)}
@@ -25,7 +25,7 @@ wonderhoi 想讓功能進到 TOJ 的 `v2.0`、，於是請 tobiichi3227 來 revi
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\linewidth]{git-workflow-storyboard.png}
+\includegraphics[width=\linewidth]{git-workflow-storyboard.jpg}
 \caption{Branch、squash、rebase 與 conflict resolution 的執行過程}
 \end{figure}
 
