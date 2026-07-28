@@ -21,7 +21,7 @@ tobiichi3227 是 TOJ 的維護者，TOJ 整個程式碼由 $H$ 個獨立的 **hu
 wonderhoi 想讓功能進到 TOJ 的 `v2.0`、，於是請 tobiichi3227 來 review，tobiichi3227 覺得 $N$ 個 commit 太多了，應該用 squash 把 commit 減少到只有 $K$ 個。\
 當 squash 完成後，會將 `feat/fancy` rebase 到 `v2.0`，wonderhoi 發現會有 conflict，所以他想要最小化解決 conflict 的成本，但 wonderhoi 要去比地奧 (IESO) 沒空了，於是交給在看題目的你。
 
-下方分鏡可在 Firefox、Chrome 與 Edge 中直接閱讀：
+\clearpage
 
 \begin{figure}[h]
 \centering
@@ -30,13 +30,6 @@ wonderhoi 想讓功能進到 TOJ 的 `v2.0`、，於是請 tobiichi3227 來 revi
 \end{figure}
 
 若使用支援 PDF 附件的 Firefox，可\statementattachfile{git-workflow.gif}{點我下載完整動畫}；Chrome 與 Edge 請直接閱讀上方分鏡。
-<!-- 
-\begin{figure}[h]
-\centering
-\includegraphics[width=2in]{git-workflow.gif}
-\caption{一段精美的動畫，告訴上面到底在幹嘛}
-\end{figure}  -->
-
 
 ## Branch 狀態
 
