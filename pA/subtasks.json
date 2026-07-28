@@ -9,9 +9,33 @@
             "text": "範例輸入輸出",
             "validators": []
         },
-        "full": {
+        "brute": {
             "index": 1,
-            "score": 100,
+            "score": 8,
+            "text": "$1 \\le n \\le 8, 1 \\le m \\le \\min(30, n \\times (n-1)), 0 \\le d_i \\le 100$",
+            "validators": []
+        },
+        "dp": {
+            "index": 2,
+            "score": 17,
+            "text": "$1 \\le n \\le 18, 1 \\le m \\le \\min(200, n \\times (n-1)), 0 \\le d_i \\le 100$",
+            "validators": []
+        },
+        "no-weight": {
+            "index": 3,
+            "score": 22,
+            "text": "$1 \\le n \\le 1000, 1 \\le m \\le \\min(5000, n \\times (n-1)), 0 \\le d_i \\le 1$",
+            "validators": []
+        },
+        "km": {
+            "index": 4,
+            "score": 24,
+            "text": "$1 \\le n \\le 200, 1 \\le m \\le \\min(1000, n \\times (n-1)), 0 \\le d_i \\le 10^5$",
+            "validators": []
+        },
+        "full": {
+            "index": 5,
+            "score": 29,
             "text": "無額外限制",
             "validators": []
         }
