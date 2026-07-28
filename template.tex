@@ -78,6 +78,10 @@ $if(verbatim-in-note)$
 \usepackage{fancyvrb}
 $endif$
 \usepackage[unicode=true]{hyperref}
+\usepackage{attachfile2}
+\newcommand{\statementattachfile}[2]{%
+  \textattachfile[ucfilespec=#1,mimetype=image/gif]{$statement_path$/#1}{#2}%
+}
 $if(colorlinks)$
 \PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
 $endif$

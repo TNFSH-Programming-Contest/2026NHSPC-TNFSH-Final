@@ -1,20 +1,42 @@
 # Merge, Rebase, Squash!
 
-<!-- \begin{figure}[h]
+\begin{figure}[h]
 \centering
-\includegraphics[width=2in]{TODO.jpg}
-\caption{TODO: 圖片說明}
-\end{figure} 
-DB force push 圖
--->
-
-<!-- GIF 講解 Merge / Rebase / Squash -->
-<!-- 用 3b1b 的 animation engine 繪製 -->
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+\includegraphics[width=\linewidth,height=2.2in,keepaspectratio]{db-force-push-1.png}\\
+\textbf{Force push 1}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\centering
+\includegraphics[width=\linewidth,height=2.2in,keepaspectratio]{db-force-push-2.png}\\
+\textbf{Force push 2}
+\end{minipage}
+\caption{不要學 DB force push (他現在已經不會了)}
+\end{figure}
 
 tobiichi3227 是 TOJ 的維護者，TOJ 整個程式碼由 $H$ 個獨立的 **hunk** 組成，每個 hunk 的狀態一開始都是 $0$，在 `v2.0` 分支上面。\
 有天 wonderhoi 想給 TOJ 貢獻一個酷炫的功能，於是 wonderhoi 很高興的開啟了一個新的分支 `feat/fancy` 並在上面建立了 $N$ 個 commit。\
 wonderhoi 想讓功能進到 TOJ 的 `v2.0`、，於是請 tobiichi3227 來 review，tobiichi3227 覺得 $N$ 個 commit 太多了，應該用 squash 把 commit 減少到只有 $K$ 個。\
 當 squash 完成後，會將 `feat/fancy` rebase 到 `v2.0`，wonderhoi 發現會有 conflict，所以他想要最小化解決 conflict 的成本，但 wonderhoi 要去比地奧 (IESO) 沒空了，於是交給在看題目的你。
+
+下方分鏡可在 Firefox、Chrome 與 Edge 中直接閱讀：
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{git-workflow-storyboard.png}
+\caption{Branch、squash、rebase 與 conflict resolution 的執行過程}
+\end{figure}
+
+若使用支援 PDF 附件的 Firefox，可\statementattachfile{git-workflow.gif}{點我下載完整動畫}；Chrome 與 Edge 請直接閱讀上方分鏡。
+<!-- 
+\begin{figure}[h]
+\centering
+\includegraphics[width=2in]{git-workflow.gif}
+\caption{一段精美的動畫，告訴上面到底在幹嘛}
+\end{figure}  -->
+
 
 ## Branch 狀態
 
