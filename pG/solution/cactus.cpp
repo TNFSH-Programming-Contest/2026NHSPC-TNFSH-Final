@@ -24,6 +24,7 @@ int main() {
 
     vector<Edge> edges(m);
     vector<vector<pair<int, int>>> graph(n + 1);
+    int64 self_loop_cost = 0;
 
     for (int i = 0; i < m; ++i) {
         cin >> edges[i].from
@@ -32,6 +33,12 @@ int main() {
 
         int u = edges[i].from;
         int v = edges[i].to;
+
+        // A self-loop is a cycle by itself, so its counter is mandatory.
+        if (u == v) {
+            self_loop_cost += edges[i].cost;
+            continue;
+        }
 
         graph[u].push_back({v, i});
         graph[v].push_back({u, i});
@@ -53,7 +60,7 @@ int main() {
     vector<int> edge_stack;
 
     int timer = 0;
-    int64 answer = 0;
+    int64 answer = self_loop_cost;
 
     auto consume_component = [&](int stop_edge) {
         int edge_count = 0;

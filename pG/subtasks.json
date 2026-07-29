@@ -1,6 +1,6 @@
 {
     "global_validators": [
-        ""
+        "validator.cpp"
     ],
     "subtasks": {
         "samples": {
@@ -13,31 +13,31 @@
             "index": 1,
             "score": 5,
             "text": "$M = N - 1$, 且第 $i$ 條邊為 $i \\to i + 1$",
-            "validators": []
+            "validators": ["validator.cpp list"]
         },
         "ce1": {
             "index": 2,
             "score": 10,
             "text": "$C_e=1$",
-            "validators": []
+            "validators": ["validator.cpp ce1"]
         },
         "m20": {
             "index": 3,
             "score": 15,
             "text": "$M \\le 20$",
-            "validators": []
+            "validators": ["validator.cpp m20"]
         },
         "unicyclic": {
             "index": 4,
             "score": 15,
             "text": "$M=N$ 且無 self-loop 或重複連接",
-            "validators": []
+            "validators": ["validator.cpp unicyclic"]
         },
         "cactus": {
             "index": 5,
             "score": 20,
             "text": "每個點雙連通分量皆為單邊分量，或其中每個頂點的分量內度數皆為 $2$",
-            "validators": []
+            "validators": ["validator.cpp cactus"]
         },
         "full": {
             "index": 6,
