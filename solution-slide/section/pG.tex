@@ -1,0 +1,221 @@
+\section{G. Performance Analysis}
+
+\begin{frame}[fragile]{\btitle{Fun Fact}}
+    \begin{itemize}
+        \item 原本只是隨便想想拿去初賽，結果出完發現太難了倒了
+        \item blame 用線代解，直接倒了
+        \item 假的 flow 題
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{題目敘述}}
+    給一張有 $N$ 個 basic blocks、$M$ 條有向邊的 CFG。
+    程式從入口 $1$ 執行到出口 $N$，總共執行 $R$ 次。
+
+    \begin{itemize}
+        \item 在邊 $e$ 安裝計數器需花費 $c_e$，之後可直接知道流量 $f_e$。
+        \item 沒裝計數器的邊，只能利用每個點的 flow conservation 推導。
+        \item 要讓所有邊的流量都能被\textbf{唯一確定}，並最小化安裝成本。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{Flow conservation}}
+    普通點滿足
+    \[
+        \sum_{e\in in(v)}f_e=\sum_{e\in out(v)}f_e,
+    \]
+    入口與出口則分別多出、少掉 $R$ 的流量。
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{改成最大化省下的成本}}
+    令 $F$ 為\textbf{沒有安裝計數器}的邊集合。
+
+    如果所有邊都裝計數器，成本是
+    \[
+        C_{all}=\sum_{e\in E}c_e.
+    \]
+
+    選擇不測量 $F$ 可以省下
+    \[
+        \sum_{e\in F}c_e.
+    \]
+
+    所以問題變成：
+    \begin{center}
+        在仍能唯一推導所有未知流量的前提下，\\
+        找出總權重最大的邊集合 $F$。
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{$F$ 是森林}}
+    先忽略邊的方向。考慮 $F$ 中任意一棵樹，取一個葉節點 $v$。
+
+    \begin{center}
+    \begin{tikzpicture}[scale=1.05,
+        every node/.style={circle,draw,minimum size=0.7cm},
+        known/.style={draw=gray!60}, unknown/.style={very thick,blue}]
+        \node (v) at (0,0) {$v$};
+        \node (u) at (2,0) {$u$};
+        \node (a) at (-1.4,0.9) {};
+        \node (b) at (-1.4,-0.9) {};
+        \draw[unknown,->] (v) -- node[draw=none,above] {?} (u);
+        \draw[known,->] (a) -- node[draw=none,above,sloped] {已知} (v);
+        \draw[known,->] (v) -- node[draw=none,below,sloped] {已知} (b);
+    \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{拔掉葉節點}}
+    $v$ 只剩一條未知邊，因此用 $v$ 的流量平衡式即可算出它。
+
+    算完後刪掉這條邊，剩下的仍是森林；反覆拔葉子即可算完所有未知邊。
+
+    入口或出口也一樣，只要在平衡式中加入已知的 $R$。
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{$F$ 有環}}
+    忽略方向後，假設未知邊形成一個環。
+
+    沿著環選擇適當正負號，將各邊流量同時調整 $\varepsilon$：
+    \[
+        f_e\longleftarrow f_e\pm\varepsilon.
+    \]
+
+    每個環上節點的流入與流出變化會互相抵消，
+    所有 flow conservation 方程仍成立，計數器讀值也完全不變。
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{環使答案不唯一}}
+    題目的 $R\ge 2M$ 與可達性保證能讓每條環邊都有正整數流量，
+    因此可取 $\varepsilon=1$，得到另一組合法流量，無法唯一決定。
+
+    \begin{alertblock}{環也包含特殊情況}
+        self-loop 自己就是一個環；兩條連接相同端點的重邊也能形成環。
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{圖論轉換}}
+    綜合前兩頁：
+    \[
+        \boxed{\text{所有未知流量可唯一確定}\iff F\text{ 忽略方向後是森林}}
+    \]
+
+    因此要找最大權重生成森林，最大化省下的成本。
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{從森林到生成樹}}
+    題目保證每個 basic block 都在某條入口到出口的路徑上，
+    所以忽略方向後整張圖連通；又因 $c_e>0$，最佳森林一定能擴充成生成樹。
+
+    \begin{block}{等價問題}
+        找忽略方向後的\textbf{最大權重生成樹}。
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{子任務}}
+    \small
+    \begin{tabularx}{\textwidth}{c|X|c}
+        子任務 & 限制 & 分數 \\
+        \hline
+        1 & $M=N-1$，第 $i$ 條邊為 $i\to i+1$ & 5 \\
+        2 & 所有 $c_e=1$ & 10 \\
+        3 & $M\le 20$ & 15 \\
+        4 & $M=N$，且沒有 self-loop 或重複連接 & 15 \\
+        5 & 每個點雙連通分量都是單邊或簡單環 & 20 \\
+        6 & 無額外限制 & 35
+    \end{tabularx}
+
+    \vspace{0.8em}
+    完整限制：$N\le 10^5$，$M\le 2\times10^5$。
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{鏈與 $c_e=1$}}
+    \begin{itemize}
+        \item \textbf{鏈：}
+        所有邊本來就是一棵樹，全部都可以不裝；答案是 $0$。
+
+        \item \textbf{$c_e=1$：}
+        生成樹能省下 $N-1$，所以必須安裝
+        \[
+            M-(N-1)=M-N+1
+        \]
+        條邊，答案也是 $M-N+1$。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{$M\le20$}}
+    枚舉哪些邊不裝計數器，再用 DSU 檢查是否形成環；
+    取合法集合中省下成本的最大值。
+
+    複雜度 $O(2^M M\alpha(N))$。
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{單環圖}}
+    \textbf{$M=N$：}
+
+    連通無向圖恰有一個環。環上至少一條邊必須裝計數器，
+    裝成本最小的那條即可；答案是環上最小 $c_e$。
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{仙人掌}}
+    \textbf{仙人掌：}
+
+    每個點雙連通分量不是單邊就是簡單環。
+    每個環至少要裝一條邊，而且不同環的選擇互不影響；
+    對每個環加上其中最小的 $c_e$。
+
+    這兩個做法都在做同一件事：
+    \begin{center}
+        每次破壞環時，盡量保留成本大的邊。
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{Maximum Kruskal（1/2）}}
+    \begin{enumerate}
+        \item 計算 $C_{all}=\sum_e c_e$。
+        \item 將所有邊依 $c_e$ 由大到小排序。
+        \item 用 DSU 維護忽略方向後的連通塊。
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{Maximum Kruskal（2/2）}}
+    \begin{enumerate}
+        \setcounter{enumi}{3}
+        \item 若邊 $(u,v)$ 的兩端尚未連通，就把它加入最大生成樹，
+        合併兩端並累加 $saved\mathrel{+}=c_e$。
+    \end{enumerate}
+
+    最後
+    \[
+        \boxed{answer=C_{all}-saved}.
+    \]
+
+    self-loop 的兩端本來就在同一個集合，因此一定會安裝計數器；
+    重邊則最多選一條進入生成樹。
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{Kruskal 的正確性}}
+    Kruskal 由大到小考慮邊：只要加入後仍是森林，就保留這條高成本邊。
+
+    依生成樹的交換論證，最後得到的 $saved$ 是所有生成樹中的最大權重。
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{整體正確性}}
+    又因：
+    \begin{itemize}
+        \item 未測量邊是森林 $\Rightarrow$ 所有流量可由拔葉子唯一算出；
+        \item 未測量邊有環 $\Rightarrow$ 可以沿環調整，流量不唯一；
+    \end{itemize}
+
+    所以 $C_{all}-saved$ 正是最小安裝成本。
+\end{frame}
+
+\begin{frame}[fragile]{\btitle{複雜度}}
+    \[
+        \text{時間 }O(M\log M),
+        \qquad
+        \text{空間 }O(N+M).
+    \]
+
+    $R$ 不影響要裝哪些邊，演算法中不會使用；成本總和要用 64-bit integer。
+\end{frame}
