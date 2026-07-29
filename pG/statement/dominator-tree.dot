@@ -1,0 +1,45 @@
+digraph DominatorTree {
+  graph [
+    rankdir=TB,
+    bgcolor="transparent",
+    pad=0.10,
+    margin=0,
+    nodesep=0.58,
+    ranksep=0.62,
+    outputorder=edgesfirst
+  ];
+
+  node [
+    shape=box,
+    style="rounded,filled",
+    color="#334155",
+    penwidth=1.8,
+    fontname="DejaVu Sans",
+    fontsize=16,
+    margin="0.20,0.13"
+  ];
+
+  edge [
+    color="#64748b",
+    penwidth=1.8,
+    arrowhead=none
+  ];
+
+  bb1 [label=<<B>BB1</B>>, fillcolor="#dbeafe"];
+  bb2 [label=<<B>BB2</B>>, fillcolor="#fef3c7"];
+  bb3 [label=<<B>BB3</B>>, fillcolor="#fef3c7"];
+  bb4 [label=<<B>BB4</B>>, fillcolor="#dcfce7"];
+  bb5 [label=<<B>BB5</B>>, fillcolor="#dcfce7"];
+  bb6 [label=<<B>BB6</B>>, fillcolor="#dcfce7"];
+  bb7 [label=<<B>BB7</B>>, fillcolor="#fee2e2"];
+
+  bb1 -> bb2;
+  bb2 -> bb3;
+  bb2 -> bb7;
+  bb3 -> bb4;
+  bb3 -> bb5;
+  bb3 -> bb6;
+
+  { rank=same; bb3; bb7; }
+  { rank=same; bb4; bb5; bb6; }
+}

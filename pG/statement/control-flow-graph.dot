@@ -1,0 +1,125 @@
+digraph CFG {
+  graph [
+    rankdir=TB,
+    bgcolor="transparent",
+    pad=0.12,
+    margin=0,
+    nodesep=0.72,
+    ranksep=0.62,
+    splines=spline,
+    outputorder=edgesfirst
+  ];
+
+  node [
+    shape=box,
+    style="rounded,filled",
+    color="#334155",
+    penwidth=1.8,
+    fontname="DejaVu Sans",
+    fontsize=15,
+    margin="0.20,0.13"
+  ];
+
+  edge [
+    color="#475569",
+    penwidth=1.8,
+    arrowsize=0.82,
+    fontname="DejaVu Sans",
+    fontsize=12,
+    fontcolor="#334155"
+  ];
+
+  bb1 [
+    fillcolor="#dbeafe",
+    label=<
+      <B>BB1 (entry)</B><BR/>
+      <FONT FACE="DejaVu Sans Mono" POINT-SIZE="13">score = 0</FONT>
+    >
+  ];
+
+  bb2 [
+    fillcolor="#fef3c7",
+    label=<
+      <B>BB2</B><BR/>
+      <FONT FACE="DejaVu Sans Mono" POINT-SIZE="13">x &gt; 0 ?</FONT>
+    >
+  ];
+
+  bb3 [
+    fillcolor="#fef3c7",
+    label=<
+      <B>BB3</B><BR/>
+      <FONT FACE="DejaVu Sans Mono" POINT-SIZE="13">x &amp; 1 ?</FONT>
+    >
+  ];
+
+  bb4 [
+    fillcolor="#dcfce7",
+    label=<
+      <B>BB4</B><BR/>
+      <FONT FACE="DejaVu Sans Mono" POINT-SIZE="13">score += x</FONT>
+    >
+  ];
+
+  bb5 [
+    fillcolor="#dcfce7",
+    label=<
+      <B>BB5</B><BR/>
+      <FONT FACE="DejaVu Sans Mono" POINT-SIZE="13">score += 1</FONT>
+    >
+  ];
+
+  bb6 [
+    fillcolor="#dcfce7",
+    label=<
+      <B>BB6 (join)</B><BR/>
+      <FONT FACE="DejaVu Sans Mono" POINT-SIZE="13">x--</FONT>
+    >
+  ];
+
+  bb7 [
+    fillcolor="#fee2e2",
+    label=<
+      <B>BB7 (exit)</B><BR/>
+      <FONT FACE="DejaVu Sans Mono" POINT-SIZE="13">return score</FONT>
+    >
+  ];
+
+  bb1 -> bb2;
+  bb2 -> bb3 [
+    label=" true ",
+    color="#15803d",
+    fontcolor="#15803d"
+  ];
+  bb2 -> bb7 [
+    label=" false ",
+    color="#be123c",
+    fontcolor="#be123c"
+  ];
+
+  bb3 -> bb4 [
+    label=" true ",
+    color="#15803d",
+    fontcolor="#15803d"
+  ];
+  bb3 -> bb5 [
+    label=" false ",
+    color="#be123c",
+    fontcolor="#be123c"
+  ];
+
+  bb4 -> bb6;
+  bb5 -> bb6;
+  bb6:e -> bb2:e [
+    label=" back edge ",
+    color="#2563eb",
+    fontcolor="#2563eb",
+    style=dashed,
+    penwidth=2.0,
+    constraint=false,
+    minlen=3
+  ];
+
+  { rank=same; bb3; bb7; }
+  { rank=same; bb4; bb5; }
+}

@@ -1,0 +1,69 @@
+digraph Sample01CFG {
+  graph [
+    rankdir=LR,
+    bgcolor="transparent",
+    pad=0.10,
+    margin=0,
+    nodesep=0.78,
+    ranksep=1.00,
+    splines=spline,
+    outputorder=edgesfirst
+  ];
+
+  node [
+    shape=box,
+    style="rounded,filled",
+    color="#334155",
+    penwidth=1.8,
+    fontname="DejaVu Sans",
+    fontsize=16,
+    margin="0.22,0.15"
+  ];
+
+  edge [
+    color="#475569",
+    penwidth=1.8,
+    arrowsize=0.86,
+    fontname="DejaVu Sans",
+    fontsize=13,
+    fontcolor="#334155"
+  ];
+
+  bb1 [
+    fillcolor="#dbeafe",
+    label=<
+      <B>BB1</B><BR/>
+      <FONT POINT-SIZE="13">entry</FONT>
+    >
+  ];
+
+  bb2 [
+    fillcolor="#f8fafc",
+    label=<<B>BB2</B>>
+  ];
+
+  bb3 [
+    fillcolor="#f8fafc",
+    label=<<B>BB3</B>>
+  ];
+
+  bb4 [
+    fillcolor="#fee2e2",
+    label=<
+      <B>BB4</B><BR/>
+      <FONT POINT-SIZE="13">exit</FONT>
+    >
+  ];
+
+  bb1 -> bb2 [label=" cost = 5 "];
+  bb1 -> bb3 [
+    label=" cost = 2  (counter) ",
+    color="#2563eb",
+    fontcolor="#2563eb",
+    penwidth=2.8
+  ];
+  bb2 -> bb4 [label=" cost = 4 "];
+  bb3 -> bb4 [label=" cost = 6 "];
+
+  { rank=same; bb2; bb3; }
+}
