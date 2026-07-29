@@ -1,18 +1,71 @@
 # see https://github.com/ioi-2017/tps/blob/master/docs/README.md#gendata
-# TODO
+
 @subtask samples
 manual example-1.in
+manual example-2.in
+manual example-3.in
+manual example-4.in
+
+@subtask list
+gen list 2 1 one min keep tiny
+gen list 17 16 alternating random keep alternating
+gen list 99991 99990 decreasing near-max keep prime-size
+gen list 100000 99999 one max keep max-one
+gen list 100000 99999 overflow min keep max-overflow
+
+@subtask ce1
+gen random-multi 1 200000 one max shuffle all-loops
+gen random-multi 2 200000 one min shuffle parallel
+gen random-simple 21 20 one random shuffle tree
+gen random-simple 1000 2000 one near-max shuffle sparse
+gen random-multi 100000 200000 one min shuffle max-random
+attack theta 100000 200000 one max shuffle max-theta
+attack clique 100000 200000 one random shuffle max-clique
 
 @subtask m20
 manual example-2.in
+gen random-multi 1 20 overflow max shuffle loops
+gen random-multi 2 20 alternating min shuffle parallel
+gen random-simple 21 20 random near-max shuffle tree
+gen random-simple 8 20 increasing random shuffle dense
+gen unicyclic-short 3 3 late-heavy min shuffle triangle
+gen cactus-mixed 12 20 loop-heavy max shuffle cactus
+attack theta 10 20 late-heavy min keep theta
+attack clique 6 20 random near-max shuffle clique
 
 @subtask unicyclic
 manual example-3.in
+gen unicyclic-short 3 3 alternating min shuffle triangle
+gen unicyclic-short 100000 100000 top-cycle max shuffle bridge-vs-cycle
+gen unicyclic-middle 99991 99991 random near-max shuffle middle-cycle
+gen unicyclic-long 100000 100000 increasing min shuffle long-cycle
+gen unicyclic-long 100000 100000 decreasing min keep dfs-worst-order
+gen unicyclic-long 100000 100000 overflow max shuffle overflow
+gen unicyclic-middle 17 17 ties random keep ties
 
 @subtask cactus
+@include unicyclic
 manual example-4.in
+gen cactus-loops 1 200000 loop-heavy max shuffle all-loops
+gen cactus-parallel 100000 199998 alternating min shuffle two-cycles
+gen cactus-cycles 100000 149999 random near-max shuffle many-triangles
+gen cactus-mixed 100000 200000 overflow max shuffle max-mixed
+gen cactus-loops 100000 200000 late-heavy min keep path-and-loops
+gen cactus-mixed 23 45 ties random shuffle small-mixed
 
 @subtask full
-@include m20
-@include unicyclic
-@include cactus
+@include samples list ce1 m20 cactus
+gen random-multi 100000 200000 random min shuffle random-multigraph
+gen random-simple 100000 200000 alternating max shuffle random-simple
+gen random-multi 99991 200000 overflow near-max shuffle overflow
+attack parallel 100000 200000 random min shuffle parallel-bomb
+attack loops 100000 200000 loop-heavy max shuffle loop-bomb
+attack ordered 100000 200000 late-heavy min keep no-sort-trap
+attack theta 100000 200000 alternating near-max shuffle theta
+attack clique 100000 200000 late-heavy min keep dense-core
+attack bipartite 100000 200000 random max shuffle bipartite
+attack top-cycle 100000 200000 top-cycle min keep top-edges-trap
+structured hub 100000 200000 late-heavy random shuffle nested-hub
+structured dense-core 100000 200000 alternating max shuffle structured-core
+attack theta 6 10 alternating random keep small-theta
+attack clique 7 21 increasing near-max shuffle small-complete

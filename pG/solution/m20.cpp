@@ -65,6 +65,13 @@ int main() {
         total_cost += edge.cost;
     }
 
+    // This subtask solution deliberately has no full-constraint fallback.
+    // Avoid undefined shifts and runaway enumeration outside M <= 20.
+    if (m > 20) {
+        cout << total_cost << '\n';
+        return 0;
+    }
+
     int64 maximum_saved_cost = 0;
     const uint64_t subset_count = uint64_t{1} << m;
 

@@ -1,39 +1,114 @@
 {
-	"correct.cpp": {
-		"verdict": "model_solution"
-	},
-	"list.cpp": {
-		"verdict": "incorrect",
-		"except": {
-			"list": "correct"
-		}
-	},
-	"ce1.cpp": {
-		"verdict": "incorrect",
-		"except": {
-			"ce1": "correct"
-		}
-	},
-	"m20.cpp": {
-		"verdict": "time_limit",
-		"except": {
-			"samples": "correct",
-			"m20": "correct"
-		}
-	},
-	"unicyclic.cpp": {
-		"verdict": "incorrect",
-		"except": {
-			"samples": "correct",
-			"unicyclic": "correct"
-		}
-	},
-	"cactus.cpp": {
-		"verdict": "incorrect",
-		"except": {
-			"samples": "correct",
-			"unicyclic": "correct",
-			"cactus": "correct"
-		}
-	}
+    "correct.cpp": {
+        "verdict": "model_solution"
+    },
+    "link.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "list": "correct"
+        }
+    },
+    "ce1.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "list": "correct",
+            "ce1": "correct"
+        }
+    },
+    "m20.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "m20": "correct"
+        }
+    },
+    "unicyclic.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "unicyclic": "correct"
+        }
+    },
+    "cactus.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "list": "correct",
+            "unicyclic": "correct",
+            "cactus": "correct"
+        }
+    },
+    "fake-int32.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "list": "correct",
+            "ce1": "correct",
+            "unicyclic": "correct"
+        }
+    },
+    "fake-no-sort.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "list": "correct",
+            "ce1": "correct"
+        }
+    },
+    "fake-minimum-spanning.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "list": "correct",
+            "ce1": "correct"
+        }
+    },
+    "fake-top-edges.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "list": "correct",
+            "ce1": "correct"
+        }
+    },
+    "fake-incoming.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "list": "correct",
+            "ce1": "correct"
+        }
+    },
+    "fake-simple-graph.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "list": "correct",
+            "unicyclic": "correct"
+        }
+    },
+    "fake-fundamental-cycles.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "list": "correct",
+            "ce1": "correct",
+            "unicyclic": "correct",
+            "cactus": "correct"
+        }
+    },
+    "fake-n2-prim.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "m20": "correct"
+        }
+    },
+    "fake-boruvka-one-round.cpp": {
+        "verdict": "incorrect"
+    },
+    "fake-dfs-kruskal.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "m20": "correct"
+        }
+    }
 }
