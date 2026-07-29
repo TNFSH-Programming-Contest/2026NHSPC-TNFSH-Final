@@ -1,8 +1,56 @@
 # see https://github.com/ioi-2017/tps/blob/master/docs/README.md#gendata
-# TODO
+
 @subtask samples
 manual example-1.in
 
+@subtask brute
+gen chain 2 100 maximum keep tiny
+gen random 8 30 100 alternating keep feasible alternating
+gen random 8 30 100 random shuffle feasible random
+gen impossible-out 8 30 100 random shuffle no-outgoing
+gen impossible-in 8 30 100 random shuffle no-incoming
+attack greedy greedy-trap
+attack no-potential no-potential-trap
+attack direction direction-trap
+attack shortest-path shortest-path-trap
+attack hall hall-trap
+killer km 8 small-km-chain
+
+@subtask dp
+@include brute
+gen random 18 200 100 random shuffle feasible feasible-dense
+gen random 18 200 100 decreasing keep feasible ordered
+gen impossible-out 18 200 100 alternating shuffle no-outgoing
+gen impossible-in 18 200 100 maximum shuffle no-incoming
+killer km 18 km-chain
+
+@subtask no-weight
+gen chain 1000 1 one keep long-chain
+gen random 1000 5000 1 zero shuffle feasible feasible-zero
+gen random 1000 5000 1 alternating keep feasible feasible-binary
+gen impossible-out 1000 5000 1 one shuffle no-outgoing
+gen impossible-in 1000 5000 1 zero shuffle no-incoming
+attack binary-extension binary-extension
+killer km 1000 km-chain
+
+@subtask km
+@include dp
+gen random 200 1000 100000 random shuffle feasible feasible
+gen random 200 1000 100000 alternating keep feasible extreme
+gen impossible-out 200 1000 100000 random shuffle no-outgoing
+gen impossible-in 200 1000 100000 maximum shuffle no-incoming
+killer km 200 km-chain
+killer spfa 200 132 spfa-chain
+
 @subtask full
-gen	20
-gen	30
+@include samples dp no-weight km
+gen chain 2000 100000 increasing keep long-weighted-chain
+gen random 2000 10000 100000 random shuffle feasible feasible-random
+gen random 2000 10000 100000 alternating keep feasible feasible-extreme
+gen random 1999 10000 100000 decreasing shuffle feasible feasible-prime
+gen impossible-out 2000 10000 100000 random shuffle no-outgoing
+gen impossible-in 2000 10000 100000 maximum shuffle no-incoming
+attack ordered 2000 arbitrary-matching-trap
+attack irrelevant 2000 irrelevant-road-trap
+killer km 2000 km-killer
+killer spfa 2000 1332 spfa-killer

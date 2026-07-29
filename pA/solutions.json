@@ -1,5 +1,60 @@
 {
-	"sol.cpp": {
-		"verdict": "model_solution"
-	}
+    "sol.cpp": {
+        "verdict": "model_solution"
+    },
+    "spfa.cpp": {
+        "verdict": "time_limit",
+        "except": {
+            "samples": "correct",
+            "brute": "correct",
+            "dp": "correct",
+            "no-weight": "correct",
+            "km": "correct"
+        }
+    },
+    "km.cpp": {
+        "verdict": "time_limit",
+        "except": {
+            "samples": "correct",
+            "brute": "correct",
+            "dp": "correct",
+            "no-weight": "correct",
+            "km": "correct"
+        }
+    },
+    "fake-greedy.cpp": {
+        "verdict": "incorrect",
+        "except": { "samples": "correct" }
+    },
+    "fake-min-outgoing.cpp": {
+        "verdict": "incorrect",
+        "except": { "samples": "correct" }
+    },
+    "fake-min-incoming.cpp": {
+        "verdict": "incorrect",
+        "except": { "samples": "correct" }
+    },
+    "fake-any-matching.cpp": {
+        "verdict": "incorrect",
+        "except": { "samples": "correct" }
+    },
+    "fake-shortest-path.cpp": {
+        "verdict": "incorrect"
+    },
+    "fake-degree-feasible.cpp": {
+        "verdict": "incorrect"
+    },
+    "fake-binary-zeros.cpp": {
+        "verdict": "incorrect"
+    },
+    "fake-no-potential.cpp": {
+        "verdict": "incorrect",
+        "except": { "samples": "correct" }
+    },
+    "fake-undirected.cpp": {
+        "verdict": "incorrect"
+    },
+    "fake-full-assignment.cpp": {
+        "verdict": "incorrect"
+    }
 }
