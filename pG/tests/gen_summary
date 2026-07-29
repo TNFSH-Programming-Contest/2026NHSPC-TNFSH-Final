@@ -1,0 +1,55 @@
+# test_name gen_line_number gen_line_content
+0-01	  4	manual example-1.in
+0-02	  5	manual example-2.in
+0-03	  6	manual example-3.in
+0-04	  7	manual example-4.in
+1-01	 10	gen list 2 1 one min keep tiny
+1-02	 11	gen list 17 16 alternating random keep alternating
+1-03	 12	gen list 99991 99990 decreasing near-max keep prime-size
+1-04	 13	gen list 100000 99999 one max keep max-one
+1-05	 14	gen list 100000 99999 overflow min keep max-overflow
+2-01	 17	gen random-multi 1 200000 one max shuffle all-loops
+2-02	 18	gen random-multi 2 200000 one min shuffle parallel
+2-03	 19	gen random-simple 21 20 one random shuffle tree
+2-04	 20	gen random-simple 1000 2000 one near-max shuffle sparse
+2-05	 21	gen random-multi 100000 200000 one min shuffle max-random
+2-06	 22	attack theta 100000 200000 one max shuffle max-theta
+2-07	 23	attack clique 100000 200000 one random shuffle max-clique
+3-01	 26	manual example-2.in
+3-02	 27	gen random-multi 1 20 overflow max shuffle loops
+3-03	 28	gen random-multi 2 20 alternating min shuffle parallel
+3-04	 29	gen random-simple 21 20 random near-max shuffle tree
+3-05	 30	gen random-simple 8 20 increasing random shuffle dense
+3-06	 31	gen unicyclic-short 3 3 late-heavy min shuffle triangle
+3-07	 32	gen cactus-mixed 12 20 loop-heavy max shuffle cactus
+3-08	 33	attack theta 10 20 late-heavy min keep theta
+3-09	 34	attack clique 6 20 random near-max shuffle clique
+4-01	 37	manual example-3.in
+4-02	 38	gen unicyclic-short 3 3 alternating min shuffle triangle
+4-03	 39	gen unicyclic-short 100000 100000 top-cycle max shuffle bridge-vs-cycle
+4-04	 40	gen unicyclic-middle 99991 99991 random near-max shuffle middle-cycle
+4-05	 41	gen unicyclic-long 100000 100000 increasing min shuffle long-cycle
+4-06	 42	gen unicyclic-long 100000 100000 decreasing min keep dfs-worst-order
+4-07	 43	gen unicyclic-long 100000 100000 overflow max shuffle overflow
+4-08	 44	gen unicyclic-middle 17 17 ties random keep ties
+5-01	 48	manual example-4.in
+5-02	 49	gen cactus-loops 1 200000 loop-heavy max shuffle all-loops
+5-03	 50	gen cactus-parallel 100000 199998 alternating min shuffle two-cycles
+5-04	 51	gen cactus-cycles 100000 149999 random near-max shuffle many-triangles
+5-05	 52	gen cactus-mixed 100000 200000 overflow max shuffle max-mixed
+5-06	 53	gen cactus-loops 100000 200000 late-heavy min keep path-and-loops
+5-07	 54	gen cactus-mixed 23 45 ties random shuffle small-mixed
+6-01	 58	gen random-multi 100000 200000 random min shuffle random-multigraph
+6-02	 59	gen random-simple 100000 200000 alternating max shuffle random-simple
+6-03	 60	gen random-multi 99991 200000 overflow near-max shuffle overflow
+6-04	 61	attack parallel 100000 200000 random min shuffle parallel-bomb
+6-05	 62	attack loops 100000 200000 loop-heavy max shuffle loop-bomb
+6-06	 63	attack ordered 100000 200000 late-heavy min keep no-sort-trap
+6-07	 64	attack theta 100000 200000 alternating near-max shuffle theta
+6-08	 65	attack clique 100000 200000 late-heavy min keep dense-core
+6-09	 66	attack bipartite 100000 200000 random max shuffle bipartite
+6-10	 67	attack top-cycle 100000 200000 top-cycle min keep top-edges-trap
+6-11	 68	structured hub 100000 200000 late-heavy random shuffle nested-hub
+6-12	 69	structured dense-core 100000 200000 alternating max shuffle structured-core
+6-13	 70	attack theta 6 10 alternating random keep small-theta
+6-14	 71	attack clique 7 21 increasing near-max shuffle small-complete
