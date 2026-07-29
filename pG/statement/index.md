@@ -33,6 +33,10 @@ tobiichi3227 跟 yushiuan9499 最近在開發 NCC，tobiichi3227 發現它程式
 - $1 \le N \le 10^5$
 - $1 \le M \le 2 \times 10^5$
 - $2M \le R \le 10^{18}$
+- $1 \le u, v \le N$
+- $1 \le C_e \le 10^9$
+- 允許 self-loop 與重邊
+- 保證所有 BB 一定有一個 $1$ 到 $N$ 的路徑通過
 
 ## 子任務
 \subtasks
