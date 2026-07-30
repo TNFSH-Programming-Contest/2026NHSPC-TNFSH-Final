@@ -20,12 +20,14 @@
     "brute.cpp": {
         "verdict": "incorrect",
         "except": {
+            "samples": "correct",
             "brute": "correct"
         }
     },
     "graph.cpp": {
         "verdict": "incorrect",
         "except": {
+            "samples": "correct",
             "brute": "correct",
             "graph": "correct"
         }
@@ -39,6 +41,62 @@
             "brute": "correct",
             "graph": "correct",
             "dp2": "correct"
+        }
+    },
+    "fake-one-way.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "easy": "correct"
+        }
+    },
+    "fake-nonstrict-cut.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "easy": "correct"
+        }
+    },
+    "fake-int-prefix.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "dp": "correct",
+            "graph": "correct"
+        }
+    },
+    "fake-rightmost-first.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "easy": "correct"
+        }
+    },
+    "fake-local-only.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "easy": "correct",
+            "dp": "correct"
+        }
+    },
+    "fake-individual-frogs.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "easy": "correct",
+            "dp": "correct",
+            "brute": "correct",
+            "graph": "correct"
+        }
+    },
+    "fake-same-route.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "easy": "correct"
+        }
+    },
+    "fake-answer-billion.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct"
         }
     }
 }

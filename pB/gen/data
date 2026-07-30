@@ -1,8 +1,87 @@
 # see https://github.com/ioi-2017/tps/blob/master/docs/README.md#gendata
-# TODO
+
 @subtask samples
 manual example-1.in
+manual example-2.in
+manual example-3.in
+
+@subtask easy
+gen 3 1 unit max tiny
+gen 100000 1 unit max max-unit
+gen 100000 1 full-uniform max max-span
+gen 99991 1 random max prime-random
+gen 100000 1 alternating max alternating-gaps
+gen 100000 1 gap-left max huge-first-gap
+gen 100000 1 gap-middle max huge-middle-gap
+gen 100000 1 gap-right max huge-last-gap
+
+@subtask dp
+gen 3 1 unit one tiny
+gen 2000 1 unit one max-unit
+gen 2000 1 full-uniform one max-span
+gen 1999 1 random one prime-random
+gen 2000 1 alternating one alternating-gaps
+gen 2000 1 gap-middle one single-huge-gap
+gen 2000 1 increasing one increasing-gaps
+gen 2000 1 decreasing one decreasing-gaps
+gen 2000 1 clusters one clustered
+
+@subtask brute
+gen 3 1 unit one tiny
+gen 3 7 gap-middle threshold one-middle
+gen 7 1 random random random-m1
+gen 7 7 alternating one all-fragile
+gen 7 7 random max all-durable
+gen 7 7 full-uniform threshold threshold
+gen 7 7 clusters alternating mixed
+attack boundary 7 7 exact-boundary
+attack priority 7 7 leftmost-priority
+attack partials 7 7 partial-groups
+attack pairing 7 7 odd-pair-capacity
+
+@subtask graph
+gen 3 100 unit budget tiny-budget
+gen 100 100 unit one max-unit
+gen 100 100 full-uniform one max-span
+gen 100 100 random small random-small
+gen 100 100 alternating small alternating
+gen 100 100 gap-middle small huge-middle-gap
+gen 100 100 clusters budget exact-budget
+gen 100 1 random budget m1-budget
+gen 99 97 increasing small increasing
+attack boundary 50 100 exact-boundary
+attack priority 100 20 leftmost-priority
+attack window 100 100 long-window
+
+@subtask dp2
+gen 3 100000 full-uniform threshold tiny-max-m
+gen 2000 1 random random max-n-m1
+gen 2000 100000 random random max-nm-random
+gen 2000 100000 alternating alternating alternating
+gen 2000 99991 clusters threshold threshold
+gen 2000 100000 gap-middle exact exact-boundary
+gen 2000 100000 gap-left below below-threshold
+gen 2000 100000 gap-right blocks blocks
+gen 2000 100000 full-uniform spike single-spike
+attack boundary 2000 100000 exact-boundary
+attack priority 2000 99991 leftmost-priority
+attack overflow 2000 100000 prefix-overflow
+attack partials 2000 100000 partial-groups
+attack barriers 2000 100000 barriers
+attack window 2000 100000 quadratic-window
 
 @subtask full
-gen	20
-gen	30
+@include samples easy dp brute graph dp2
+gen 100000 100000 random random max-random
+gen 100000 100000 full-uniform alternating alternating-capacity
+gen 100000 100000 gap-middle blocks huge-gap-blocks
+gen 100000 99991 clusters threshold prime-threshold
+gen 99991 1 random random prime-m1
+gen 100000 100000 increasing increasing correlated-increasing
+gen 100000 100000 decreasing decreasing correlated-decreasing
+attack boundary 100000 100000 exact-boundary
+attack priority 100000 100000 leftmost-priority
+attack overflow 100000 100000 prefix-overflow
+attack partials 100000 100000 partial-groups
+attack barriers 100000 100000 barriers
+attack window 100000 100000 quadratic-window

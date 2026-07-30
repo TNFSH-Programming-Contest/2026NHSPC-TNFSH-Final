@@ -1,14 +1,21 @@
-#include <bits/stdc++.h>
-#include "testlib.h"
-using namespace std;
+#include "common.h"
 
 int main(int argc, char* argv[]) {
-	registerGen(argc, argv, 1);
-	// about testlib, see https://codeforces.com/blog/entry/18291
+    registerGen(argc, argv, 1);
+    if (argc < 5) {
+        Instance::fail(
+            "usage: gen N M COORDINATE_STYLE CAPACITY_STYLE [seed-tag]");
+    }
 
-	// TODO
-	int n = atoi(argv[1]);
-	cout << n << endl;
+    const int64 parsedN = parseInteger(argv[1], "N");
+    const int64 parsedM = parseInteger(argv[2], "M");
+    if (parsedN < INT_MIN || parsedN > INT_MAX) {
+        Instance::fail("N is out of int range");
+    }
 
-	return 0;
+    Instance instance(static_cast<int>(parsedN), parsedM);
+    instance.setCoordinates(argv[3]);
+    instance.setCapacities(argv[4]);
+    instance.verifyAndPrint();
+    return 0;
 }
