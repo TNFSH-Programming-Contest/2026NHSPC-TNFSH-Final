@@ -6,14 +6,14 @@
 \caption{一個含迴圈與條件分支的 CFG。每個框是一個 basic block；$BB_6$ 是兩條分支的 join point，$BB_6\to BB_2$ 是迴圈的 back edge。}
 \end{figure}
 
-tobiichi3227 跟 yushiuan9499 最近在開發 NCC，tobiichi3227 發現它程式執行太慢了，所以想給 NCC 加上一個功能，統計每一條 control-flow edge 會執行幾次。\
+tobiichi3227 跟 yushiuan9499 最近在開發 NCC，tobiichi3227 發現它程式執行太慢了，所以想給 NCC 加上一個功能，統計每一條 control-flow edge 在程式執行期間總共被通過幾次。\
 編譯器將程式用控制流圖 (Control Flow Graph，後面簡稱 CFG) 表示，CFG 上面會有 $N$ 個基本塊 (Basic Block，後面簡稱 BB)，每個 BB 會有幾個有向邊連到其他 BB，代表從 $BB_i$ 可以走到 $BB_j$，總共有 $M$ 條有向邊。\
-程式執行會從入口 $1$ 開始，最後從出口 $N$ 離開結束執行，總共執行 $R$ 次程式。\
-對於每條邊，編譯器在它所連接的 BB 上插入性能計數器 ($BB_i$ 或 $BB_j$ 都可以，編譯器只會選一個 BB 插入)，因為測量執行次數會造成額外的運算，所以插入每個計數器需要成本 $c_e$，執行結束後就能知道該邊通過的次數。\
+程式每執行一次，控制流都會從入口 $1$ 開始，沿著 CFG 上的有向邊前進，最後抵達出口 $N$。過程中每沿著一條有向邊走過一次，該邊的通過次數就增加 $1$；若因為迴圈而在同一次執行中重複通過同一條邊，則每次通過都會分別計數。程式總共執行 $R$ 次，令 $f_e$ 表示這 $R$ 次執行合計通過邊 $e$ 的次數。\
+對於每條邊，編譯器在它所連接的 BB 上插入性能計數器 ($BB_i$ 或 $BB_j$ 都可以，編譯器只會選一個 BB 插入)，因為測量通過次數會造成額外的運算，所以插入每個計數器需要成本 $c_e$，執行結束後就能知道該邊通過的次數。\
 對於沒有裝計數器的邊，可以用 flow conservation 推導計算得知：
 
 - 對於普通節點: $\displaystyle \sum_{e \in in(v)}{f_e}=\sum_{e \in out(v)}{f_e}\ (v \neq 1,\ N)$
-- 對於入口: $\displaystyle \sum_{e \in out(1)}{f_e}- \sum_{e \in in(v)}{f_e}=R$
+- 對於入口: $\displaystyle \sum_{e \in out(1)}{f_e}- \sum_{e \in in(1)}{f_e}=R$
 - 對於出口: $\displaystyle \sum_{e \in in(N)}{f_e}- \sum_{e \in out(N)}{f_e}=R$
 
 求最小安裝成本，使得執行結束後能夠**唯一確定每一條邊通過的次數**。
