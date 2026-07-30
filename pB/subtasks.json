@@ -9,9 +9,39 @@
             "text": "範例輸入輸出",
             "validators": []
         },
-        "full": {
+        "easy": {
             "index": 1,
-            "score": 100,
+            "score": 7,
+            "text": "$m = 1, a_i = 10^9$",
+            "validators": []
+        },
+        "dp": {
+            "index": 2,
+            "score": 18,
+            "text": "$3 \\le n \\le 2000, m = 1, a_i = 1$",
+            "validators": []
+        },
+        "brute": {
+            "index": 3,
+            "score": 9,
+            "text": "$3 \\le n \\le 7, 1 \\le m \\le 7$",
+            "validators": []
+        },
+        "graph": {
+            "index": 4,
+            "score": 20,
+            "text": "$3 \\le n \\le 100, 1 \\le m \\le 100, \\sum a_i \\le 10^4$",
+            "validators": []
+        },
+        "dp2": {
+            "index": 5,
+            "score": 22,
+            "text": "$3 \\le n \\le 2000$",
+            "validators": []
+        },
+        "full": {
+            "index": 6,
+            "score": 24,
             "text": "無額外限制",
             "validators": []
         }
