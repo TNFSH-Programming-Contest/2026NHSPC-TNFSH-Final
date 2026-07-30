@@ -1,0 +1,612 @@
+correct.cpp
+solution            compile[OK]
+0-01                sol[OK]    0.017     check[OK]        1  [Correct]               used the optimal number of whistles
+1-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-03                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-04                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-05                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-06                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-07                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-08                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-09                sol[OK]    0.018     check[OK]        1  [Correct]               used the optimal number of whistles
+1-10                sol[OK]    0.018     check[OK]        1  [Correct]               used the optimal number of whistles
+1-11                sol[OK]    0.018     check[OK]        1  [Correct]               used the optimal number of whistles
+1-12                sol[OK]    0.017     check[OK]        1  [Correct]               used the optimal number of whistles
+2-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-03                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-04                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-05                sol[OK]    0.017     check[OK]        1  [Correct]               used the optimal number of whistles
+2-06                sol[OK]    0.103     check[OK]        1  [Correct]               used the optimal number of whistles
+2-07                sol[OK]    0.102     check[OK]        1  [Correct]               used the optimal number of whistles
+2-08                sol[OK]    0.102     check[OK]        1  [Correct]               used the optimal number of whistles
+2-09                sol[OK]    0.052     check[OK]        1  [Correct]               used the optimal number of whistles
+3-01                sol[OK]    0.052     check[OK]        1  [Correct]               used the optimal number of whistles
+3-02                sol[OK]    0.154     check[OK]        1  [Correct]               used the optimal number of whistles
+3-03                sol[OK]    0.151     check[OK]        1  [Correct]               used the optimal number of whistles
+3-04                sol[OK]    0.156     check[OK]        1  [Correct]               used the optimal number of whistles
+3-05                sol[OK]    0.120     check[OK]        1  [Correct]               used the optimal number of whistles
+3-06                sol[OK]    0.127     check[OK]        1  [Correct]               used the optimal number of whistles
+3-07                sol[OK]    0.133     check[OK]        1  [Correct]               used the optimal number of whistles
+3-08                sol[OK]    0.171     check[OK]        1  [Correct]               used the optimal number of whistles
+3-09                sol[OK]    0.102     check[OK]        1  [Correct]               used the optimal number of whistles
+3-10                sol[OK]    0.127     check[OK]        1  [Correct]               used the optimal number of whistles
+3-11                sol[OK]    0.135     check[OK]        1  [Correct]               used the optimal number of whistles
+3-12                sol[OK]    0.138     check[OK]        1  [Correct]               used the optimal number of whistles
+3-13                sol[OK]    0.214     check[OK]        1  [Correct]               used the optimal number of whistles
+3-14                sol[OK]    0.161     check[OK]        1  [Correct]               used the optimal number of whistles
+3-15                sol[OK]    0.154     check[OK]        1  [Correct]               used the optimal number of whistles
+3-16                sol[OK]    0.153     check[OK]        1  [Correct]               used the optimal number of whistles
+3-17                sol[OK]    0.163     check[OK]        1  [Correct]               used the optimal number of whistles
+samples             [1/1 tests]    [Correct]             [0/0 pts]      [match with expected]             0-01
+brute               [12/12 tests]  [Correct]             [34/34 pts]    [match with expected]             1-01
+one                 [9/9 tests]    [Correct]             [15/15 pts]    [match with expected]             2-01
+full                [39/39 tests]  [Correct]             [51/51 pts]    [match with expected]             0-01
+
+Subtask summary
+100/100 pts
+
+Finished.
+
+brute.cpp
+solution            compile[OK]
+0-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-03                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-04                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-05                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-06                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-07                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-08                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-09                sol[OK]    0.024     check[OK]        1  [Correct]               used the optimal number of whistles
+1-10                sol[OK]    0.025     check[OK]        1  [Correct]               used the optimal number of whistles
+1-11                sol[OK]    0.025     check[OK]        1  [Correct]               used the optimal number of whistles
+1-12                sol[OK]    0.024     check[OK]        1  [Correct]               used the optimal number of whistles
+2-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-03                sol[OK]    0.017     check[OK]        1  [Correct]               used the optimal number of whistles
+2-04                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-05                sol[OK]    0.024     check[OK]        1  [Correct]               used the optimal number of whistles
+2-06                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-07                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-08                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-09                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-01                sol[OK]    0.048     check[OK]        1  [Correct]               used the optimal number of whistles
+3-02                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-03                sol[OK]    0.049     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-04                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-05                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-06                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-07                sol[OK]    0.049     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-08                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-09                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-10                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-11                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-12                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-13                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-14                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-15                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-16                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-17                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+samples             [1/1 tests]    [Correct]             [0/0 pts]      [match with expected]             0-01
+brute               [12/12 tests]  [Correct]             [34/34 pts]    [match with expected]             1-01
+one                 [9/9 tests]    [Wrong Answer]        [0/15 pts]     [match with expected]             2-06
+full                [39/39 tests]  [Wrong Answer]        [0/51 pts]     [match with expected]             2-06
+
+Subtask summary
+34/100 pts
+
+Finished.
+
+one.cpp
+solution            compile[OK]
+0-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-01                sol[OK]    0.017     check[OK]        1  [Correct]               used the optimal number of whistles
+1-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-03                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-04                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+1-05                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-06                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+1-07                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+1-08                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-09                sol[OK]    0.017     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+1-10                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+1-11                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+1-12                sol[OK]    0.017     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+2-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-03                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-04                sol[OK]    0.017     check[OK]        1  [Correct]               used the optimal number of whistles
+2-05                sol[OK]    0.019     check[OK]        1  [Correct]               used the optimal number of whistles
+2-06                sol[OK]    0.105     check[OK]        1  [Correct]               used the optimal number of whistles
+2-07                sol[OK]    0.100     check[OK]        1  [Correct]               used the optimal number of whistles
+2-08                sol[OK]    0.102     check[OK]        1  [Correct]               used the optimal number of whistles
+2-09                sol[OK]    0.053     check[OK]        1  [Correct]               used the optimal number of whistles
+3-01                sol[OK]    0.054     check[OK]        1  [Correct]               used the optimal number of whistles
+3-02                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+3-03                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-04                sol[OK]    0.049     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+3-05                sol[OK]    0.049     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+3-06                sol[OK]    0.100     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-07                sol[OK]    0.051     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+3-08                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+3-09                sol[OK]    0.099     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-10                sol[OK]    0.049     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+3-11                sol[OK]    0.110     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+3-12                sol[OK]    0.050     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+3-13                sol[OK]    0.049     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+3-14                sol[OK]    0.050     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+3-15                sol[OK]    0.049     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+3-16                sol[OK]    0.049     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+3-17                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          Wrong Answer(1): a student is swapped twice in one round
+samples             [1/1 tests]    [Correct]             [0/0 pts]      [match with expected]             0-01
+brute               [12/12 tests]  [Wrong Answer]        [0/34 pts]     [match with expected]             1-04
+one                 [9/9 tests]    [Correct]             [15/15 pts]    [match with expected]             2-01
+full                [39/39 tests]  [Wrong Answer]        [0/51 pts]     [match with expected]             1-04
+
+Subtask summary
+15/100 pts
+
+Finished.
+
+fake-always-two.cpp
+solution            compile[OK]
+0-01                sol[OK]    0.016     check[OK]     0.48  [Partially Correct]     sorted successfully, but used extra whistles
+1-01                sol[OK]    0.016     check[OK]     0.46  [Partially Correct]     sorted successfully, but used extra whistles
+1-02                sol[OK]    0.016     check[OK]     0.46  [Partially Correct]     sorted successfully, but used extra whistles
+1-03                sol[OK]    0.016     check[OK]     0.48  [Partially Correct]     sorted successfully, but used extra whistles
+1-04                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-05                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-06                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-07                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-08                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-09                sol[OK]    0.018     check[OK]        1  [Correct]               used the optimal number of whistles
+1-10                sol[OK]    0.020     check[OK]        1  [Correct]               used the optimal number of whistles
+1-11                sol[OK]    0.018     check[OK]        1  [Correct]               used the optimal number of whistles
+1-12                sol[OK]    0.017     check[OK]        1  [Correct]               used the optimal number of whistles
+2-01                sol[OK]    0.016     check[OK]     0.48  [Partially Correct]     sorted successfully, but used extra whistles
+2-02                sol[OK]    0.016     check[OK]     0.48  [Partially Correct]     sorted successfully, but used extra whistles
+2-03                sol[OK]    0.016     check[OK]     0.48  [Partially Correct]     sorted successfully, but used extra whistles
+2-04                sol[OK]    0.016     check[OK]     0.48  [Partially Correct]     sorted successfully, but used extra whistles
+2-05                sol[OK]    0.017     check[OK]     0.48  [Partially Correct]     sorted successfully, but used extra whistles
+2-06                sol[OK]    0.101     check[OK]     0.48  [Partially Correct]     sorted successfully, but used extra whistles
+2-07                sol[OK]    0.102     check[OK]     0.48  [Partially Correct]     sorted successfully, but used extra whistles
+2-08                sol[OK]    0.103     check[OK]     0.48  [Partially Correct]     sorted successfully, but used extra whistles
+2-09                sol[OK]    0.052     check[OK]     0.48  [Partially Correct]     sorted successfully, but used extra whistles
+3-01                sol[OK]    0.052     check[OK]     0.46  [Partially Correct]     sorted successfully, but used extra whistles
+3-02                sol[OK]    0.149     check[OK]        1  [Correct]               used the optimal number of whistles
+3-03                sol[OK]    0.151     check[OK]        1  [Correct]               used the optimal number of whistles
+3-04                sol[OK]    0.152     check[OK]        1  [Correct]               used the optimal number of whistles
+3-05                sol[OK]    0.119     check[OK]        1  [Correct]               used the optimal number of whistles
+3-06                sol[OK]    0.126     check[OK]        1  [Correct]               used the optimal number of whistles
+3-07                sol[OK]    0.133     check[OK]        1  [Correct]               used the optimal number of whistles
+3-08                sol[OK]    0.152     check[OK]        1  [Correct]               used the optimal number of whistles
+3-09                sol[OK]    0.102     check[OK]        1  [Correct]               used the optimal number of whistles
+3-10                sol[OK]    0.126     check[OK]        1  [Correct]               used the optimal number of whistles
+3-11                sol[OK]    0.134     check[OK]        1  [Correct]               used the optimal number of whistles
+3-12                sol[OK]    0.138     check[OK]        1  [Correct]               used the optimal number of whistles
+3-13                sol[OK]    0.149     check[OK]        1  [Correct]               used the optimal number of whistles
+3-14                sol[OK]    0.147     check[OK]        1  [Correct]               used the optimal number of whistles
+3-15                sol[OK]    0.152     check[OK]        1  [Correct]               used the optimal number of whistles
+3-16                sol[OK]    0.151     check[OK]        1  [Correct]               used the optimal number of whistles
+3-17                sol[OK]    0.150     check[OK]        1  [Correct]               used the optimal number of whistles
+samples             [1/1 tests]    [Partially Correct]   [0/0 pts]      [match with expected]             0-01
+brute               [12/12 tests]  [Partially Correct]   [15.64/34 pts]   [match with expected]             1-01
+one                 [9/9 tests]    [Partially Correct]   [7.2/15 pts]   [match with expected]             2-01
+full                [39/39 tests]  [Partially Correct]   [23.46/51 pts]   [match with expected]             1-01
+
+Subtask summary
+46.3/100 pts
+
+Finished.
+
+fake-cycle-by-cycle.cpp
+solution            compile[OK]
+0-01                sol[OK]    0.016     check[OK]     0.48  [Partially Correct]     sorted successfully, but used extra whistles
+1-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-03                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-04                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-05                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-06                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-07                sol[OK]    0.016     check[OK]     0.14  [Partially Correct]     sorted successfully, but used extra whistles
+1-08                sol[OK]    0.016     check[OK]     0.22  [Partially Correct]     sorted successfully, but used extra whistles
+1-09                sol[OK]    0.018     check[OK]        0  [Partially Correct]     sorted successfully, but used extra whistles
+1-10                sol[OK]    0.018     check[OK]     0.46  [Partially Correct]     sorted successfully, but used extra whistles
+1-11                sol[OK]    0.019     check[OK]     0.38  [Partially Correct]     sorted successfully, but used extra whistles
+1-12                sol[OK]    0.018     check[OK]        0  [Partially Correct]     sorted successfully, but used extra whistles
+2-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-03                sol[OK]    0.016     check[OK]     0.42  [Partially Correct]     sorted successfully, but used extra whistles
+2-04                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-05                sol[OK]    0.017     check[OK]        0  [Partially Correct]     sorted successfully, but used extra whistles
+2-06                sol[FAIL]  3.002     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+2-07                sol[FAIL]  3.002     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+2-08                sol[FAIL]  3.002     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+2-09                sol[OK]    0.052     check[OK]        1  [Correct]               used the optimal number of whistles
+3-01                sol[OK]    0.052     check[OK]        1  [Correct]               used the optimal number of whistles
+3-02                sol[OK]    0.150     check[OK]        1  [Correct]               used the optimal number of whistles
+3-03                sol[OK]    0.149     check[OK]        1  [Correct]               used the optimal number of whistles
+3-04                sol[OK]    0.151     check[OK]        1  [Correct]               used the optimal number of whistles
+3-05                sol[FAIL]  3.002     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-06                sol[FAIL]  3.002     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-07                sol[FAIL]  2.609     check[SKIP]      0  [Time Limit Exceeded]   solution finished after time limit '1.0', with exit code '0'
+3-08                sol[OK]    0.152     check[OK]     0.46  [Partially Correct]     sorted successfully, but used extra whistles
+3-09                sol[FAIL]  3.002     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-10                sol[FAIL]  2.674     check[SKIP]      0  [Time Limit Exceeded]   solution finished after time limit '1.0', with exit code '0'
+3-11                sol[FAIL]  1.838     check[SKIP]      0  [Time Limit Exceeded]   solution finished after time limit '1.0', with exit code '0'
+3-12                sol[FAIL]  1.739     check[SKIP]      0  [Time Limit Exceeded]   solution finished after time limit '1.0', with exit code '0'
+3-13                sol[OK]    0.467     check[OK]        0  [Partially Correct]     sorted successfully, but used extra whistles
+3-14                sol[OK]    0.586     check[OK]        0  [Partially Correct]     sorted successfully, but used extra whistles
+3-15                sol[OK]    0.153     check[OK]     0.12  [Partially Correct]     sorted successfully, but used extra whistles
+3-16                sol[OK]    0.151     check[OK]     0.18  [Partially Correct]     sorted successfully, but used extra whistles
+3-17                sol[OK]    0.151     check[OK]     0.02  [Partially Correct]     sorted successfully, but used extra whistles
+samples             [1/1 tests]    [Partially Correct]   [0/0 pts]      [match with expected]             0-01
+brute               [12/12 tests]  [Partially Correct]   [0/34 pts]     [expected: partially_correct]     1-09
+one                 [9/9 tests]    [Partially Correct]   [0/15 pts]     [expected: partially_correct]     2-05
+full                [39/39 tests]  [Partially Correct]   [0/51 pts]     [expected: partially_correct]     1-09
+
+Subtask summary
+0/100 pts
+
+Finished.
+
+fake-selection-sort.cpp
+solution            compile[OK]
+0-01                sol[OK]    0.016     check[OK]     0.48  [Partially Correct]     sorted successfully, but used extra whistles
+1-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-03                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-04                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-05                sol[OK]    0.016     check[OK]     0.48  [Partially Correct]     sorted successfully, but used extra whistles
+1-06                sol[OK]    0.016     check[OK]     0.46  [Partially Correct]     sorted successfully, but used extra whistles
+1-07                sol[OK]    0.017     check[OK]     0.14  [Partially Correct]     sorted successfully, but used extra whistles
+1-08                sol[OK]    0.016     check[OK]     0.06  [Partially Correct]     sorted successfully, but used extra whistles
+1-09                sol[OK]    0.019     check[OK]        0  [Partially Correct]     sorted successfully, but used extra whistles
+1-10                sol[OK]    0.020     check[OK]        0  [Partially Correct]     sorted successfully, but used extra whistles
+1-11                sol[OK]    0.020     check[OK]        0  [Partially Correct]     sorted successfully, but used extra whistles
+1-12                sol[OK]    0.018     check[OK]        0  [Partially Correct]     sorted successfully, but used extra whistles
+2-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-03                sol[OK]    0.016     check[OK]     0.42  [Partially Correct]     sorted successfully, but used extra whistles
+2-04                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-05                sol[OK]    0.017     check[OK]        0  [Partially Correct]     sorted successfully, but used extra whistles
+2-06                sol[FAIL]  3.002     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+2-07                sol[FAIL]  3.002     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+2-08                sol[FAIL]  3.002     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+2-09                sol[OK]    0.049     check[OK]        1  [Correct]               used the optimal number of whistles
+3-01                sol[OK]    0.048     check[OK]        1  [Correct]               used the optimal number of whistles
+3-02                sol[FAIL]  3.003     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-03                sol[FAIL]  3.003     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-04                sol[FAIL]  3.003     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-05                sol[FAIL]  3.003     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-06                sol[FAIL]  3.003     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-07                sol[FAIL]  3.003     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-08                sol[FAIL]  3.003     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-09                sol[FAIL]  3.003     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-10                sol[FAIL]  3.003     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-11                sol[FAIL]  3.004     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-12                sol[FAIL]  3.004     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-13                sol[FAIL]  3.004     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-14                sol[FAIL]  3.004     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-15                sol[FAIL]  3.004     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-16                sol[FAIL]  3.004     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-17                sol[FAIL]  3.004     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+samples             [1/1 tests]    [Partially Correct]   [0/0 pts]      [match with expected]             0-01
+brute               [12/12 tests]  [Partially Correct]   [0/34 pts]     [expected: partially_correct]     1-09
+one                 [9/9 tests]    [Partially Correct]   [0/15 pts]     [expected: partially_correct]     2-05
+full                [39/39 tests]  [Partially Correct]   [0/51 pts]     [expected: partially_correct]     1-09
+
+Subtask summary
+0/100 pts
+
+Finished.
+
+fake-greedy-rounds.cpp
+solution            compile[OK]
+0-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-03                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-04                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-05                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-06                sol[OK]    0.016     check[OK]     0.48  [Partially Correct]     sorted successfully, but used extra whistles
+1-07                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-08                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-09                sol[OK]    0.018     check[OK]     0.48  [Partially Correct]     sorted successfully, but used extra whistles
+1-10                sol[OK]    0.018     check[OK]      0.3  [Partially Correct]     sorted successfully, but used extra whistles
+1-11                sol[OK]    0.018     check[OK]     0.28  [Partially Correct]     sorted successfully, but used extra whistles
+1-12                sol[OK]    0.017     check[OK]        1  [Correct]               used the optimal number of whistles
+2-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-03                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-04                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-05                sol[OK]    0.017     check[OK]        1  [Correct]               used the optimal number of whistles
+2-06                sol[OK]    0.099     check[OK]        1  [Correct]               used the optimal number of whistles
+2-07                sol[OK]    0.099     check[OK]        1  [Correct]               used the optimal number of whistles
+2-08                sol[OK]    0.100     check[OK]        1  [Correct]               used the optimal number of whistles
+2-09                sol[OK]    0.050     check[OK]        1  [Correct]               used the optimal number of whistles
+3-01                sol[OK]    0.049     check[OK]        1  [Correct]               used the optimal number of whistles
+3-02                sol[OK]    0.151     check[OK]      0.2  [Partially Correct]     sorted successfully, but used extra whistles
+3-03                sol[OK]    0.152     check[OK]      0.2  [Partially Correct]     sorted successfully, but used extra whistles
+3-04                sol[OK]    0.156     check[OK]     0.14  [Partially Correct]     sorted successfully, but used extra whistles
+3-05                sol[OK]    0.118     check[OK]        1  [Correct]               used the optimal number of whistles
+3-06                sol[OK]    0.124     check[OK]        1  [Correct]               used the optimal number of whistles
+3-07                sol[OK]    0.133     check[OK]     0.48  [Partially Correct]     sorted successfully, but used extra whistles
+3-08                sol[OK]    0.155     check[OK]     0.16  [Partially Correct]     sorted successfully, but used extra whistles
+3-09                sol[OK]    0.099     check[OK]        1  [Correct]               used the optimal number of whistles
+3-10                sol[OK]    0.125     check[OK]     0.48  [Partially Correct]     sorted successfully, but used extra whistles
+3-11                sol[OK]    0.132     check[OK]     0.46  [Partially Correct]     sorted successfully, but used extra whistles
+3-12                sol[OK]    0.138     check[OK]     0.44  [Partially Correct]     sorted successfully, but used extra whistles
+3-13                sol[OK]    0.150     check[OK]     0.38  [Partially Correct]     sorted successfully, but used extra whistles
+3-14                sol[OK]    0.151     check[OK]     0.16  [Partially Correct]     sorted successfully, but used extra whistles
+3-15                sol[OK]    0.156     check[OK]     0.14  [Partially Correct]     sorted successfully, but used extra whistles
+3-16                sol[OK]    0.156     check[OK]     0.14  [Partially Correct]     sorted successfully, but used extra whistles
+3-17                sol[OK]    0.155     check[OK]     0.16  [Partially Correct]     sorted successfully, but used extra whistles
+samples             [1/1 tests]    [Correct]             [0/0 pts]      [match with expected]             0-01
+brute               [12/12 tests]  [Partially Correct]   [9.52/34 pts]  [match with expected]             1-11
+one                 [9/9 tests]    [Correct]             [15/15 pts]    [match with expected]             2-01
+full                [39/39 tests]  [Partially Correct]   [7.14/51 pts]  [match with expected]             3-04
+
+Subtask summary
+31.66/100 pts
+
+Finished.
+
+fake-reverse-rounds.cpp
+solution            compile[OK]
+0-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-03                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-04                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-05                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-06                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-07                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-08                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-09                sol[OK]    0.018     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-10                sol[OK]    0.018     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-11                sol[OK]    0.018     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-12                sol[OK]    0.017     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-03                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-04                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-05                sol[OK]    0.017     check[OK]        1  [Correct]               used the optimal number of whistles
+2-06                sol[OK]    0.102     check[OK]        1  [Correct]               used the optimal number of whistles
+2-07                sol[OK]    0.102     check[OK]        1  [Correct]               used the optimal number of whistles
+2-08                sol[OK]    0.103     check[OK]        1  [Correct]               used the optimal number of whistles
+2-09                sol[OK]    0.052     check[OK]        1  [Correct]               used the optimal number of whistles
+3-01                sol[OK]    0.052     check[OK]        1  [Correct]               used the optimal number of whistles
+3-02                sol[OK]    0.149     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-03                sol[OK]    0.149     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-04                sol[OK]    0.175     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-05                sol[OK]    0.118     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-06                sol[OK]    0.126     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-07                sol[OK]    0.131     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-08                sol[OK]    0.150     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-09                sol[OK]    0.103     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-10                sol[OK]    0.125     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-11                sol[OK]    0.134     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-12                sol[OK]    0.138     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-13                sol[OK]    0.148     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-14                sol[OK]    0.146     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-15                sol[OK]    0.151     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-16                sol[OK]    0.150     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-17                sol[OK]    0.150     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+samples             [1/1 tests]    [Correct]             [0/0 pts]      [match with expected]             0-01
+brute               [12/12 tests]  [Wrong Answer]        [0/34 pts]     [match with expected]             1-04
+one                 [9/9 tests]    [Correct]             [15/15 pts]    [match with expected]             2-01
+full                [39/39 tests]  [Wrong Answer]        [0/51 pts]     [match with expected]             1-04
+
+Subtask summary
+15/100 pts
+
+Finished.
+
+fake-ignore-transpositions.cpp
+solution            compile[OK]
+0-01                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-03                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-04                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-05                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-06                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-07                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-08                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-09                sol[OK]    0.017     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-10                sol[OK]    0.018     check[OK]        1  [Correct]               used the optimal number of whistles
+1-11                sol[OK]    0.018     check[OK]        1  [Correct]               used the optimal number of whistles
+1-12                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-01                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-02                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-03                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-04                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-05                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-06                sol[OK]    0.051     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-07                sol[OK]    0.051     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-08                sol[OK]    0.051     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-09                sol[OK]    0.051     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-01                sol[OK]    0.053     check[OK]        1  [Correct]               used the optimal number of whistles
+3-02                sol[OK]    0.148     check[OK]        1  [Correct]               used the optimal number of whistles
+3-03                sol[OK]    0.149     check[OK]        1  [Correct]               used the optimal number of whistles
+3-04                sol[OK]    0.151     check[OK]        1  [Correct]               used the optimal number of whistles
+3-05                sol[OK]    0.120     check[OK]        1  [Correct]               used the optimal number of whistles
+3-06                sol[OK]    0.126     check[OK]        1  [Correct]               used the optimal number of whistles
+3-07                sol[OK]    0.132     check[OK]        1  [Correct]               used the optimal number of whistles
+3-08                sol[OK]    0.152     check[OK]        1  [Correct]               used the optimal number of whistles
+3-09                sol[OK]    0.051     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-10                sol[OK]    0.121     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-11                sol[OK]    0.133     check[OK]        1  [Correct]               used the optimal number of whistles
+3-12                sol[OK]    0.134     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-13                sol[OK]    0.147     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-14                sol[OK]    0.147     check[OK]        1  [Correct]               used the optimal number of whistles
+3-15                sol[OK]    0.151     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-16                sol[OK]    0.152     check[OK]        1  [Correct]               used the optimal number of whistles
+3-17                sol[OK]    0.151     check[OK]        1  [Correct]               used the optimal number of whistles
+samples             [1/1 tests]    [Wrong Answer]        [0/0 pts]      [match with expected]             0-01
+brute               [12/12 tests]  [Wrong Answer]        [0/34 pts]     [match with expected]             1-03
+one                 [9/9 tests]    [Wrong Answer]        [0/15 pts]     [match with expected]             2-01
+full                [39/39 tests]  [Wrong Answer]        [0/51 pts]     [match with expected]             0-01
+
+Subtask summary
+0/100 pts
+
+Finished.
+
+fake-first-cycle-only.cpp
+solution            compile[OK]
+0-01                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-03                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-04                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-05                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-06                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-07                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-08                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-09                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-10                sol[OK]    0.017     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-11                sol[OK]    0.018     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-12                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-03                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-04                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-05                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-06                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-07                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-08                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-09                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-01                sol[OK]    0.048     check[OK]        1  [Correct]               used the optimal number of whistles
+3-02                sol[OK]    0.148     check[OK]        1  [Correct]               used the optimal number of whistles
+3-03                sol[OK]    0.148     check[OK]        1  [Correct]               used the optimal number of whistles
+3-04                sol[OK]    0.150     check[OK]        1  [Correct]               used the optimal number of whistles
+3-05                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-06                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-07                sol[OK]    0.050     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-08                sol[OK]    0.100     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-09                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-10                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-11                sol[OK]    0.049     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-12                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-13                sol[OK]    0.048     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-14                sol[OK]    0.073     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-15                sol[OK]    0.149     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-16                sol[OK]    0.129     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-17                sol[OK]    0.087     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+samples             [1/1 tests]    [Wrong Answer]        [0/0 pts]      [match with expected]             0-01
+brute               [12/12 tests]  [Wrong Answer]        [0/34 pts]     [match with expected]             1-07
+one                 [9/9 tests]    [Wrong Answer]        [0/15 pts]     [match with expected]             2-03
+full                [39/39 tests]  [Wrong Answer]        [0/51 pts]     [match with expected]             0-01
+
+Subtask summary
+0/100 pts
+
+Finished.
+
+fake-contiguous-cycle.cpp
+solution            compile[OK]
+0-01                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-02                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-03                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-04                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-05                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-06                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-07                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-08                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-09                sol[OK]    0.018     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-10                sol[OK]    0.018     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-11                sol[OK]    0.018     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+1-12                sol[OK]    0.018     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-02                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-03                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-04                sol[OK]    0.016     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-05                sol[OK]    0.018     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-06                sol[OK]    0.149     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-07                sol[OK]    0.149     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-08                sol[OK]    0.148     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+2-09                sol[OK]    0.147     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-01                sol[OK]    0.147     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-02                sol[OK]    0.148     check[OK]        1  [Correct]               used the optimal number of whistles
+3-03                sol[OK]    0.147     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-04                sol[OK]    0.147     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-05                sol[OK]    0.148     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-06                sol[OK]    0.148     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-07                sol[OK]    0.147     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-08                sol[OK]    0.148     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-09                sol[OK]    0.149     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-10                sol[OK]    0.149     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-11                sol[OK]    0.148     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-12                sol[OK]    0.148     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-13                sol[OK]    0.148     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-14                sol[OK]    0.148     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-15                sol[OK]    0.149     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-16                sol[OK]    0.149     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+3-17                sol[OK]    0.148     check[OK]        0  [Wrong Answer]          the final permutation is not sorted
+samples             [1/1 tests]    [Wrong Answer]        [0/0 pts]      [match with expected]             0-01
+brute               [12/12 tests]  [Wrong Answer]        [0/34 pts]     [match with expected]             1-02
+one                 [9/9 tests]    [Wrong Answer]        [0/15 pts]     [match with expected]             2-02
+full                [39/39 tests]  [Wrong Answer]        [0/51 pts]     [match with expected]             0-01
+
+Subtask summary
+0/100 pts
+
+Finished.
+
+fake-n2.cpp
+solution            compile[OK]
+0-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-03                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-04                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-05                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-06                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-07                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-08                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+1-09                sol[OK]    0.022     check[OK]        1  [Correct]               used the optimal number of whistles
+1-10                sol[OK]    0.023     check[OK]        1  [Correct]               used the optimal number of whistles
+1-11                sol[OK]    0.023     check[OK]        1  [Correct]               used the optimal number of whistles
+1-12                sol[OK]    0.022     check[OK]        1  [Correct]               used the optimal number of whistles
+2-01                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-02                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-03                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-04                sol[OK]    0.016     check[OK]        1  [Correct]               used the optimal number of whistles
+2-05                sol[OK]    0.022     check[OK]        1  [Correct]               used the optimal number of whistles
+2-06                sol[FAIL]  3.004     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+2-07                sol[FAIL]  3.004     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+2-08                sol[FAIL]  3.004     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+2-09                sol[FAIL]  3.004     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-01                sol[FAIL]  3.004     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-02                sol[FAIL]  3.005     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-03                sol[FAIL]  3.005     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-04                sol[FAIL]  3.005     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-05                sol[FAIL]  3.005     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-06                sol[FAIL]  3.005     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-07                sol[FAIL]  3.005     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-08                sol[FAIL]  3.005     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-09                sol[FAIL]  3.005     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-10                sol[FAIL]  3.005     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-11                sol[FAIL]  3.006     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-12                sol[FAIL]  3.006     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-13                sol[FAIL]  3.006     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-14                sol[FAIL]  3.006     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-15                sol[FAIL]  3.006     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-16                sol[FAIL]  3.006     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+3-17                sol[FAIL]  3.006     check[SKIP]      0  [Time Limit Exceeded]   solution terminated after hard time limit '3.0'
+samples             [1/1 tests]    [Correct]             [0/0 pts]      [match with expected]             0-01
+brute               [12/12 tests]  [Correct]             [34/34 pts]    [match with expected]             1-01
+one                 [9/9 tests]    [Time Limit Exceeded] [0/15 pts]     [match with expected]             2-06
+full                [39/39 tests]  [Time Limit Exceeded] [0/51 pts]     [match with expected]             2-06
+
+Subtask summary
+34/100 pts
+
+Finished.
+
