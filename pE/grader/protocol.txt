@@ -1,0 +1,29 @@
+Manager >
+Stub    <
+
+> n
+> a_1 a_2 ... a_n
+
+< S u v
+< B
+.
+.
+.
+< D
+
+If the stub detects an invalid API call, it sends one of:
+
+< E 1    (a student is used twice in one round)
+< E 2    (more than 2n whistle calls)
+< E 3    (invalid swap_student arguments)
+
+Stub argv[1]    manager-to-solution FIFO
+Stub argv[2]    solution-to-manager FIFO
+Stub argv[3]    process index (current TPS only)
+
+Manager argv[1] solution-to-manager FIFO
+Manager argv[2] manager-to-solution FIFO
+Manager argv[3] transcript path (current TPS only)
+Manager stdin   testcase input
+Manager stdout  score in [0, 1]
+Manager stderr  verdict and reason

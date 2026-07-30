@@ -47,8 +47,11 @@ bool isSorted(const vector<int>& permutation) {
 }  // namespace
 
 int main(int argc, char* argv[]) {
-    if (argc != 4) {
-        issueResult(0, "Judge Failure", "manager expects one solution process");
+    // Old TPS gives two FIFO arguments.  The current runner additionally
+    // passes the manager transcript path as argv[3].
+    if (argc != 3 && argc != 4) {
+        issueResult(0, "Judge Failure",
+                    "manager received an unexpected number of arguments");
         return 0;
     }
 
@@ -85,7 +88,10 @@ int main(int argc, char* argv[]) {
         issueResult(0, "Judge Failure", "cannot open solution-to-manager pipe");
         return 0;
     }
-    ofstream transcript(argv[3]);
+    ofstream transcript;
+    if (argc == 4) {
+        transcript.open(argv[3]);
+    }
 
     toSolution << n << '\n';
     for (int position = 1; position <= n; ++position) {
@@ -115,11 +121,11 @@ int main(int argc, char* argv[]) {
         string command;
         parser >> command;
 
-        if (command == "SWAP") {
+        if (command == "S") {
             int u, v;
             string extra;
             if (!(parser >> u >> v) || (parser >> extra)) {
-                fail("invalid SWAP command");
+                fail("invalid S command");
                 continue;
             }
             if (u < 1 || u > n || v < 1 || v > n || u == v) {
@@ -132,10 +138,10 @@ int main(int argc, char* argv[]) {
             }
             used[u] = used[v] = true;
             pending.push_back({u, v});
-        } else if (command == "BLOW") {
+        } else if (command == "B") {
             string extra;
             if (parser >> extra) {
-                fail("invalid BLOW command");
+                fail("invalid B command");
                 continue;
             }
             ++whistles;
@@ -147,10 +153,26 @@ int main(int argc, char* argv[]) {
             }
             pending.clear();
             fill(used.begin(), used.end(), false);
-        } else if (command == "DONE") {
+        } else if (command == "E") {
+            int errorCode;
+            string extra;
+            if (!(parser >> errorCode) || (parser >> extra)) {
+                fail("invalid E command");
+            } else if (errorCode == 1) {
+                fail("Wrong Answer(1): a student is swapped twice in one round");
+            } else if (errorCode == 2) {
+                fail("Wrong Answer(2): too many whistle calls");
+            } else if (errorCode == 3) {
+                fail("swap_student arguments are out of range");
+            } else {
+                fail("unknown grader error code");
+            }
+            done = true;
+            break;
+        } else if (command == "D") {
             string extra;
             if (parser >> extra) {
-                fail("invalid DONE command");
+                fail("invalid D command");
             }
             done = true;
             break;
@@ -160,7 +182,7 @@ int main(int argc, char* argv[]) {
     }
 
     if (!done) {
-        fail("solution terminated without DONE");
+        fail("solution terminated without D");
     }
     if (!failure.empty()) {
         issueResult(0, "Wrong Answer", failure);

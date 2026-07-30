@@ -7,7 +7,7 @@
 	"time_limit": 1.0,
 	"type": "Communication",
 	"has_manager": true,
-	"grader_name": "grader",
+	"grader_name": "stub",
 	"num_processes": 1,
 	"cpp_enabled": true,
 	"java_enabled": false,
@@ -24,7 +24,7 @@
 	"score_precision": 0,
 	"score_mode": "max_subtask",
 	"task_type": "Communication",
-	"task_type_params": "{\"task_type_parameters_Communication_compilation\": \"alone\"}",
+	"task_type_parameters": [1, "stub", "fifo_io"],
 	"has_checker": false,
 	"score_type": "GroupMin"
 }
