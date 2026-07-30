@@ -16,11 +16,11 @@
 | memory_limit |  512 | 512 | 512 | 512 | 512 | 512 | 512 |
 | time_limit |  1.0 | 1.0 | 1.0 | 2.5 | 1.0 | 1.0 | 1.0 |
 | has_checker |  False | False | False | False | False | False | False |
-| gen | [:x:](pA/gen)<br>[jngen.h](pA/gen/jngen.h) | [:white_check_mark:](pB/gen) | [:x:](pC/gen)<br>[data](pC/gen/data)<br>[gen.cpp](pC/gen/gen.cpp) | [:white_check_mark:](pD/gen) | [:x:](pE/gen)<br>[data](pE/gen/data)<br>[gen.cpp](pE/gen/gen.cpp) | [:x:](pF/gen)<br>[data](pF/gen/data)<br>[gen.cpp](pF/gen/gen.cpp) | [:x:](pG/gen)<br>[jngen.h](pG/gen/jngen.h) |
-| solution | [:white_check_mark:](pA/solution) | [:white_check_mark:](pB/solution) | [:x:](pC/solution)<br>[correct.cpp](pC/solution/correct.cpp) | [:white_check_mark:](pD/solution) | [:x:](pE/solution)<br>[correct.cpp](pE/solution/correct.cpp) | [:x:](pF/solution)<br>[correct.cpp](pF/solution/correct.cpp) | [:white_check_mark:](pG/solution) |
-| validator | [:white_check_mark:](pA/validator) | [:white_check_mark:](pB/validator) | [:x:](pC/validator)<br>[validator.cpp](pC/validator/validator.cpp) | [:white_check_mark:](pD/validator) | [:x:](pE/validator)<br>[validator.cpp](pE/validator/validator.cpp) | [:x:](pF/validator)<br>[validator.cpp](pF/validator/validator.cpp) | [:white_check_mark:](pG/validator) |
+| gen | [:x:](pA/gen)<br>[jngen.h](pA/gen/jngen.h) | [:white_check_mark:](pB/gen) | [:x:](pC/gen)<br>[data](pC/gen/data)<br>[gen.cpp](pC/gen/gen.cpp) | [:white_check_mark:](pD/gen) | [:white_check_mark:](pE/gen) | [:x:](pF/gen)<br>[data](pF/gen/data)<br>[gen.cpp](pF/gen/gen.cpp) | [:x:](pG/gen)<br>[jngen.h](pG/gen/jngen.h) |
+| solution | [:white_check_mark:](pA/solution) | [:white_check_mark:](pB/solution) | [:x:](pC/solution)<br>[correct.cpp](pC/solution/correct.cpp) | [:white_check_mark:](pD/solution) | [:white_check_mark:](pE/solution) | [:x:](pF/solution)<br>[correct.cpp](pF/solution/correct.cpp) | [:white_check_mark:](pG/solution) |
+| validator | [:white_check_mark:](pA/validator) | [:white_check_mark:](pB/validator) | [:x:](pC/validator)<br>[validator.cpp](pC/validator/validator.cpp) | [:white_check_mark:](pD/validator) | [:white_check_mark:](pE/validator) | [:x:](pF/validator)<br>[validator.cpp](pF/validator/validator.cpp) | [:white_check_mark:](pG/validator) |
 | subtasks.json<br>global_validators / subtask_sensitive_validators |  [:white_check_mark:](pA/subtasks.json) | [:white_check_mark:](pB/subtasks.json) | [:white_check_mark:](pC/subtasks.json) | [:white_check_mark:](pD/subtasks.json) | [:white_check_mark:](pE/subtasks.json) | [:white_check_mark:](pF/subtasks.json) | [:white_check_mark:](pG/subtasks.json) |
-| tests | [:white_check_mark:](pA/tests) | [:x:](pB/tests) | [:x:](pC/tests)<br>[Auto build disabled](pC/gen/DISABLE_AUTO_BUILD) | [:white_check_mark:](pD/tests) | [:x:](pE/tests)<br>[Auto build disabled](pE/gen/DISABLE_AUTO_BUILD) | [:x:](pF/tests)<br>[Auto build disabled](pF/gen/DISABLE_AUTO_BUILD) | [:white_check_mark:](pG/tests) |
+| tests | [:white_check_mark:](pA/tests) | [:white_check_mark:](pB/tests) | [:x:](pC/tests)<br>[Auto build disabled](pC/gen/DISABLE_AUTO_BUILD) | [:white_check_mark:](pD/tests) | [:x:](pE/tests)<br>[Auto build disabled](pE/gen/DISABLE_AUTO_BUILD) | [:x:](pF/tests)<br>[Auto build disabled](pF/gen/DISABLE_AUTO_BUILD) | [:white_check_mark:](pG/tests) |
 | statement/index.md | [:x:](pA/statement/index.md) | [:x:](pB/statement/index.md) | [:x:](pC/statement/index.md) | [:white_check_mark:](pD/statement/index.md) | [:white_check_mark:](pE/statement/index.md) | [:x:](pF/statement/index.md) | [:white_check_mark:](pG/statement/index.md) |
 | statement/index.pdf | [:white_check_mark:](pA/statement/index.pdf) | [:white_check_mark:](pB/statement/index.pdf)<br>[Auto build disabled](pB/statement/DISABLE_AUTO_BUILD) | [:x:](pC/statement/index.pdf)<br>[Auto build disabled](pC/statement/DISABLE_AUTO_BUILD) | [:white_check_mark:](pD/statement/index.pdf) | [:white_check_mark:](pE/statement/index.pdf)<br>[Auto build disabled](pE/statement/DISABLE_AUTO_BUILD) | [:x:](pF/statement/index.pdf)<br>[Auto build disabled](pF/statement/DISABLE_AUTO_BUILD) | [:white_check_mark:](pG/statement/index.pdf) |
 
@@ -35,7 +35,7 @@
 | B | 7<br>$m = 1, a_i = 10^9$ | 18<br>$3 \le n \le 2000, m = 1, a_i = 1$ | 9<br>$3 \le n \le 7, 1 \le m \le 7$ | 20<br>$3 \le n \le 100, 1 \le m \le 100, \sum a_i \le 10^4$ | 22<br>$3 \le n \le 2000$ | 24<br>無額外限制 |
 | C | 100<br>無額外限制 |
 | D | 8<br>$N,\ H \le 15$ | 8<br>$K = 1$ | 8<br>$K = N$ | 10<br>每個 hunk 最多只被修改一次 | 26<br>$N \le 1000$ | 40<br>無限制 |
-| E | 34<br>$1 \le n \le 2000$ | 51<br>無額外限制 | 15<br>保證 $opt = 1$ |
+| E | 34<br>$1 \le n \le 2000$ | 15<br>保證 $opt = 1$ | 51<br>無額外限制 |
 | F | 100<br>無額外限制 |
 | G | 5<br>$M = N - 1$, 且第 $i$ 條邊為 $i \to i + 1$ | 10<br>$C_e=1$ | 15<br>$M \le 20$ | 15<br>$M=N$ 且無 self-loop 或重複連接 | 20<br>每個點雙連通分量皆為單邊分量，或其中每個頂點的分量內度數皆為 $2$ | 35<br>無額外限制 |
 
