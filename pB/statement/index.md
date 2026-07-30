@@ -32,6 +32,7 @@
  - $3 \le n \le 10^5$
  - $1 \le m \le 10^5$
  - $\lvert x_i \rvert \le 10^9$
+ - $x_1 < x_2 < \cdots < x_n$
  - $1 \le a_i \le 10^9$
 
 ## 子任務
