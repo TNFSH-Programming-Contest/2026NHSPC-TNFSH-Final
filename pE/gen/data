@@ -1,8 +1,16 @@
-# see https://github.com/ioi-2017/tps/blob/master/docs/README.md#gendata
-# TODO
+# Minimal communication scaffold tests.  Expand after the grader/manager
+# protocol is reviewed.
+
 @subtask samples
 manual example-1.in
 
+@subtask brute
+gen identity 1 identity
+gen cycle 7 one-cycle
+
+@subtask one
+gen transpositions 6 disjoint-swaps
+
 @subtask full
-gen	20
-gen	30
+@include samples brute one
+gen cycle 10 full-cycle

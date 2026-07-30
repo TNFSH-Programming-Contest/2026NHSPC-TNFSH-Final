@@ -13,16 +13,16 @@
             "index": 1,
             "score": 34,
             "text": "$1 \\le n \\le 2000$",
-            "validators": []
+            "validators": ["validator.cpp brute"]
         },
         "one": {
             "index": 2,
             "score": 15,
             "text": "保證 $opt = 1$",
-            "validators": []
+            "validators": ["validator.cpp one"]
         },
         "full": {
-            "index": 1,
+            "index": 3,
             "score": 51,
             "text": "無額外限制",
             "validators": []
