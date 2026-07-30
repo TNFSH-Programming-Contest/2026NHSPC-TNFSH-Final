@@ -1,16 +1,47 @@
-# Minimal communication scaffold tests.  Expand after the grader/manager
-# protocol is reviewed.
-
 @subtask samples
 manual example-1.in
 
 @subtask brute
-gen identity 1 identity
-gen cycle 7 one-cycle
+gen identity 1 identity-one
+gen identity 2 identity-two
+gen involution 2 identity 1 single-swap
+gen single-cycle 3 identity triangle
+gen single-cycle 4 reverse four-cycle
+gen single-cycle 5 random random-five-cycle
+gen equal-cycles 30 3 random ten-triangles
+gen equal-cycles 32 4 alternating eight-four-cycles
+gen mixed 1999 random small mixed-small
+gen rotation 2000 2 random two-long-cycles
+gen random 2000 random-permutation
+gen near-involution 2000 random almost-matching
 
 @subtask one
-gen transpositions 6 disjoint-swaps
+gen involution 2 identity 1 minimum
+gen involution 3 identity 1 one-fixed-point
+gen involution 10 alternating 5 nested
+gen involution 17 random 1 sparse-small
+gen involution 2000 random 743 random-medium
+gen involution 99991 identity 49995 maximum-prime
+gen involution 100000 alternating 50000 maximum-nested
+gen involution 100000 random 49999 maximum-random
+gen involution 100000 random 1 maximum-sparse
 
 @subtask full
 @include samples brute one
-gen cycle 10 full-cycle
+gen identity 100000 maximum-identity
+gen single-cycle 100000 identity maximum-cycle
+gen single-cycle 100000 reverse maximum-reverse-cycle
+gen single-cycle 99991 random prime-random-cycle
+gen equal-cycles 99999 3 random many-triangles
+gen equal-cycles 100000 4 alternating many-four-cycles
+gen equal-cycles 100000 5 random many-five-cycles
+gen rotation 100000 2 random two-random-long-cycles
+gen near-involution 100000 random one-triangle-many-swaps
+gen mixed 100000 random small maximum-mixed-small
+gen mixed 99991 alternating odd prime-odd-cycles
+gen mixed 100000 random even maximum-even-cycles
+gen mixed 100000 random stair staircase-cycles
+gen mixed 100000 random long mixed-long-cycles
+gen random 100000 maximum-random-a
+gen random 100000 maximum-random-b
+gen random 99991 prime-random

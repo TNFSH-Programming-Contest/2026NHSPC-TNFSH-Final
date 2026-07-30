@@ -1,5 +1,58 @@
 {
-	"correct.cpp": {
-		"verdict": "model_solution"
-	}
+    "correct.cpp": {
+        "verdict": "model_solution"
+    },
+    "brute.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "brute": "correct"
+        }
+    },
+    "one.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "one": "correct"
+        }
+    },
+    "fake-always-two.cpp": {
+        "verdict": "partially_correct"
+    },
+    "fake-cycle-by-cycle.cpp": {
+        "verdict": "partially_correct"
+    },
+    "fake-selection-sort.cpp": {
+        "verdict": "partially_correct"
+    },
+    "fake-greedy-rounds.cpp": {
+        "verdict": "partially_correct",
+        "except": {
+            "samples": "correct",
+            "one": "correct"
+        }
+    },
+    "fake-reverse-rounds.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "one": "correct"
+        }
+    },
+    "fake-ignore-transpositions.cpp": {
+        "verdict": "incorrect"
+    },
+    "fake-first-cycle-only.cpp": {
+        "verdict": "incorrect"
+    },
+    "fake-contiguous-cycle.cpp": {
+        "verdict": "incorrect"
+    },
+    "fake-n2.cpp": {
+        "verdict": "time_limit",
+        "except": {
+            "samples": "correct",
+            "brute": "correct"
+        }
+    }
 }
