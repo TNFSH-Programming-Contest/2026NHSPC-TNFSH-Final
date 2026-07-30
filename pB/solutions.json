@@ -1,5 +1,44 @@
 {
-	"correct.cpp": {
-		"verdict": "model_solution"
-	}
+    "correct.cpp": {
+        "verdict": "model_solution"
+    },
+    "correct-two-pointers.cpp": {
+        "verdict": "correct"
+    },
+    "easy.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "easy": "correct"
+        }
+    },
+    "dp.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "dp": "correct"
+        }
+    },
+    "brute.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "brute": "correct"
+        }
+    },
+    "graph.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "brute": "correct",
+            "graph": "correct"
+        }
+    },
+    "dp2.cpp": {
+        "verdict": "time_limit",
+        "except": {
+            "samples": "correct",
+            "easy": "correct",
+            "dp": "correct",
+            "brute": "correct",
+            "graph": "correct",
+            "dp2": "correct"
+        }
+    }
 }
