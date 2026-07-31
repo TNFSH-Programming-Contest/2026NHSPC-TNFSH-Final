@@ -9,9 +9,39 @@
             "text": "範例輸入輸出",
             "validators": []
         },
-        "full": {
+        "small": {
             "index": 1,
-            "score": 100,
+            "score": 15,
+            "text": "$N,Q \\le 2000$",
+            "validators": ["validator.cpp small"]
+        },
+        "range_only": {
+            "index": 2,
+            "score": 10,
+            "text": "只出現第 $3,4,5$ 類操作",
+            "validators": ["validator.cpp range_only"]
+        },
+        "same_a": {
+            "index": 3,
+            "score": 10,
+            "text": "$A_1=A_2=\\cdots=A_N$",
+            "validators": ["validator.cpp same_a"]
+        },
+        "a32": {
+            "index": 4,
+            "score": 15,
+            "text": "$A_i$ 中不同的值不超過 $32$ 種",
+            "validators": ["validator.cpp a32"]
+        },
+        "no_move": {
+            "index": 5,
+            "score": 20,
+            "text": "不出現第 $2$ 類操作",
+            "validators": ["validator.cpp no_move"]
+        },
+        "full": {
+            "index": 6,
+            "score": 30,
             "text": "無額外限制",
             "validators": []
         }
