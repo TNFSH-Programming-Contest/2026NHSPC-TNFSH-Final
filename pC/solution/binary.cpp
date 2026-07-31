@@ -7,8 +7,7 @@ int main() {
 
     int n;
     cin >> n;
-
-    vector<long long> stones(n + 1);
+    vector<int> stones(n + 1);
     for (int i = 1; i <= n; ++i) {
         cin >> stones[i];
     }
@@ -22,29 +21,25 @@ int main() {
     }
 
     vector<int> parent(n + 1, -1);
-    vector<unsigned char> depthParity(n + 1, 0);
-    vector<int> order;
-    order.reserve(n);
+    vector<int> order(1, 1);
+    vector<unsigned char> parity(n + 1, 0);
     parent[1] = 0;
-    order.push_back(1);
+    bool odd = false;
 
-    long long nimSum = 0;
     for (size_t i = 0; i < order.size(); ++i) {
         const int u = order[i];
-        if (depthParity[u]) {
-            nimSum ^= stones[u];
+        if (parity[u] && stones[u] == 1) {
+            odd = !odd;
         }
-
         for (int v : graph[u]) {
-            if (v == parent[u]) {
-                continue;
+            if (v != parent[u]) {
+                parent[v] = u;
+                parity[v] = parity[u] ^ 1;
+                order.push_back(v);
             }
-            parent[v] = u;
-            depthParity[v] = depthParity[u] ^ 1;
-            order.push_back(v);
         }
     }
 
-    cout << (nimSum != 0 ? "Alice" : "Bob") << '\n';
+    cout << (odd ? "Alice" : "Bob") << '\n';
     return 0;
 }

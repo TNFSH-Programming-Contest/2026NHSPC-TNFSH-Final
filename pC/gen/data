@@ -1,8 +1,73 @@
 # see https://github.com/ioi-2017/tps/blob/master/docs/README.md#gendata
-# TODO
+
 @subtask samples
 manual example-1.in
 
+@subtask single
+@include samples
+gen single 1 root-max keep ordered
+gen single 2 zero keep ordered
+gen single 2 single-odd-two keep reverse
+gen single 2 root-max keep mixed
+gen single 2 max keep shuffled
+
+@subtask star
+@include single
+gen star 3 odd-pair-max keep ordered
+gen star 3 single-odd-two keep reverse
+gen star 4 xor-zero keep mixed
+gen star 17 powers keep shuffled
+gen star 1000 max keep mixed
+gen star 99991 xor-nonzero relabel shuffled
+gen star 200000 root-max relabel mixed
+gen star 200000 xor-zero relabel mixed
+gen star 200000 overflow relabel shuffled
+
+@subtask path
+@include single
+gen path 3 single-even-max keep ordered
+gen path 4 internal-odd keep reverse
+gen path 5 odd-pair-max keep ordered
+gen path 17 xor-zero keep reverse
+gen path 18 xor-nonzero keep ordered
+gen path 99991 powers keep reverse
+gen path 199999 ones keep ordered
+gen path 200000 root-max keep reverse
+gen path 200000 even-only keep ordered
+gen path 200000 random keep reverse
+gen path 200000 overflow keep ordered
+
+@subtask binary
+@include samples
+gen star 3 binary-pair keep mixed
+gen path 7 binary-even keep shuffled
+gen binary 31 binary-random relabel mixed
+gen depth2 1000 binary-random relabel shuffled
+gen broom 99991 binary-pair relabel mixed
+gen caterpillar 100000 binary-random relabel mixed
+gen deep-star 199999 binary-even relabel shuffled
+gen random 200000 zero relabel mixed
+gen random 200000 ones relabel shuffled
+gen random 200000 binary-random relabel mixed
+
 @subtask full
-gen	20
-gen	30
+@include samples single star path binary
+gen binary 3 single-even-max keep ordered
+gen binary 15 odd-pair-max relabel mixed
+gen binary 200000 random relabel mixed
+gen broom 17 internal-odd relabel shuffled
+gen broom 200000 xor-zero relabel mixed
+gen broom 200000 deep-odd relabel shuffled
+gen caterpillar 99991 powers relabel mixed
+gen caterpillar 200000 overflow relabel shuffled
+gen depth2 6 even-only relabel mixed
+gen depth2 200000 odd-pair-max relabel shuffled
+gen deep-star 19 internal-odd relabel mixed
+gen deep-star 200000 root-max relabel shuffled
+gen deep-star 200000 xor-nonzero relabel mixed
+gen random 4 single-odd-two relabel mixed
+gen random 23 xor-zero relabel shuffled
+gen random 99991 small-random relabel mixed
+gen random 200000 even-only relabel shuffled
+gen random 200000 random relabel mixed
+gen random 200000 overflow relabel shuffled

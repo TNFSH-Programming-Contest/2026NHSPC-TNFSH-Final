@@ -1,5 +1,88 @@
 {
-	"correct.cpp": {
-		"verdict": "model_solution"
-	}
+    "correct.cpp": {
+        "verdict": "model_solution"
+    },
+    "single.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "single": "correct"
+        }
+    },
+    "star.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "single": "correct",
+            "star": "correct"
+        }
+    },
+    "path.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "single": "correct",
+            "path": "correct"
+        }
+    },
+    "binary.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "binary": "correct"
+        }
+    },
+    "fake-xor-all.cpp": {
+        "verdict": "incorrect"
+    },
+    "fake-even-depth.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct"
+        }
+    },
+    "fake-parity.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "binary": "correct"
+        }
+    },
+    "fake-any-odd.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "single": "correct"
+        }
+    },
+    "fake-leaves-only.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "single": "correct",
+            "star": "correct"
+        }
+    },
+    "fake-root-children.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "single": "correct",
+            "star": "correct"
+        }
+    },
+    "fake-oriented-edges.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct"
+        }
+    },
+    "fake-n2.cpp": {
+        "verdict": "time_limit",
+        "except": {
+            "samples": "correct",
+            "single": "correct",
+            "star": "correct"
+        }
+    }
 }
