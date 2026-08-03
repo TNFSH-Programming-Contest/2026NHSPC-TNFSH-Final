@@ -1,5 +1,99 @@
 {
 	"correct.cpp": {
 		"verdict": "model_solution"
+	},
+	"small.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct",
+			"small": "correct"
+		}
+	},
+	"range-only.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct",
+			"range_only": "correct"
+		}
+	},
+	"same-a.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct",
+			"same_a": "correct"
+		}
+	},
+	"a32.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct",
+			"same_a": "correct",
+			"a32": "correct"
+		}
+	},
+	"no-move.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct",
+			"range_only": "correct",
+			"no_move": "correct"
+		}
+	},
+	"fake-push-ineffective.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct"
+		}
+	},
+	"fake-query-history.cpp": {
+		"verdict": "incorrect"
+	},
+	"fake-move-component.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct",
+			"range_only": "correct",
+			"no_move": "correct"
+		}
+	},
+	"fake-open-range.cpp": {
+		"verdict": "incorrect"
+	},
+	"fake-index-range.cpp": {
+		"verdict": "incorrect"
+	},
+	"fake-ignore-negative.cpp": {
+		"verdict": "incorrect"
+	},
+	"fake-no-range-undo.cpp": {
+		"verdict": "incorrect"
+	},
+	"fake-int32.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct"
+		}
+	},
+	"fake-path-compression.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct",
+			"range_only": "correct"
+		}
+	},
+	"fake-move-raw-sum.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct",
+			"range_only": "correct",
+			"no_move": "correct"
+		}
+	},
+	"fake-nq.cpp": {
+		"verdict": "time_limit",
+		"except": {
+			"samples": "correct",
+			"small": "correct"
+		}
 	}
 }

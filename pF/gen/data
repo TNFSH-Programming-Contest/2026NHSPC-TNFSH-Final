@@ -1,21 +1,63 @@
 # see https://github.com/ioi-2017/tps/blob/master/docs/README.md#gendata
+
 @subtask samples
 manual example-1.in
 
 @subtask small
 @include samples
+gen history 8 97 distinct history-tiny
+gen empty-components 30 300 clusters empty-components
+gen random 2000 2000 random random-max
+gen move-heavy 1999 2000 few32 move-prime
+gen rollback 2000 2000 gaps deep-rollback
+gen blocks 2000 2000 shuffled-distinct block-boundaries
+gen quadratic 2000 2000 alternating quadratic-small
+gen compression 64 257 distinct path-compression
+gen move-values 63 257 distinct move-existing-values
 
 @subtask range_only
 @include samples
+gen range-history 1 50000 same history-single
+gen range-only 50000 50000 shuffled-distinct distinct-max
+gen range-only 49999 50000 clusters duplicate-boundaries
+gen range-only 50000 49999 gaps large-gaps
+gen range-history 50000 50000 random ineffective-stack
 
 @subtask same_a
 @include samples
+gen history 50000 50000 same history-max
+gen random 50000 50000 same random-max
+gen move-heavy 49999 50000 same move-prime
+gen rollback 50000 50000 same rollback-max
+gen overflow 50000 50000 same overflow-max
+gen compression 50000 50000 same compression-same-a
 
 @subtask a32
 @include samples
+gen random 50000 50000 few32 random-32
+gen move-heavy 50000 50000 few32 move-32
+gen rollback 49999 50000 few32 rollback-32
+gen blocks 50000 50000 few32 block-32
+gen overflow 50000 50000 alternating overflow-2
+gen compression 50000 50000 few32 compression-32
 
 @subtask no_move
-@include samples
+@include samples range_only
+gen no-move 50000 50000 shuffled-distinct random-no-move
+gen no-move 49999 50000 clusters duplicate-no-move
+gen no-move 50000 49999 gaps gaps-no-move
+gen overflow 50000 50000 distinct overflow-no-move
+gen quadratic 50000 50000 random quadratic-no-move
+gen compression 50000 50000 distinct compression-no-move
 
 @subtask full
-@include samples
+@include samples small range_only same_a a32 no_move
+gen random 50000 50000 random full-random
+gen move-heavy 50000 50000 shuffled-distinct full-move
+gen empty-components 50000 50000 clusters full-empty
+gen history 50000 50000 gaps full-history
+gen rollback 50000 50000 random full-rollback
+gen blocks 50000 50000 shuffled-distinct full-blocks
+gen quadratic 50000 50000 random full-quadratic
+gen compression 50000 50000 distinct full-path-compression
+gen move-values 50000 50000 distinct full-move-values

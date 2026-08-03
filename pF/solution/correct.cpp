@@ -32,13 +32,16 @@ public:
         for (int i = 1; i <= n; ++i) {
             positionNode_[i] = i;
             addBlockCount(blockOfVertex_[i], i, 1);
-}
+        }
         history_.reserve(q);
-}
+    }
     void unite(int a, int b) {
         int rootA = findVertex(a);
         int rootB = findVertex(b);
         if (rootA == rootB) {
+#ifdef PF_PUSH_INEFFECTIVE
+            pushNoopHistory();
+#endif
             return;
         }
         if (treeSize_[rootA] > treeSize_[rootB]) {
@@ -62,6 +65,9 @@ public:
         const int sourceRoot = findVertex(a);
         const int targetRoot = findVertex(b);
         if (sourceRoot == targetRoot) {
+#ifdef PF_PUSH_INEFFECTIVE
+            pushNoopHistory();
+#endif
             return;
         }
 
@@ -72,8 +78,10 @@ public:
 
         addBlockCount(block, sourceRoot, -1);
         addBlockCount(block, targetRoot, 1);
+#ifndef PF_MOVE_FORGET_RAW_SUM
         rawSum_[sourceRoot] -= rawValue;
         rawSum_[targetRoot] += rawValue;
+#endif
 
         parent_[newNode] = targetRoot;
         treeSize_[newNode] = 1;
@@ -85,18 +93,41 @@ public:
     }
 
     void addRange(int leftValue, int rightValue, long long delta) {
+#ifdef PF_IGNORE_NEGATIVE
+        if (delta < 0) {
+            return;
+        }
+#endif
         if (delta == 0) {
+#ifdef PF_PUSH_INEFFECTIVE
+            pushNoopHistory();
+#endif
             return;
         }
 
+#ifdef PF_RANGE_BY_INDEX
+        const int left = max(0, leftValue - 1);
+        const int right = min(n_ - 1, rightValue - 1);
+#elif defined(PF_OPEN_RANGE)
+        const int left = static_cast<int>(
+            upper_bound(sortedValues_.begin(), sortedValues_.end(), leftValue) -
+            sortedValues_.begin());
+        const int right = static_cast<int>(
+            lower_bound(sortedValues_.begin(), sortedValues_.end(), rightValue) -
+            sortedValues_.begin()) - 1;
+#else
         const int left = static_cast<int>(
             lower_bound(sortedValues_.begin(), sortedValues_.end(), leftValue) -
             sortedValues_.begin());
         const int right = static_cast<int>(
             upper_bound(sortedValues_.begin(), sortedValues_.end(), rightValue) -
             sortedValues_.begin()) - 1;
+#endif
 
         if (left > right) {
+#ifdef PF_PUSH_INEFFECTIVE
+            pushNoopHistory();
+#endif
             return;
         }
 
@@ -117,7 +148,14 @@ public:
         return answer;
     }
 
+    void pushNoopHistory() {
+        history_.push_back({4, 0, 0, 0, 0, 0, 0});
+    }
+
     void undo() {
+        if (history_.empty()) {
+            return;
+        }
         const HistoryEntry entry = history_.back();
         history_.pop_back();
 
@@ -125,8 +163,10 @@ public:
             undoUnion(entry);
         } else if (entry.type == 2) {
             undoMove(entry);
-        } else {
+        } else if (entry.type == 3) {
+#ifndef PF_NO_RANGE_UNDO
             applyRange(entry.a, entry.b, -entry.delta);
+#endif
         }
     }
 
@@ -146,7 +186,7 @@ private:
     vector<unordered_map<int, int> > countInBlock_;
 
     vector<int> positionNode_;
-    vector<int> parent_;
+    mutable vector<int> parent_;
     vector<int> treeSize_;
     vector<long long> rawSum_;
     int nextNode_;
@@ -190,10 +230,17 @@ private:
     }
 
     int findNode(int node) const {
+#ifdef PF_PATH_COMPRESSION
+        if (parent_[node] != node) {
+            parent_[node] = findNode(parent_[node]);
+        }
+        return parent_[node];
+#else
         while (parent_[node] != node) {
             node = parent_[node];
         }
         return node;
+#endif
     }
 
     int findVertex(int vertex) const {
@@ -284,8 +331,10 @@ private:
 
         addBlockCount(block, targetRoot, -1);
         addBlockCount(block, sourceRoot, 1);
+#ifndef PF_MOVE_FORGET_RAW_SUM
         rawSum_[targetRoot] -= rawValue;
         rawSum_[sourceRoot] += rawValue;
+#endif
 
         positionNode_[vertex] = oldNode;
         --treeSize_[targetRoot];
@@ -322,7 +371,13 @@ int main() {
         } else if (type == 2) {
             int a, b;
             cin >> a >> b;
+#ifdef PF_NO_MOVE_SUBTASK
+            return 0;
+#elif defined(PF_MOVE_WHOLE_COMPONENT)
+            solver.unite(a, b);
+#else
             solver.moveVertex(a, b);
+#endif
         } else if (type == 3) {
             int left, right;
             long long delta;
@@ -331,7 +386,15 @@ int main() {
         } else if (type == 4) {
             int vertex;
             cin >> vertex;
-            cout << solver.query(vertex) << '\n';
+            const long long answer = solver.query(vertex);
+#ifdef PF_INT32_ANSWER
+            cout << static_cast<int>(answer) << '\n';
+#else
+            cout << answer << '\n';
+#endif
+#ifdef PF_QUERY_IS_OPERATION
+            solver.pushNoopHistory();
+#endif
         } else {
             solver.undo();
         }
