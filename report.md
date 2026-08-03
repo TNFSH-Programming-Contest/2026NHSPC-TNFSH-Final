@@ -2,14 +2,14 @@
 ## Progress
 <!-- progress start -->
 
-- cover.tex [:x:](cover.tex)
+- cover.tex [:white_check_mark:](cover.tex)
 - appendix.tex [:x:](appendix.tex)
 
 | | A | B | C | D | E | F | G |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | problem.json syntax | [:white_check_mark:](pA/problem.json) | [:white_check_mark:](pB/problem.json) | [:white_check_mark:](pC/problem.json) | [:white_check_mark:](pD/problem.json) | [:white_check_mark:](pE/problem.json) | [:white_check_mark:](pF/problem.json) | [:white_check_mark:](pG/problem.json) |
 | subtasks.json syntax | [:white_check_mark:](pA/subtasks.json) | [:white_check_mark:](pB/subtasks.json) | [:white_check_mark:](pC/subtasks.json) | [:white_check_mark:](pD/subtasks.json) | [:white_check_mark:](pE/subtasks.json) | [:white_check_mark:](pF/subtasks.json) | [:white_check_mark:](pG/subtasks.json) |
-| contest_name |  [:white_check_mark:](pA/problem.json)<br>115 學年度資訊學科能力競賽臺南一中校內複選 | [:white_check_mark:](pB/problem.json)<br>115 學年度資訊學科能力競賽臺南一中校內複選 | [:white_check_mark:](pC/problem.json)<br>115 學年度資訊學科能力競賽臺南一中校內複選 | [:white_check_mark:](pD/problem.json)<br>115 學年度資訊學科能力競賽臺南一中校內複選 | [:white_check_mark:](pE/problem.json)<br>115 學年度資訊學科能力競賽臺南一中校內複選 | [:x:](pF/problem.json) | [:white_check_mark:](pG/problem.json)<br>115 學年度資訊學科能力競賽臺南一中校內複選 |
+| contest_name |  [:white_check_mark:](pA/problem.json)<br>115 學年度資訊學科能力競賽臺南一中校內複選 | [:white_check_mark:](pB/problem.json)<br>115 學年度資訊學科能力競賽臺南一中校內複選 | [:white_check_mark:](pC/problem.json)<br>115 學年度資訊學科能力競賽臺南一中校內複選 | [:white_check_mark:](pD/problem.json)<br>115 學年度資訊學科能力競賽臺南一中校內複選 | [:white_check_mark:](pE/problem.json)<br>115 學年度資訊學科能力競賽臺南一中校內複選 | [:white_check_mark:](pF/problem.json)<br>115 學年度資訊學科能力競賽臺南一中校內複選 | [:white_check_mark:](pG/problem.json)<br>115 學年度資訊學科能力競賽臺南一中校內複選 |
 | problem_label |  [:white_check_mark:](pA/problem.json) | [:white_check_mark:](pB/problem.json) | [:white_check_mark:](pC/problem.json) | [:white_check_mark:](pD/problem.json) | [:white_check_mark:](pE/problem.json) | [:white_check_mark:](pF/problem.json) | [:white_check_mark:](pG/problem.json) |
 | name |  [:white_check_mark:](pA/problem.json)<br>Rainbow_Parade | [:white_check_mark:](pB/problem.json)<br>Chicks_Go | [:white_check_mark:](pC/problem.json)<br>Stone_Game | [:white_check_mark:](pD/problem.json)<br>Git | [:white_check_mark:](pE/problem.json)<br>Can_You_Blow_My_Whistle | [:x:](pF/problem.json) | [:white_check_mark:](pG/problem.json)<br>Compiler |
 | title |  [:white_check_mark:](pA/problem.json)<br>彩虹遊行 | [:white_check_mark:](pB/problem.json)<br>小雞過馬路 | [:white_check_mark:](pC/problem.json)<br>石頭遊戲 | [:white_check_mark:](pD/problem.json)<br>Merge, Rebase, Squash! | [:white_check_mark:](pE/problem.json)<br>你可以幫我吹口哨嗎? | [:x:](pF/problem.json) | [:white_check_mark:](pG/problem.json)<br>Performance Analysis |
@@ -20,7 +20,7 @@
 | solution | [:white_check_mark:](pA/solution) | [:white_check_mark:](pB/solution) | [:white_check_mark:](pC/solution) | [:white_check_mark:](pD/solution) | [:white_check_mark:](pE/solution) | [:white_check_mark:](pF/solution) | [:white_check_mark:](pG/solution) |
 | validator | [:white_check_mark:](pA/validator) | [:white_check_mark:](pB/validator) | [:white_check_mark:](pC/validator) | [:white_check_mark:](pD/validator) | [:white_check_mark:](pE/validator) | [:white_check_mark:](pF/validator) | [:white_check_mark:](pG/validator) |
 | subtasks.json<br>global_validators / subtask_sensitive_validators |  [:white_check_mark:](pA/subtasks.json) | [:white_check_mark:](pB/subtasks.json) | [:white_check_mark:](pC/subtasks.json) | [:white_check_mark:](pD/subtasks.json) | [:white_check_mark:](pE/subtasks.json) | [:white_check_mark:](pF/subtasks.json) | [:white_check_mark:](pG/subtasks.json) |
-| tests | [:white_check_mark:](pA/tests) | [:white_check_mark:](pB/tests) | [:white_check_mark:](pC/tests) | [:white_check_mark:](pD/tests) | [:white_check_mark:](pE/tests) | [:x:](pF/tests) | [:white_check_mark:](pG/tests) |
+| tests | [:white_check_mark:](pA/tests) | [:white_check_mark:](pB/tests) | [:white_check_mark:](pC/tests) | [:white_check_mark:](pD/tests) | [:white_check_mark:](pE/tests) | [:white_check_mark:](pF/tests) | [:white_check_mark:](pG/tests) |
 | statement/index.md | [:x:](pA/statement/index.md) | [:x:](pB/statement/index.md) | [:white_check_mark:](pC/statement/index.md) | [:white_check_mark:](pD/statement/index.md) | [:white_check_mark:](pE/statement/index.md) | [:x:](pF/statement/index.md) | [:white_check_mark:](pG/statement/index.md) |
 | statement/index.pdf | [:white_check_mark:](pA/statement/index.pdf) | [:white_check_mark:](pB/statement/index.pdf)<br>[Auto build disabled](pB/statement/DISABLE_AUTO_BUILD) | [:white_check_mark:](pC/statement/index.pdf) | [:white_check_mark:](pD/statement/index.pdf) | [:white_check_mark:](pE/statement/index.pdf) | [:x:](pF/statement/index.pdf)<br>[Auto build disabled](pF/statement/DISABLE_AUTO_BUILD) | [:white_check_mark:](pG/statement/index.pdf) |
 
