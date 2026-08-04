@@ -5,7 +5,6 @@
     "single.cpp": {
         "verdict": "incorrect",
         "except": {
-            "samples": "correct",
             "single": "correct"
         }
     },
@@ -20,7 +19,6 @@
     "path.cpp": {
         "verdict": "incorrect",
         "except": {
-            "samples": "correct",
             "single": "correct",
             "path": "correct"
         }
@@ -28,7 +26,6 @@
     "binary.cpp": {
         "verdict": "incorrect",
         "except": {
-            "samples": "correct",
             "binary": "correct"
         }
     },
@@ -44,14 +41,12 @@
     "fake-parity.cpp": {
         "verdict": "incorrect",
         "except": {
-            "samples": "correct",
             "binary": "correct"
         }
     },
     "fake-any-odd.cpp": {
         "verdict": "incorrect",
         "except": {
-            "samples": "correct",
             "single": "correct"
         }
     },

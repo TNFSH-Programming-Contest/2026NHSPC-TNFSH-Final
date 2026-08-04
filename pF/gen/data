@@ -2,9 +2,10 @@
 
 @subtask samples
 manual example-1.in
+manual example-2.in
+manual example-3.in
 
 @subtask small
-@include samples
 gen history 8 97 distinct history-tiny
 gen empty-components 30 300 clusters empty-components
 gen random 2000 2000 random random-max
@@ -16,7 +17,6 @@ gen compression 64 257 distinct path-compression
 gen move-values 63 257 distinct move-existing-values
 
 @subtask range_only
-@include samples
 gen range-history 1 50000 same history-single
 gen range-only 50000 50000 shuffled-distinct distinct-max
 gen range-only 49999 50000 clusters duplicate-boundaries
@@ -24,7 +24,6 @@ gen range-only 50000 49999 gaps large-gaps
 gen range-history 50000 50000 random ineffective-stack
 
 @subtask same_a
-@include samples
 gen history 50000 50000 same history-max
 gen random 50000 50000 same random-max
 gen move-heavy 49999 50000 same move-prime
@@ -33,7 +32,6 @@ gen overflow 50000 50000 same overflow-max
 gen compression 50000 50000 same compression-same-a
 
 @subtask a32
-@include samples
 gen random 50000 50000 few32 random-32
 gen move-heavy 50000 50000 few32 move-32
 gen rollback 49999 50000 few32 rollback-32
@@ -42,7 +40,7 @@ gen overflow 50000 50000 alternating overflow-2
 gen compression 50000 50000 few32 compression-32
 
 @subtask no_move
-@include samples range_only
+@include range_only
 gen no-move 50000 50000 shuffled-distinct random-no-move
 gen no-move 49999 50000 clusters duplicate-no-move
 gen no-move 50000 49999 gaps gaps-no-move

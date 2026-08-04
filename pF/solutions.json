@@ -12,14 +12,12 @@
 	"range-only.cpp": {
 		"verdict": "incorrect",
 		"except": {
-			"samples": "correct",
 			"range_only": "correct"
 		}
 	},
 	"same-a.cpp": {
 		"verdict": "incorrect",
 		"except": {
-			"samples": "correct",
 			"same_a": "correct"
 		}
 	},
@@ -34,16 +32,12 @@
 	"no-move.cpp": {
 		"verdict": "incorrect",
 		"except": {
-			"samples": "correct",
 			"range_only": "correct",
 			"no_move": "correct"
 		}
 	},
 	"fake-push-ineffective.cpp": {
-		"verdict": "incorrect",
-		"except": {
-			"samples": "correct"
-		}
+		"verdict": "incorrect"
 	},
 	"fake-query-history.cpp": {
 		"verdict": "incorrect"
@@ -84,7 +78,6 @@
 	"fake-move-raw-sum.cpp": {
 		"verdict": "incorrect",
 		"except": {
-			"samples": "correct",
 			"range_only": "correct",
 			"no_move": "correct"
 		}

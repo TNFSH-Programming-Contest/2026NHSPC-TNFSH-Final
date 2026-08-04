@@ -2,6 +2,8 @@
 
 @subtask samples
 manual example-1.in
+manual example-2.in
+manual example-3.in
 
 @subtask brute
 gen chain 2 100 maximum keep tiny

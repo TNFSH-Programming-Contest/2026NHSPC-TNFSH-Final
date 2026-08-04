@@ -2,9 +2,10 @@
 
 @subtask samples
 manual example-1.in
+manual example-2.in
+manual example-3.in
 
 @subtask single
-@include samples
 gen single 1 root-max keep ordered
 gen single 2 zero keep ordered
 gen single 2 single-odd-two keep reverse
@@ -38,7 +39,6 @@ gen path 200000 random keep reverse
 gen path 200000 overflow keep ordered
 
 @subtask binary
-@include samples
 gen star 3 binary-pair keep mixed
 gen path 7 binary-even keep shuffled
 gen binary 31 binary-random relabel mixed

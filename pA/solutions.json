@@ -31,8 +31,7 @@
         "except": { "samples": "correct" }
     },
     "fake-min-incoming.cpp": {
-        "verdict": "incorrect",
-        "except": { "samples": "correct" }
+        "verdict": "incorrect"
     },
     "fake-any-matching.cpp": {
         "verdict": "incorrect",
