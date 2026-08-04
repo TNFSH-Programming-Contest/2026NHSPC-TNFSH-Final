@@ -1,30 +1,32 @@
 # test_name gen_line_number gen_line_content
 0-01	  4	manual example-1.in
-1-01	  8	gen single 1 root-max keep ordered
-1-02	  9	gen single 2 zero keep ordered
-1-03	 10	gen single 2 single-odd-two keep reverse
-1-04	 11	gen single 2 root-max keep mixed
-1-05	 12	gen single 2 max keep shuffled
-2-01	 16	gen star 3 odd-pair-max keep ordered
-2-02	 17	gen star 3 single-odd-two keep reverse
-2-03	 18	gen star 4 xor-zero keep mixed
-2-04	 19	gen star 17 powers keep shuffled
-2-05	 20	gen star 1000 max keep mixed
-2-06	 21	gen star 99991 xor-nonzero relabel shuffled
-2-07	 22	gen star 200000 root-max relabel mixed
-2-08	 23	gen star 200000 xor-zero relabel mixed
-2-09	 24	gen star 200000 overflow relabel shuffled
-3-01	 28	gen path 3 single-even-max keep ordered
-3-02	 29	gen path 4 internal-odd keep reverse
-3-03	 30	gen path 5 odd-pair-max keep ordered
-3-04	 31	gen path 17 xor-zero keep reverse
-3-05	 32	gen path 18 xor-nonzero keep ordered
-3-06	 33	gen path 99991 powers keep reverse
-3-07	 34	gen path 199999 ones keep ordered
-3-08	 35	gen path 200000 root-max keep reverse
-3-09	 36	gen path 200000 even-only keep ordered
-3-10	 37	gen path 200000 random keep reverse
-3-11	 38	gen path 200000 overflow keep ordered
+0-02	  5	manual example-2.in
+0-03	  6	manual example-3.in
+1-01	  9	gen single 1 root-max keep ordered
+1-02	 10	gen single 2 zero keep ordered
+1-03	 11	gen single 2 single-odd-two keep reverse
+1-04	 12	gen single 2 root-max keep mixed
+1-05	 13	gen single 2 max keep shuffled
+2-01	 17	gen star 3 odd-pair-max keep ordered
+2-02	 18	gen star 3 single-odd-two keep reverse
+2-03	 19	gen star 4 xor-zero keep mixed
+2-04	 20	gen star 17 powers keep shuffled
+2-05	 21	gen star 1000 max keep mixed
+2-06	 22	gen star 99991 xor-nonzero relabel shuffled
+2-07	 23	gen star 200000 root-max relabel mixed
+2-08	 24	gen star 200000 xor-zero relabel mixed
+2-09	 25	gen star 200000 overflow relabel shuffled
+3-01	 29	gen path 3 single-even-max keep ordered
+3-02	 30	gen path 4 internal-odd keep reverse
+3-03	 31	gen path 5 odd-pair-max keep ordered
+3-04	 32	gen path 17 xor-zero keep reverse
+3-05	 33	gen path 18 xor-nonzero keep ordered
+3-06	 34	gen path 99991 powers keep reverse
+3-07	 35	gen path 199999 ones keep ordered
+3-08	 36	gen path 200000 root-max keep reverse
+3-09	 37	gen path 200000 even-only keep ordered
+3-10	 38	gen path 200000 random keep reverse
+3-11	 39	gen path 200000 overflow keep ordered
 4-01	 42	gen star 3 binary-pair keep mixed
 4-02	 43	gen path 7 binary-even keep shuffled
 4-03	 44	gen binary 31 binary-random relabel mixed

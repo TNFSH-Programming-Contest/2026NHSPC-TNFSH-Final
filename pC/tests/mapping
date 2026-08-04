@@ -1,11 +1,11 @@
 samples 0-01
-single 0-01
+samples 0-02
+samples 0-03
 single 1-01
 single 1-02
 single 1-03
 single 1-04
 single 1-05
-star 0-01
 star 1-01
 star 1-02
 star 1-03
@@ -20,7 +20,6 @@ star 2-06
 star 2-07
 star 2-08
 star 2-09
-path 0-01
 path 1-01
 path 1-02
 path 1-03
@@ -37,7 +36,6 @@ path 3-08
 path 3-09
 path 3-10
 path 3-11
-binary 0-01
 binary 4-01
 binary 4-02
 binary 4-03
@@ -49,6 +47,8 @@ binary 4-08
 binary 4-09
 binary 4-10
 full 0-01
+full 0-02
+full 0-03
 full 1-01
 full 1-02
 full 1-03
