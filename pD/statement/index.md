@@ -16,10 +16,19 @@
 \caption{不要學 DB force push (他現在已經不會了)}
 \end{figure}
 
-tobiichi3227 是 TOJ 的維護者，TOJ 整個程式碼由 $H$ 個獨立的 **hunk** 組成，每個 hunk 的狀態一開始都是 $0$，在 `v2.0` 分支上面。\
-有天 wonderhoi 想給 TOJ 貢獻一個酷炫的功能，於是 wonderhoi 很高興的開啟了一個新的分支 `feat/fancy` 並在上面建立了 $N$ 個 commit。\
-wonderhoi 想讓功能進到 TOJ 的 `v2.0`，於是請 tobiichi3227 來 review，tobiichi3227 覺得 $N$ 個 commit 太多了，應該用 squash 把 commit 減少到只有 $K$ 個。\
-當 squash 完成後，會將 `feat/fancy` rebase 到 `v2.0`，wonderhoi 發現會有 conflict，所以他想要最小化解決 conflict 的成本，但 wonderhoi 要去比地奧 (IESO) 沒空了，於是交給在看題目的你。
+tobiichi3227 是 TOJ 的維護者，TOJ 整個程式碼由 $H$ 個獨立的 **hunk** 組成，並將內容放在 branch `v2.0` 上面。
+
+王德宏，身為 TOJ 的開發者團隊成員之一，有天想給 TOJ 貢獻一個酷炫的功能，於是他很高興的開啟了一個新的 branch `feat/fancy` 並在上面建立了 $N$ 個 commit。
+
+王德宏 想讓功能進到 TOJ 的 branch `v2.0`，於是請 tobiichi3227 來審核，tobiichi3227 覺得 $N$ 個 commit 太多了，應該用 squash 把 commit 減少到只有 $K$ 個。
+
+當 squash 完成後，會將 branch `feat/fancy` rebase 到 Branch `v2.0`，王德宏 發現會發生 conflict，所以他想要最小化解決 conflict 的成本，但 王德宏 要去比國際地理奧林匹亞 (IGGO, 全名International GeoGuesser Olympiad) 沒空了，於是交給在看題目的你。
+
+別慌，接下來將會仔細介紹
+
+ - Branch
+ - Squash
+ - Conflict
 
 \clearpage
 
@@ -31,13 +40,25 @@ wonderhoi 想讓功能進到 TOJ 的 `v2.0`，於是請 tobiichi3227 來 review�
 
 若使用支援 PDF 附件的 Firefox，可\statementattachfile{git-workflow.gif}{點我下載完整動畫}；Chrome 與 Edge 請直接閱讀上方分鏡。
 
-## Branch 狀態
+## Branch
 
-`v2.0` branch 上第 $h$ 個 hunk 的最終內容為 $U_h$。\
-`feat/fancy` branch 上共有 $N$ 個 commits。第 $i$ 個 commit 會將第 $x_i$ 個 hunk 的內容改成 $v_i$。\
+目前有兩個 Branch
+
+- `v2.0`
+- `feat/fancy`
+
+對於每個 Branch 上，都有著 $H$ 個 hunk。
+
+一開始 `v2.0` branch 上有著初始內容，對於第 $h$ 個 hunk 的初始內容為 $U_h$。
+
+而王德宏在 `feat/fancy` branch 上新增了 $N$ 個 commits。對於第 $i$ 個 commit 會將第 $x_i$ 個 hunk 的內容改成 $v_i$。
+
 令 $S_i[h]$ 表示執行完 `feat/fancy` branch 的前 $i$ 個 commits 後，第 $h$ 個 hunk 的內容。\
-初始時：$S_0[h]=0$\
-第 $i$ 個 commit 執行後：$S_i[x_i]=v_i$\
+
+初始時：$S_0[h]=0$
+
+第 $i$ 個 commit 執行後：$S_i[x_i]=v_i$
+
 其他 hunk 的內容不變。
 
 \clearpage
@@ -60,6 +81,7 @@ commit 1, commit 2, ..., commit N
 [1, 2] [3, 4, 5] [6, 7]
 ```
 這代表：
+
 - 第一個 squash commit 包含原本的 commits $1$ 到 $2$
 - 第二個 squash commit 包含原本的 commits $3$ 到 $5$
 - 第三個 squash commit 包含原本的 commits $6$ 到 $7$
@@ -150,12 +172,14 @@ current: 5
 
 ## 輸入
 第一行包含三個整數 $N,\ H,\ K$，分別表示：
+
 - `feat/fancy` branch 上的 commit 數量；
 - hunk 的數量；
 - squash 後必須保留的 commit 數量。
 
 第二行包含 $H$ 個整數 $U_h\ (1\le h \le H)$\
-其中 $U_h$ 表示 `v2.0` branch 上第 $h$ 個 hunk 的最終內容。\
+其中 $U_h$ 表示 `v2.0` branch 上第 $h$ 個 hunk 的最終內容。
+
 第三行包含 $H$ 個整數 $w_h\ ( 1 \le h \le H)$\
 其中 $w_h$ 表示解決第 $h$ 個 hunk 的 conflict 所需的成本。\
 
