@@ -1,4 +1,6 @@
 samples 0-01
+samples 0-02
+samples 0-03
 brute 1-01
 brute 1-02
 brute 1-03
@@ -56,6 +58,8 @@ km 4-04
 km 4-05
 km 4-06
 full 0-01
+full 0-02
+full 0-03
 full 1-01
 full 1-02
 full 1-03
