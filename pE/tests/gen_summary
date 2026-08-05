@@ -12,29 +12,34 @@
 1-10	 14	gen rotation 2000 2 random two-long-cycles
 1-11	 15	gen random 2000 random-permutation
 1-12	 16	gen near-involution 2000 random almost-matching
-2-01	 19	gen involution 2 identity 1 minimum
-2-02	 20	gen involution 3 identity 1 one-fixed-point
-2-03	 21	gen involution 10 alternating 5 nested
-2-04	 22	gen involution 17 random 1 sparse-small
-2-05	 23	gen involution 2000 random 743 random-medium
-2-06	 24	gen involution 99991 identity 49995 maximum-prime
-2-07	 25	gen involution 100000 alternating 50000 maximum-nested
-2-08	 26	gen involution 100000 random 49999 maximum-random
-2-09	 27	gen involution 100000 random 1 maximum-sparse
-3-01	 31	gen identity 100000 maximum-identity
-3-02	 32	gen single-cycle 100000 identity maximum-cycle
-3-03	 33	gen single-cycle 100000 reverse maximum-reverse-cycle
-3-04	 34	gen single-cycle 99991 random prime-random-cycle
-3-05	 35	gen equal-cycles 99999 3 random many-triangles
-3-06	 36	gen equal-cycles 100000 4 alternating many-four-cycles
-3-07	 37	gen equal-cycles 100000 5 random many-five-cycles
-3-08	 38	gen rotation 100000 2 random two-random-long-cycles
-3-09	 39	gen near-involution 100000 random one-triangle-many-swaps
-3-10	 40	gen mixed 100000 random small maximum-mixed-small
-3-11	 41	gen mixed 99991 alternating odd prime-odd-cycles
-3-12	 42	gen mixed 100000 random even maximum-even-cycles
-3-13	 43	gen mixed 100000 random stair staircase-cycles
-3-14	 44	gen mixed 100000 random long mixed-long-cycles
-3-15	 45	gen random 100000 maximum-random-a
-3-16	 46	gen random 100000 maximum-random-b
-3-17	 47	gen random 99991 prime-random
+1-13	 17	gen sparse-cycle 2000 3 random hidden-triangle
+1-14	 18	gen sparse-cycle 2000 5 alternating hidden-five-cycle
+2-01	 21	gen involution 2 identity 1 minimum
+2-02	 22	gen involution 3 identity 1 one-fixed-point
+2-03	 23	gen involution 10 alternating 5 nested
+2-04	 24	gen involution 17 random 1 sparse-small
+2-05	 25	gen involution 2000 random 743 random-medium
+2-06	 26	gen involution 99991 identity 49995 maximum-prime
+2-07	 27	gen involution 100000 alternating 50000 maximum-nested
+2-08	 28	gen involution 100000 random 49999 maximum-random
+2-09	 29	gen involution 100000 random 1 maximum-sparse
+3-01	 33	gen identity 100000 maximum-identity
+3-02	 34	gen single-cycle 100000 identity maximum-cycle
+3-03	 35	gen single-cycle 100000 reverse maximum-reverse-cycle
+3-04	 36	gen single-cycle 99991 random prime-random-cycle
+3-05	 37	gen equal-cycles 99999 3 random many-triangles
+3-06	 38	gen equal-cycles 100000 4 alternating many-four-cycles
+3-07	 39	gen equal-cycles 100000 5 random many-five-cycles
+3-08	 40	gen rotation 100000 2 random two-random-long-cycles
+3-09	 41	gen near-involution 100000 random one-triangle-many-swaps
+3-10	 42	gen mixed 100000 random small maximum-mixed-small
+3-11	 43	gen mixed 99991 alternating odd prime-odd-cycles
+3-12	 44	gen mixed 100000 random even maximum-even-cycles
+3-13	 45	gen mixed 100000 random stair staircase-cycles
+3-14	 46	gen mixed 100000 random long mixed-long-cycles
+3-15	 47	gen random 100000 maximum-random-a
+3-16	 48	gen random 100000 maximum-random-b
+3-17	 49	gen random 99991 prime-random
+3-18	 50	gen sparse-cycle 100000 3 random maximum-hidden-triangle
+3-19	 51	gen sparse-cycle 100000 7 alternating maximum-hidden-seven-cycle
+3-20	 52	gen sparse-cycle 99991 31 random prime-hidden-cycle
