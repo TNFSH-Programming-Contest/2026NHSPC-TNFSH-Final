@@ -106,5 +106,8 @@
             "easy": "correct",
             "brute": "correct"
         }
+    },
+    "fake-random-answer.cpp": {
+        "verdict": "incorrect"
     }
 }

@@ -11,6 +11,22 @@ gen single 2 zero keep ordered
 gen single 2 single-odd-two keep reverse
 gen single 2 root-max keep mixed
 gen single 2 max keep shuffled
+gen single 2 zero keep reverse random-guess-bob-zero
+gen single 2 root-max keep reverse random-guess-bob-root
+gen single 2 single-even-max keep ordered random-guess-bob-even
+gen single 2 even-only keep reverse random-guess-bob-even-only
+gen single 2 binary-even keep ordered random-guess-bob-binary-even
+gen single 2 xor-zero keep reverse random-guess-bob-xor
+gen single 2 playout-zero keep ordered random-guess-bob-playout
+gen single 2 playout-nonzero keep reverse random-guess-bob-playout-pairless
+gen single 2 single-odd-two keep ordered random-guess-alice-two
+gen single 2 max keep reverse random-guess-alice-max
+gen single 2 ones keep ordered random-guess-alice-one
+gen single 2 odd-pair-max keep reverse random-guess-alice-odd
+gen single 2 binary-pair keep ordered random-guess-alice-binary-pair
+gen single 2 internal-odd keep reverse random-guess-alice-internal
+gen single 2 deep-odd keep ordered random-guess-alice-deep
+gen single 2 binary-nonzero keep reverse random-guess-alice-explicit
 
 @subtask star
 @include single
@@ -53,6 +69,22 @@ gen deep-star 199999 binary-even relabel shuffled
 gen random 200000 zero relabel mixed
 gen random 200000 ones relabel shuffled
 gen random 200000 binary-random relabel mixed
+gen star 101 zero relabel mixed random-guess-bob-star-zero
+gen star 101 binary-even relabel shuffled random-guess-bob-star-even
+gen star 102 binary-pair relabel mixed random-guess-bob-star-pair
+gen path 101 binary-pair keep reverse random-guess-bob-path-pair
+gen depth2 100 binary-even relabel shuffled random-guess-bob-depth2-even
+gen star 3 binary-nonzero keep mixed random-guess-alice-star-small
+gen star 17 binary-nonzero relabel shuffled random-guess-alice-star
+gen star 99991 binary-nonzero relabel mixed random-guess-alice-star-large
+gen path 4 binary-nonzero keep reverse random-guess-alice-path-small
+gen path 18 binary-nonzero keep ordered random-guess-alice-path
+gen path 200000 binary-nonzero keep reverse random-guess-alice-path-large
+gen binary 31 binary-nonzero relabel mixed random-guess-alice-binary
+gen binary 1000 binary-nonzero relabel shuffled random-guess-alice-binary-large
+gen depth2 73 binary-nonzero relabel mixed random-guess-alice-depth2
+gen depth2 200000 binary-nonzero relabel shuffled random-guess-alice-depth2-large
+gen random 99991 binary-nonzero relabel mixed random-guess-alice-random
 
 @subtask full
 @include samples single star path binary

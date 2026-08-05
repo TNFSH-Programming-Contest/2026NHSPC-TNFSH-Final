@@ -91,5 +91,8 @@
 	},
 	"fake-random-sampling.cpp": {
 		"verdict": "incorrect"
+	},
+	"fake-random-answer.cpp": {
+		"verdict": "incorrect"
 	}
 }

@@ -85,5 +85,8 @@
         "except": {
             "single": "correct"
         }
+    },
+    "fake-random-answer.cpp": {
+        "verdict": "incorrect"
     }
 }

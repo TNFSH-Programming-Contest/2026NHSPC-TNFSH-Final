@@ -140,6 +140,12 @@ vector<int> buildStones(
         }
         return stones;
     }
+    if (mode == "binary-nonzero") {
+        if (!oddVertices.empty()) {
+            stones[oddVertices[rnd.next(0, static_cast<int>(oddVertices.size()) - 1)]] = 1;
+        }
+        return stones;
+    }
     if (mode == "single-odd-two") {
         if (!oddVertices.empty()) {
             stones[oddVertices.back()] = 2;

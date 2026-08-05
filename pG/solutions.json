@@ -119,5 +119,8 @@
             "ce1": "correct",
             "m20": "correct"
         }
+    },
+    "fake-random-answer.cpp": {
+        "verdict": "incorrect"
     }
 }

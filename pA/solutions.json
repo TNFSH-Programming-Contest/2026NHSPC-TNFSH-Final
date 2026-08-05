@@ -61,5 +61,8 @@
         "except": {
             "samples": "correct"
         }
+    },
+    "fake-random-answer.cpp": {
+        "verdict": "incorrect"
     }
 }

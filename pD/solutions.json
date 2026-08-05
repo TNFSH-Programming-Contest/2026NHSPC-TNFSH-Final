@@ -106,5 +106,8 @@
 			"kn": "correct",
 			"hunkonce": "correct"
 		}
+	},
+	"fake-random-answer.cpp": {
+		"verdict": "incorrect"
 	}
 }
