@@ -10,6 +10,7 @@ small 1-06
 small 1-07
 small 1-08
 small 1-09
+small 1-10
 range_only 2-01
 range_only 2-02
 range_only 2-03
@@ -38,6 +39,7 @@ no_move 5-03
 no_move 5-04
 no_move 5-05
 no_move 5-06
+no_move 5-07
 full 0-01
 full 0-02
 full 0-03
@@ -50,6 +52,7 @@ full 1-06
 full 1-07
 full 1-08
 full 1-09
+full 1-10
 full 2-01
 full 2-02
 full 2-03
@@ -73,6 +76,7 @@ full 5-03
 full 5-04
 full 5-05
 full 5-06
+full 5-07
 full 6-01
 full 6-02
 full 6-03
