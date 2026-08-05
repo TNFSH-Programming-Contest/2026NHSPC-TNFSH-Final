@@ -88,5 +88,13 @@
     },
     "fake-random-answer.cpp": {
         "verdict": "incorrect"
+    },
+    "fake-capped-game-search.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "single": "correct",
+            "binary": "correct"
+        }
     }
 }

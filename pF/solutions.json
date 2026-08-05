@@ -94,5 +94,11 @@
 	},
 	"fake-random-answer.cpp": {
 		"verdict": "incorrect"
+	},
+	"fake-capped-naive.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct"
+		}
 	}
 }

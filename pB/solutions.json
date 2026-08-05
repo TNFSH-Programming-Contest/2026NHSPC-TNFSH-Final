@@ -109,5 +109,13 @@
     },
     "fake-random-answer.cpp": {
         "verdict": "incorrect"
+    },
+    "fake-capped-bruteforce.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "easy": "correct",
+            "brute": "correct"
+        }
     }
 }
