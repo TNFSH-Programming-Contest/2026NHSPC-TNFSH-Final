@@ -42,31 +42,36 @@
 4-10	 52	attack boundary 50 100 exact-boundary
 4-11	 53	attack priority 100 20 leftmost-priority
 4-12	 54	attack window 100 100 long-window
-5-01	 57	gen 3 100000 full-uniform threshold tiny-max-m
-5-02	 58	gen 2000 1 random random max-n-m1
-5-03	 59	gen 2000 100000 random random max-nm-random
-5-04	 60	gen 2000 100000 alternating alternating alternating
-5-05	 61	gen 2000 99991 clusters threshold threshold
-5-06	 62	gen 2000 100000 gap-middle exact exact-boundary
-5-07	 63	gen 2000 100000 gap-left below below-threshold
-5-08	 64	gen 2000 100000 gap-right blocks blocks
-5-09	 65	gen 2000 100000 full-uniform spike single-spike
-5-10	 66	attack boundary 2000 100000 exact-boundary
-5-11	 67	attack priority 2000 99991 leftmost-priority
-5-12	 68	attack overflow 2000 100000 prefix-overflow
-5-13	 69	attack partials 2000 100000 partial-groups
-5-14	 70	attack barriers 2000 100000 barriers
-5-15	 71	attack window 2000 100000 quadratic-window
-6-01	 75	gen 100000 100000 random random max-random
-6-02	 76	gen 100000 100000 full-uniform alternating alternating-capacity
-6-03	 77	gen 100000 100000 gap-middle blocks huge-gap-blocks
-6-04	 78	gen 100000 99991 clusters threshold prime-threshold
-6-05	 79	gen 99991 1 random random prime-m1
-6-06	 80	gen 100000 100000 increasing increasing correlated-increasing
-6-07	 81	gen 100000 100000 decreasing decreasing correlated-decreasing
-6-08	 82	attack boundary 100000 100000 exact-boundary
-6-09	 83	attack priority 100000 100000 leftmost-priority
-6-10	 84	attack overflow 100000 100000 prefix-overflow
-6-11	 85	attack partials 100000 100000 partial-groups
-6-12	 86	attack barriers 100000 100000 barriers
-6-13	 87	attack window 100000 100000 quadratic-window
+4-13	 55	attack annealing 100 10 0 annealing-narrow-basin
+5-01	 58	gen 3 100000 full-uniform threshold tiny-max-m
+5-02	 59	gen 2000 1 random random max-n-m1
+5-03	 60	gen 2000 100000 random random max-nm-random
+5-04	 61	gen 2000 100000 alternating alternating alternating
+5-05	 62	gen 2000 99991 clusters threshold threshold
+5-06	 63	gen 2000 100000 gap-middle exact exact-boundary
+5-07	 64	gen 2000 100000 gap-left below below-threshold
+5-08	 65	gen 2000 100000 gap-right blocks blocks
+5-09	 66	gen 2000 100000 full-uniform spike single-spike
+5-10	 67	attack boundary 2000 100000 exact-boundary
+5-11	 68	attack priority 2000 99991 leftmost-priority
+5-12	 69	attack overflow 2000 100000 prefix-overflow
+5-13	 70	attack partials 2000 100000 partial-groups
+5-14	 71	attack barriers 2000 100000 barriers
+5-15	 72	attack window 2000 100000 quadratic-window
+5-16	 73	attack annealing 2000 15 1 annealing-middle-basin
+6-01	 77	gen 100000 100000 random random max-random
+6-02	 78	gen 100000 100000 full-uniform alternating alternating-capacity
+6-03	 79	gen 100000 100000 gap-middle blocks huge-gap-blocks
+6-04	 80	gen 100000 99991 clusters threshold prime-threshold
+6-05	 81	gen 99991 1 random random prime-m1
+6-06	 82	gen 100000 100000 increasing increasing correlated-increasing
+6-07	 83	gen 100000 100000 decreasing decreasing correlated-decreasing
+6-08	 84	attack boundary 100000 100000 exact-boundary
+6-09	 85	attack priority 100000 100000 leftmost-priority
+6-10	 86	attack overflow 100000 100000 prefix-overflow
+6-11	 87	attack partials 100000 100000 partial-groups
+6-12	 88	attack barriers 100000 100000 barriers
+6-13	 89	attack window 100000 100000 quadratic-window
+6-14	 90	attack annealing 100000 15 0 annealing-left-basin
+6-15	 91	attack annealing 100000 15 1 annealing-middle-basin
+6-16	 92	attack annealing 100000 15 2 annealing-right-basin
