@@ -96,5 +96,11 @@
             "single": "correct",
             "binary": "correct"
         }
+    },
+    "fake-subtree-parity.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct"
+        }
     }
 }

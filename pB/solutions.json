@@ -117,5 +117,14 @@
             "easy": "correct",
             "brute": "correct"
         }
+    },
+    "fake-window-64.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "easy": "correct",
+            "dp": "correct",
+            "brute": "correct"
+        }
     }
 }

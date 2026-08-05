@@ -109,5 +109,15 @@
 	},
 	"fake-random-answer.cpp": {
 		"verdict": "incorrect"
+	},
+	"fake-beam-16.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct",
+			"nh15": "correct",
+			"k1": "correct",
+			"kn": "correct",
+			"hunkonce": "correct"
+		}
 	}
 }

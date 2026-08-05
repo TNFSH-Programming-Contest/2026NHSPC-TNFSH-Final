@@ -16,6 +16,7 @@ gen quadratic 2000 2000 alternating quadratic-small
 gen compression 64 257 distinct path-compression
 gen move-values 63 257 distinct move-existing-values
 gen sampling 2000 2000 distinct rare-heavy-point
+gen move-lazy 63 257 distinct move-lazy-block
 
 @subtask range_only
 gen range-history 1 50000 same history-single
@@ -61,3 +62,4 @@ gen blocks 50000 50000 shuffled-distinct full-blocks
 gen quadratic 50000 50000 random full-quadratic
 gen compression 50000 50000 distinct full-path-compression
 gen move-values 50000 50000 distinct full-move-values
+gen move-lazy 50000 50000 shuffled-distinct full-move-lazy-block

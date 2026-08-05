@@ -73,11 +73,13 @@ public:
 
         const int oldNode = positionNode_[a];
         const int newNode = nextNode_++;
-        const int block = blockOfVertex_[a];
         const long long rawValue = raw_[sortedPosition_[a]];
 
+#ifndef PF_MOVE_FORGET_BLOCK_COUNT
+        const int block = blockOfVertex_[a];
         addBlockCount(block, sourceRoot, -1);
         addBlockCount(block, targetRoot, 1);
+#endif
 #ifndef PF_MOVE_FORGET_RAW_SUM
         rawSum_[sourceRoot] -= rawValue;
         rawSum_[targetRoot] += rawValue;
@@ -326,11 +328,13 @@ private:
         const int newNode = entry.c;
         const int sourceRoot = entry.d;
         const int targetRoot = entry.e;
-        const int block = blockOfVertex_[vertex];
         const long long rawValue = raw_[sortedPosition_[vertex]];
 
+#ifndef PF_MOVE_FORGET_BLOCK_COUNT
+        const int block = blockOfVertex_[vertex];
         addBlockCount(block, targetRoot, -1);
         addBlockCount(block, sourceRoot, 1);
+#endif
 #ifndef PF_MOVE_FORGET_RAW_SUM
         rawSum_[targetRoot] -= rawValue;
         rawSum_[sourceRoot] += rawValue;

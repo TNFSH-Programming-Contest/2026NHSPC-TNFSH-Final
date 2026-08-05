@@ -63,5 +63,12 @@
     },
     "fake-random-matching.cpp": {
         "verdict": "incorrect"
+    },
+    "fake-stale-local-array.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "one": "correct"
+        }
     }
 }

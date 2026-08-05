@@ -100,5 +100,13 @@
 		"except": {
 			"samples": "correct"
 		}
+	},
+	"fake-move-block-count.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct",
+			"range_only": "correct",
+			"no_move": "correct"
+		}
 	}
 }

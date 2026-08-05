@@ -4,6 +4,10 @@ using namespace std;
 using int64 = long long;
 const int64 INF = (1LL << 62);
 
+#ifndef BEAM_WIDTH
+#define BEAM_WIDTH 4
+#endif
+
 struct Candidate {
     int cut;
     int64 value;
@@ -58,7 +62,7 @@ int main() {
                      if (a.value != b.value) return a.value < b.value;
                      return a.cut > b.cut;
                  });
-            if (beam.size() > 4) beam.resize(4);
+            if (beam.size() > BEAM_WIDTH) beam.resize(BEAM_WIDTH);
             if (r >= groups && !beam.empty()) next[r] = beam.front().value;
         }
         previous.swap(next);

@@ -136,8 +136,8 @@ int main() {
         total_cost += e.cost;
     }
 
-    std::sort(edges.begin(), edges.end(), [](const auto& l, const auto& r) -> bool {
-        return l.cost > r.cost;
+    std::sort(edges.begin(), edges.end(), [](const auto& left, const auto& right) -> bool {
+        return left.cost > right.cost;
     });
 
     DSU dsu(n);

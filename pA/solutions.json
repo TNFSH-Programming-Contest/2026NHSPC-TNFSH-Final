@@ -71,5 +71,12 @@
             "samples": "correct",
             "brute": "correct"
         }
+    },
+    "fake-k-cheapest.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "brute": "correct"
+        }
     }
 }

@@ -16,11 +16,7 @@ int main(int argc, char* argv[]) {
 	inf.readSpace();
 	int h = inf.readInt(1, MAXH, "h");
 	inf.readSpace();
-    int k;
-    if (MAXK == -1)
-        k = inf.readInt(1, n, "k");
-    else
-        k = inf.readInt(1, MAXK, "k");
+	inf.readInt(1, MAXK == -1 ? n : std::min(n, MAXK), "k");
 	inf.readEoln();
 
 	std::vector<int> U(h);

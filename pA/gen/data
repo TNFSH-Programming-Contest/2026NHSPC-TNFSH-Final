@@ -26,6 +26,7 @@ gen random 18 200 100 decreasing keep feasible ordered
 gen impossible-out 18 200 100 alternating shuffle no-outgoing
 gen impossible-in 18 200 100 maximum shuffle no-incoming
 killer km 18 km-chain
+attack prune-k prune-8-per-row
 
 @subtask no-weight
 gen chain 1000 1 one keep long-chain

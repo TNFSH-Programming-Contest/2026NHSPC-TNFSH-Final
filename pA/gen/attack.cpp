@@ -83,6 +83,22 @@ void hallTrap() {
     in.print();
 }
 
+void pruneKTrap() {
+    // Nine rows share eight zero-cost columns.  A perfect matching must use
+    // column 18 through an edge which is the ninth-cheapest edge of its row.
+    // Keeping only a constant number of cheapest edges per row destroys every
+    // perfect matching even though the original optimum costs only 1.
+    Instance in(18);
+    for (int row = 1; row <= 9; ++row) {
+        for (int column = 10; column <= 17; ++column)
+            in.add(row, column, 0);
+        in.add(row, 18, 1);
+    }
+    for (int row = 10; row <= 17; ++row)
+        in.add(row, row - 8, 0);
+    in.print();
+}
+
 void annealingTrap(int n) {
     if (n < 4) Instance::fail("annealing mode needs n >= 4");
     const int side = n - 1;
@@ -117,6 +133,7 @@ int main(int argc, char* argv[]) {
     else if (mode == "shortest-path") shortestPathTrap();
     else if (mode == "binary-extension") binaryExtensionTrap();
     else if (mode == "hall") hallTrap();
+    else if (mode == "prune-k") pruneKTrap();
     else if (mode == "annealing") {
         requireArguments(argc, 3, "attack annealing N");
         annealingTrap(parseInt(argv[2], "N"));

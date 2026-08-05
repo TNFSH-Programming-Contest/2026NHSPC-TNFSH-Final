@@ -122,5 +122,12 @@
     },
     "fake-random-answer.cpp": {
         "verdict": "incorrect"
+    },
+    "fake-outgoing.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "list": "correct",
+            "ce1": "correct"
+        }
     }
 }

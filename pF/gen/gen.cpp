@@ -445,6 +445,36 @@ void generateMoveValueAttack(Builder& builder) {
     }
 }
 
+void generateMoveLazyAttack(Builder& builder) {
+    if (builder.n() < 9) {
+        fillRandom(builder, true, true);
+        return;
+    }
+
+    const int middleValue =
+        builder.sortedValues()[builder.sortedValues().size() / 2];
+    int movingVertex = 1;
+    for (int vertex = 1; vertex <= builder.n(); ++vertex) {
+        if (builder.valueOf(vertex) == middleValue) {
+            movingVertex = vertex;
+            break;
+        }
+    }
+    const int targetVertex = movingVertex == 1 ? 2 : 1;
+    const int left = builder.sortedValues().front();
+    const int right = builder.sortedValues().back();
+
+    while (!builder.full()) {
+        builder.addRange(left, right, 314159265);
+        builder.addMove(movingVertex, targetVertex);
+        builder.addQuery(movingVertex);
+        builder.addQuery(targetVertex);
+        builder.addUndo();
+        builder.addQuery(movingVertex);
+        builder.addUndo();
+    }
+}
+
 void generateSamplingAttack(Builder& builder) {
     if (builder.n() < 130 || builder.n() > 50000) {
         fillRandom(builder, true, false);
@@ -500,6 +530,8 @@ int main(int argc, char* argv[]) {
         generateCompressionAttack(builder);
     } else if (mode == "move-values") {
         generateMoveValueAttack(builder);
+    } else if (mode == "move-lazy") {
+        generateMoveLazyAttack(builder);
     } else if (mode == "sampling") {
         generateSamplingAttack(builder);
     } else {
