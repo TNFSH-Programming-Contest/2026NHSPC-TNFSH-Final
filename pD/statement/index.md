@@ -4,169 +4,140 @@
 \centering
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[width=\linewidth,height=2.2in,keepaspectratio]{db-force-push-1.jpg}\\
+\includegraphics[width=\linewidth,height=2.2in,keepaspectratio]{db-force-push-1-new.png}\\
 \textbf{Force push 1}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[width=\linewidth,height=2.2in,keepaspectratio]{db-force-push-2.jpg}\\
+\includegraphics[width=\linewidth,height=2.2in,keepaspectratio]{db-force-push-2-new.png}\\
 \textbf{Force push 2}
 \end{minipage}
-\caption{不要學 DB force push (他現在已經不會了)}
+\caption{不要學 大伯 force push (他現在已經不會了)}
 \end{figure}
 
-tobiichi3227 是 TOJ 的維護者，TOJ 整個程式碼由 $H$ 個獨立的 **hunk** 組成，並將內容放在 branch `v2.0` 上面。
+tobiichi3227 是 TOJ 的維護者。TOJ 的程式碼由 $H$ 個互相獨立的 hunk 組成，正式版本位於 branch `v2.0`。
 
-王德宏，身為 TOJ 的開發者團隊成員之一，有天想給 TOJ 貢獻一個酷炫的功能，於是他很高興的開啟了一個新的 branch `feat/fancy` 並在上面建立了 $N$ 個 commit。
+王德宏身為 TOJ 開發團隊的成員之一，有天想為 TOJ 貢獻一個酷炫的功能，於是很高興地開啟了新的 branch `feat/fancy`，並在上面依序進行了 $N$ 次操作。
 
-王德宏 想讓功能進到 TOJ 的 branch `v2.0`，於是請 tobiichi3227 來審核，tobiichi3227 覺得 $N$ 個 commit 太多了，應該用 squash 把 commit 減少到只有 $K$ 個。
+王德宏想讓這項功能進到 TOJ 的 branch `v2.0`，於是請 tobiichi3227 進行審核。tobiichi3227 覺得 $N$ 個 commits 太多了，應該先用 squash 將它們整理成恰好 $K$ 個 squash commits，再依序 rebase 到 `v2.0`。
 
-當 squash 完成後，會將 branch `feat/fancy` rebase 到 Branch `v2.0`，王德宏 發現會發生 conflict，所以他想要最小化解決 conflict 的成本，但 王德宏 要去比國際地理奧林匹亞 (IGGO, 全名International GeoGuesser Olympiad) 沒空了，於是交給在看題目的你。
+不同的 squash 方式可能產生不同的 conflict 成本。然而，王德宏要去參加國際地理奧林匹亞（IGGO，全名 International GeoGuesser Olympiad），已經沒有時間處理了，於是把最小化 conflict 成本的任務交給正在看題目的你。
 
-別慌，接下來將會仔細介紹
+不用擔心，下面會告訴您 branch rebase squash conflict 的定義。
 
- - Branch
- - Squash
- - Conflict
+完整流程合併動畫：\statementattachfile{git-workflow.gif}{點我下載完整合併 GIF}。
 
 \clearpage
 
+## Branch 與狀態
+
+`feat/fancy` 一開始的所有 hunk 內容皆為 $0$。令 $S_i[h]$ 表示執行完前 $i$ 次操作後，第 $h$ 個 hunk 的內容，因此：
+
+$$
+S_0[h]=0.
+$$
+
+第 $i$ 次操作會把第 $x_i$ 個 hunk 改成 $v_i$，也就是：
+
+$$
+S_i[h]=
+\begin{cases}
+v_i, & h=x_i,\\
+S_{i-1}[h], & h\ne x_i.
+\end{cases}
+$$
+
+另一方面，`v2.0` 上第 $h$ 個 hunk 的內容為 $U_h$。
+
 \begin{figure}[h]
 \centering
-\includegraphics[width=\linewidth]{git-workflow-storyboard.jpg}
-\caption{Branch、squash、rebase 與 conflict resolution 的執行過程}
+\includegraphics[width=\linewidth]{branch-storyboard.png}
+\caption{兩個 branches 從共同位置分開前進}
 \end{figure}
 
-若使用支援 PDF 附件的 Firefox，可\statementattachfile{git-workflow.gif}{點我下載完整動畫}；Chrome 與 Edge 請直接閱讀上方分鏡。
-
-## Branch
-
-目前有兩個 Branch
-
-- `v2.0`
-- `feat/fancy`
-
-對於每個 Branch 上，都有著 $H$ 個 hunk。
-
-一開始 `v2.0` branch 上有著初始內容，對於第 $h$ 個 hunk 的初始內容為 $U_h$。
-
-而王德宏在 `feat/fancy` branch 上新增了 $N$ 個 commits。對於第 $i$ 個 commit 會將第 $x_i$ 個 hunk 的內容改成 $v_i$。
-
-令 $S_i[h]$ 表示執行完 `feat/fancy` branch 的前 $i$ 個 commits 後，第 $h$ 個 hunk 的內容。\
-
-初始時：$S_0[h]=0$
-
-第 $i$ 個 commit 執行後：$S_i[x_i]=v_i$
-
-其他 hunk 的內容不變。
+完整動畫：\statementattachfile{branch.gif}{點我下載 Branch GIF}。
 
 \clearpage
 
 ## Squash
-原本的 $N$ 個 commits 依照順序排列：
-```text
-commit 1, commit 2, ..., commit N
-```
-你需要在這些 commits 之間放置 $K-1$ 個切點，將它們分成恰好 $K$ 組。\
-每一組中的所有 commits 會被合併成一個新的 **squash commit**。\
-例如，假設共有 $7$ 個 commits，且要分成 $3$ 組，可以選擇：
-```text
-[commit 1, commit 2]
-[commit 3, commit 4, commit 5]
-[commit 6, commit 7]
-```
-也可以簡寫成：
-```text
-[1, 2] [3, 4, 5] [6, 7]
-```
-這代表：
 
-- 第一個 squash commit 包含原本的 commits $1$ 到 $2$
-- 第二個 squash commit 包含原本的 commits $3$ 到 $5$
-- 第三個 squash commit 包含原本的 commits $6$ 到 $7$
+你需要將這 $N$ 次操作依序切分成恰好 $K$ 個連續的區間（即 $K$ 個 squash commits）。
 
-為了描述一般情況，令：$0=p_0<p_1<p_2<\cdots<p_K=N$\
-其中 $p_g$ 表示第 $g$ 組的最後一個 commit 編號。\
-因此，第 $g$ 個 squash commit 包含：$p_{g-1}+1,\ p_{g-1}+2,\ \ldots,\ p_g$\
-例如前面的分組：
-```text
-[1, 2] [3, 4, 5] [6, 7]
-```
-對應：$p_0=0,\ p_1=2,\ p_2=5,\ p_3=7$\
-考慮第 $g$ 個 squash commit，以及某個 hunk $h$。\
-在這組 commits 開始以前，hunk $h$ 的內容是：$S_{p_{g-1}}[h]$\
-執行完這組中的所有 commits 後，hunk $h$ 的內容是：$S_{p_g}[h]$\
-因此，這個 squash commit 對 hunk $h$ 的效果為：$S_{p_{g-1}}[h]\rightarrow S_{p_g}[h]$\
-也就是只保留這一組 commits 執行前與執行後的差異，中間經過的狀態不會出現在 squash commit 中。\
-例如，某個 hunk 在一組 commits 中依序發生：
-```text
-1 -> 3 -> 5 -> 2
-```
-那麼 squash 後只會留下：
-```text
-1 -> 2
-```
-中間的 $3$ 與 $5$ 都不會出現在 squash commit 中。\
-若一組 commits 執行前後，某個 hunk 的內容相同，即：$S_{p_{g-1}}[h]=S_{p_g}[h]$\
-則這個 squash commit 不會修改該 hunk。\
+假設其中一個區間包含了第 $L$ 到第 $R$ 次操作（$1\le L\le R\le N$），該區間對第 $h$ 個 hunk 的實質修改定義為：
+
+- 修改前（舊內容）：$\text{old}=S_{L-1}[h]$
+- 修改後（新內容）：$\text{new}=S_R[h]$
+
+若 $\text{old}=\text{new}$，則視為該區間對第 $h$ 個 hunk 沒有進行修改。
+
+等價地，可以選擇：
+
+$$
+0=p_0<p_1<\cdots<p_K=N,
+$$
+
+其中第 $g$ 個區間為 $[p_{g-1}+1,p_g]$。
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{squash-storyboard.png}
+\caption{每個連續區間形成一個 squash commit}
+\end{figure}
+
+完整動畫：\statementattachfile{squash.gif}{點我下載 Squash GIF}。
 
 \clearpage
 
-## Rebase 與 Conflict
-完成 squash 後，tobiichi3227 會依照原本的順序，將這 $K$ 個 squash commits 逐一套用到 `v2.0` branch 上。\
-考慮其中一個 squash commit 對 hunk $h$ 的修改：$\text{old}\rightarrow\text{new}$\
-其中：
-- `old`：這個 squash commit 預期修改前的內容；
-- `new`：這個 squash commit 想要修改成的內容；
-- `current`：目前 `v2.0` branch 上實際存在的內容。
+## Rebase
 
-例如：$\text{old}=3,\ \text{new}=7,\ \text{current}=5$\
-代表這個 squash commit 原本是在內容為 $3$ 的基礎上，將它改成 $7$，但目前 `v2.0` branch 上的內容實際是 $5$。
+這 $K$ 個區間會按照原本順序逐一套用。令 $\text{current}[h]$ 表示 `v2.0` 上第 $h$ 個 hunk 目前的內容；一開始：
 
-### 沒有修改
-若：$\text{old}=\text{new}$\
-代表這個 squash commit 執行前後，該 hunk 的內容沒有改變。\
-因此不需要進行任何操作，`current` 也不會改變。
+$$
+\text{current}[h]=U_h.
+$$
 
+處理一個區間時，會分別考慮每個 hunk 的 $\text{old}$、$\text{new}$ 與 $\text{current}[h]$。
 
-### 情況一：目前內容正是預期的舊內容
-若：$\text{current}=\text{old}$\
-代表目前內容與這個 patch 預期的起點相同，因此可以正常套用修改。\
-套用後：$\text{current}\leftarrow\text{new}$\
-例如：
-```text
-patch:   3 -> 7
-current: 3
-```
-可以正常套用，完成後 $\text{current}$ 變成 $7$。\
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{rebase-storyboard.png}
+\caption{各 squash commits 依序 replay 到 v2.0}
+\end{figure}
 
-### 情況二：目前內容已經是目標內容
-若：$\text{current}=\text{new}$\
-代表 `v2.0` branch 上已經存在這個 squash commit 想要產生的結果。\
-因此不會發生 conflict，也不需要再次修改。\
-例如：
-```text
-patch:   3 -> 7
-current: 7
-```
-雖然目前內容不是 patch 預期的舊內容 $3$，但它已經等於目標內容 $7$，所以可以直接視為這項修改已經存在。\
-$\text{current}$ 維持為 $7$。
+完整動畫：\statementattachfile{rebase.gif}{點我下載 Rebase GIF}。
 
-### 情況三：目前內容既不是舊內容，也不是新內容
-若：$\text{current}\ne\text{old}$\
-且：$\text{current}\ne\text{new}$\
-代表 `v2.0` branch 上的內容與這個 squash commit 預期的內容不同，而且也不是它想要修改成的結果。\
-此時會發生 conflict，例如：
-```text
-patch:   3 -> 7
-current: 5
-```
-目前內容 $5$ 既不是舊內容 $3$，也不是新內容 $7$，因此發生 conflict。\
-解決 hunk $h$ 的 conflict 需要支付 $w_h$ 的成本。\
-解決 conflict 後，採用 squash commit 的修改結果：$\text{current}\leftarrow\text{new}$\
-在前面的例子中，解決後 $\text{current}$ 會變成 $7$。\
-同一個 squash commit 可能同時修改多個 hunks。每個 hunk 是否發生 conflict 都要分別判斷，發生 conflict 的成本也要分別計算。
+\clearpage
+
+## Conflict
+
+若 $\text{old}=\text{new}$，該 hunk 沒有被區間修改，$\text{current}[h]$ 不變。
+
+否則，當且僅當：
+
+$$
+\text{current}[h]\ne\text{old}
+\quad\text{且}\quad
+\text{current}[h]\ne\text{new}
+$$
+
+時會發生 conflict，並產生 $w_h$ 的成本。
+
+不論是否發生 conflict，處理完這項實質修改後皆令：
+
+$$
+\text{current}[h]\leftarrow\text{new}.
+$$
+
+每個區間、每個 hunk 的 conflict 成本分別計算；你的目標是選擇 $K$ 個區間，使總成本最小。
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{conflict-storyboard.png}
+\caption{發生 conflict 的兩個 commits 閃紅，解決後轉為綠色}
+\end{figure}
+
+完整動畫：\statementattachfile{conflict.gif}{點我下載 Conflict GIF}。
 
 \clearpage
 
@@ -175,7 +146,7 @@ current: 5
 
 - `feat/fancy` branch 上的 commit 數量；
 - hunk 的數量；
-- squash 後必須保留的 commit 數量。
+- 需要切分出的連續區間數量。
 
 第二行包含 $H$ 個整數 $U_h\ (1\le h \le H)$\
 其中 $U_h$ 表示 `v2.0` branch 上第 $h$ 個 hunk 的最終內容。

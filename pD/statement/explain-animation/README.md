@@ -1,49 +1,34 @@
-# Git workflow animation
+# Git explanation animations
 
-This Manim scene visualizes the workflow used by the problem statement:
+The statement uses four independent Manim scenes:
 
-1. `main` and `feat/fancy` diverge, with two commits editing the same hunk.
-2. Four feature commits are squashed into two commits.
-3. The squashed commits are replayed onto `main`, one at a time.
-4. The two conflicting commits flash red, then turn green when resolved.
-5. The second replay finishes a clean linear history.
+1. BranchAnimation
+2. SquashAnimation
+3. RebaseAnimation
+4. ConflictAnimation
 
-## Render the review GIF
+Each scene is first rendered at 1280x720 and 30 FPS. The downloadable copy is
+then converted to 512x288, uniformly sampled at 12 FPS, and quantized with one
+shared 128-color palette. The full-resolution PNG storyboards remain in the
+PDF, while the downloadable animations stay reasonably clear and compact.
 
-Run these commands from the repository root. Rendering lossless PNG frames first
-prevents GIF palette noise on the static dark background.
+Run from the repository root:
 
-```bash
-docker run --rm \
-  -v "$PWD/pD/statement/explain-animation:/manim" \
-  -w /manim \
-  manimcommunity/manim:latest \
-  manim render -r 720,405 --fps 12 -g -v warning \
-  git_workflow.py GitWorkflowAnimation
-```
+    docker run --rm -v "$PWD/pD/statement:/statement" -w /statement/explain-animation manimcommunity/manim:latest manim render -r 1280,720 --fps 30 --format=gif -v warning git_workflow.py BranchAnimation SquashAnimation RebaseAnimation ConflictAnimation
 
-```bash
-docker run --rm \
-  -v "$PWD/pD/statement/explain-animation:/manim" \
-  -w /manim \
-  manimcommunity/manim:latest \
-  python optimize_gif.py media/images/git_workflow git-workflow.gif \
-  --width 720 --fps 12 --colors 96
-```
+Generate the lossless PNG storyboards from the direct Manim renders:
 
-The final output is `git-workflow.gif`. The checked-in render is 720x405,
-approximately 20.7 seconds long, and under 0.5 MB.
+    python make_storyboard.py media/videos/git_workflow/720p30/BranchAnimation*.gif ../branch-storyboard.png
+    python make_storyboard.py media/videos/git_workflow/720p30/SquashAnimation*.gif ../squash-storyboard.png
+    python make_storyboard.py media/videos/git_workflow/720p30/RebaseAnimation*.gif ../rebase-storyboard.png
+    python make_storyboard.py media/videos/git_workflow/720p30/ConflictAnimation*.gif ../conflict-storyboard.png
 
-## Render the PDF storyboard
+Create the smaller downloadable GIF attachments:
 
-```bash
-docker run --rm \
-  -v "$PWD/pD/statement:/statement" \
-  -w /statement/explain-animation \
-  manimcommunity/manim:latest \
-  python make_storyboard.py ../git-workflow.gif ../git-workflow-storyboard.png
-```
+    python optimize_gif.py media/videos/git_workflow/720p30/BranchAnimation*.gif ../branch.gif
+    python optimize_gif.py media/videos/git_workflow/720p30/SquashAnimation*.gif ../squash.gif
+    python optimize_gif.py media/videos/git_workflow/720p30/RebaseAnimation*.gif ../rebase.gif
+    python optimize_gif.py media/videos/git_workflow/720p30/ConflictAnimation*.gif ../conflict.gif
 
-The six-panel storyboard is the browser-independent fallback used directly in
-the PDF. The full GIF remains attached for PDF viewers that support embedded
-files, such as Firefox.
+The PDF displays the four PNG storyboards and embeds the four optimized GIFs.
+It also keeps the original combined `git-workflow.gif` as a compact overview.

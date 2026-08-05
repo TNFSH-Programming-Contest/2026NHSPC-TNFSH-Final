@@ -4,67 +4,92 @@ from pathlib import Path
 from PIL import Image, ImageColor
 
 
-def optimize(source: Path, output: Path, width: int, fps: int, colors: int) -> None:
-    rgb_frames = []
-    if source.is_dir():
-        frame_paths = sorted(source.glob("*.png"))
-        if not frame_paths:
-            raise ValueError(f"no PNG frames found in {source}")
-        with Image.open(frame_paths[0]) as first_frame:
-            height = round(first_frame.height * width / first_frame.width)
-        output_duration = round(1000 / fps)
-        for frame_path in frame_paths:
-            with Image.open(frame_path) as frame:
-                rgb_frames.append(
-                    frame.convert("RGB").resize(
-                        (width, height), Image.Resampling.LANCZOS
-                    )
-                )
-    else:
-        image = Image.open(source)
-        source_duration = image.info.get("duration", 1000 / 24)
-        target_duration = 1000 / fps
-        step = max(1, round(target_duration / source_duration))
-        output_duration = round(source_duration * step)
-        height = round(image.height * width / image.width)
-        for frame_index in range(0, image.n_frames, step):
-            image.seek(frame_index)
-            resized = image.convert("RGB").resize(
-                (width, height), Image.Resampling.LANCZOS
-            )
-            rgb_frames.append(resized)
+BACKGROUND_COLORS = ["#0B1020", "#151D33"]
+DESIGN_COLORS = [
+    "#EDF3FF",
+    "#95A2C0",
+    "#53617D",
+    "#4C8DFF",
+    "#B678FF",
+    "#FFC857",
+    "#FF5C70",
+    "#39D98A",
+]
 
-    # One palette for the whole animation avoids color shimmer and lets GIF
-    # encode unchanged areas as compact delta frames.
-    must_keep = [
-        "#0B1020", "#151D33", "#EDF3FF", "#95A2C0", "#53617D",
-        "#4C8DFF", "#B678FF", "#FFC857", "#FF5C70", "#39D98A",
-    ]
-    backdrops = [ImageColor.getrgb("#0B1020"), ImageColor.getrgb("#151D33")]
-    design_colors = [ImageColor.getrgb(color) for color in must_keep]
-    shade_steps = max(2, min(12, colors // (2 * len(design_colors))))
 
-    palette_colors = []
-    for backdrop in backdrops:
-        for color in design_colors:
-            for step_index in range(shade_steps + 1):
-                alpha = step_index / shade_steps
+def make_palette(color_count: int) -> Image.Image:
+    if not 32 <= color_count <= 256:
+        raise ValueError("colors must be between 32 and 256")
+
+    backgrounds = [ImageColor.getrgb(color) for color in BACKGROUND_COLORS]
+    design = [ImageColor.getrgb(color) for color in DESIGN_COLORS]
+    palette_colors = backgrounds + design
+
+    shade_steps = 12
+    for backdrop in backgrounds:
+        for color in design:
+            for step in range(1, shade_steps):
+                alpha = step / shade_steps
                 palette_colors.append(
                     tuple(
                         round(backdrop[channel] * (1 - alpha) + color[channel] * alpha)
                         for channel in range(3)
                     )
                 )
-    # Preserve order while removing duplicates, then pad to a legal GIF palette.
-    palette_colors = list(dict.fromkeys(palette_colors))[:256]
+
+    palette_colors = list(dict.fromkeys(palette_colors))[:color_count]
     palette_data = [channel for color in palette_colors for channel in color]
     palette_data.extend([0] * (768 - len(palette_data)))
     palette = Image.new("P", (1, 1))
     palette.putpalette(palette_data)
-    frames = [
-        frame.quantize(palette=palette, dither=Image.Dither.NONE)
-        for frame in rgb_frames
+    return palette
+
+
+def sample_indices(animation: Image.Image, fps: int) -> tuple[list[int], int]:
+    durations = []
+    for frame_index in range(animation.n_frames):
+        animation.seek(frame_index)
+        durations.append(animation.info.get("duration", round(1000 / 30)))
+
+    total_duration = sum(durations)
+    frame_count = max(1, round(total_duration * fps / 1000))
+    output_duration = max(1, round(total_duration / frame_count))
+    timestamps = [
+        min(total_duration - 1, (frame_index + 0.5) * total_duration / frame_count)
+        for frame_index in range(frame_count)
     ]
+
+    indices = []
+    source_index = 0
+    source_end = durations[0]
+    for timestamp in timestamps:
+        while source_index + 1 < len(durations) and timestamp >= source_end:
+            source_index += 1
+            source_end += durations[source_index]
+        indices.append(source_index)
+    return indices, output_duration
+
+
+def optimize(
+    source: Path,
+    output: Path,
+    width: int,
+    fps: int,
+    colors: int,
+) -> None:
+    animation = Image.open(source)
+    height = round(animation.height * width / animation.width)
+    indices, output_duration = sample_indices(animation, fps)
+    palette = make_palette(colors)
+
+    frames = []
+    for source_index in indices:
+        animation.seek(source_index)
+        frame = animation.convert("RGB").resize(
+            (width, height),
+            Image.Resampling.LANCZOS,
+        )
+        frames.append(frame.quantize(palette=palette, dither=Image.Dither.NONE))
 
     output.parent.mkdir(parents=True, exist_ok=True)
     frames[0].save(
@@ -77,57 +102,21 @@ def optimize(source: Path, output: Path, width: int, fps: int, colors: int) -> N
         disposal=1,
     )
 
-    with Image.open(output) as rendered:
-        rendered_duration = 0
-        rendered_frames = rendered.n_frames
-        for frame_index in range(rendered_frames):
-            rendered.seek(frame_index)
-            rendered_duration += rendered.info.get("duration", 0)
-    seconds = rendered_duration / 1000
     print(
-        f"wrote {output}: {width}x{height}, {rendered_frames} frames, "
-        f"{seconds:.2f}s, {colors} colors"
+        f"wrote {output}: {width}x{height}, {len(frames)} frames, "
+        f"{output_duration} ms/frame, {colors} colors"
     )
-
-
-def contact_sheet(source: Path, output: Path, columns: int = 3, rows: int = 2) -> None:
-    image = Image.open(source)
-    count = columns * rows
-    indices = [
-        round(i * (image.n_frames - 1) / (count - 1))
-        for i in range(count)
-    ]
-    tile_width = 360
-    tile_height = round(image.height * tile_width / image.width)
-    sheet = Image.new("RGB", (tile_width * columns, tile_height * rows), "#0B1020")
-
-    for slot, frame_index in enumerate(indices):
-        image.seek(frame_index)
-        frame = image.convert("RGB").resize(
-            (tile_width, tile_height), Image.Resampling.LANCZOS
-        )
-        x = (slot % columns) * tile_width
-        y = (slot // columns) * tile_height
-        sheet.paste(frame, (x, y))
-
-    output.parent.mkdir(parents=True, exist_ok=True)
-    sheet.save(output, optimize=True)
-    print(f"wrote {output}: sampled frames {indices}")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("source", type=Path)
     parser.add_argument("output", type=Path)
-    parser.add_argument("--width", type=int, default=720)
+    parser.add_argument("--width", type=int, default=512)
     parser.add_argument("--fps", type=int, default=12)
     parser.add_argument("--colors", type=int, default=128)
-    parser.add_argument("--contact-sheet", type=Path)
     args = parser.parse_args()
-
     optimize(args.source, args.output, args.width, args.fps, args.colors)
-    if args.contact_sheet:
-        contact_sheet(args.output, args.contact_sheet)
 
 
 if __name__ == "__main__":
