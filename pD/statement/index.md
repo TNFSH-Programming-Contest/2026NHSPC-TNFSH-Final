@@ -4,13 +4,13 @@
 \centering
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[width=\linewidth,height=2.2in,keepaspectratio]{db-force-push-1-new.png}\\
+\includegraphics[width=\linewidth,height=2.2in,keepaspectratio]{db-force-push-1-new.jpg}\\
 \textbf{Force push 1}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.48\linewidth}
 \centering
-\includegraphics[width=\linewidth,height=2.2in,keepaspectratio]{db-force-push-2-new.png}\\
+\includegraphics[width=\linewidth,height=2.2in,keepaspectratio]{db-force-push-2-new.jpg}\\
 \textbf{Force push 2}
 \end{minipage}
 \caption{不要學 大伯 force push (他現在已經不會了)}
@@ -52,7 +52,7 @@ $$
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\linewidth]{branch-storyboard.png}
+\includegraphics[width=\linewidth]{branch-storyboard.jpg}
 \caption{兩個 branches 從共同位置分開前進}
 \end{figure}
 
@@ -81,7 +81,7 @@ $$
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\linewidth]{squash-storyboard.png}
+\includegraphics[width=\linewidth]{squash-storyboard.jpg}
 \caption{每個連續區間形成一個 squash commit}
 \end{figure}
 
@@ -101,7 +101,7 @@ $$
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\linewidth]{rebase-storyboard.png}
+\includegraphics[width=\linewidth]{rebase-storyboard.jpg}
 \caption{各 squash commits 依序 replay 到 v2.0}
 \end{figure}
 
@@ -133,7 +133,7 @@ $$
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\linewidth]{conflict-storyboard.png}
+\includegraphics[width=\linewidth]{conflict-storyboard.jpg}
 \caption{發生 conflict 的兩個 commits 閃紅，解決後轉為綠色}
 \end{figure}
 
