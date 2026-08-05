@@ -7,52 +7,90 @@
 1-03	 11	gen single 2 single-odd-two keep reverse
 1-04	 12	gen single 2 root-max keep mixed
 1-05	 13	gen single 2 max keep shuffled
-2-01	 17	gen star 3 odd-pair-max keep ordered
-2-02	 18	gen star 3 single-odd-two keep reverse
-2-03	 19	gen star 4 xor-zero keep mixed
-2-04	 20	gen star 17 powers keep shuffled
-2-05	 21	gen star 1000 max keep mixed
-2-06	 22	gen star 99991 xor-nonzero relabel shuffled
-2-07	 23	gen star 200000 root-max relabel mixed
-2-08	 24	gen star 200000 xor-zero relabel mixed
-2-09	 25	gen star 200000 overflow relabel shuffled
-3-01	 29	gen path 3 single-even-max keep ordered
-3-02	 30	gen path 4 internal-odd keep reverse
-3-03	 31	gen path 5 odd-pair-max keep ordered
-3-04	 32	gen path 17 xor-zero keep reverse
-3-05	 33	gen path 18 xor-nonzero keep ordered
-3-06	 34	gen path 99991 powers keep reverse
-3-07	 35	gen path 199999 ones keep ordered
-3-08	 36	gen path 200000 root-max keep reverse
-3-09	 37	gen path 200000 even-only keep ordered
-3-10	 38	gen path 200000 random keep reverse
-3-11	 39	gen path 200000 overflow keep ordered
-4-01	 42	gen star 3 binary-pair keep mixed
-4-02	 43	gen path 7 binary-even keep shuffled
-4-03	 44	gen binary 31 binary-random relabel mixed
-4-04	 45	gen depth2 1000 binary-random relabel shuffled
-4-05	 46	gen broom 99991 binary-pair relabel mixed
-4-06	 47	gen caterpillar 100000 binary-random relabel mixed
-4-07	 48	gen deep-star 199999 binary-even relabel shuffled
-4-08	 49	gen random 200000 zero relabel mixed
-4-09	 50	gen random 200000 ones relabel shuffled
-4-10	 51	gen random 200000 binary-random relabel mixed
-5-01	 55	gen binary 3 single-even-max keep ordered
-5-02	 56	gen binary 15 odd-pair-max relabel mixed
-5-03	 57	gen binary 200000 random relabel mixed
-5-04	 58	gen broom 17 internal-odd relabel shuffled
-5-05	 59	gen broom 200000 xor-zero relabel mixed
-5-06	 60	gen broom 200000 deep-odd relabel shuffled
-5-07	 61	gen caterpillar 99991 powers relabel mixed
-5-08	 62	gen caterpillar 200000 overflow relabel shuffled
-5-09	 63	gen depth2 6 even-only relabel mixed
-5-10	 64	gen depth2 200000 odd-pair-max relabel shuffled
-5-11	 65	gen deep-star 19 internal-odd relabel mixed
-5-12	 66	gen deep-star 200000 root-max relabel shuffled
-5-13	 67	gen deep-star 200000 xor-nonzero relabel mixed
-5-14	 68	gen random 4 single-odd-two relabel mixed
-5-15	 69	gen random 23 xor-zero relabel shuffled
-5-16	 70	gen random 99991 small-random relabel mixed
-5-17	 71	gen random 200000 even-only relabel shuffled
-5-18	 72	gen random 200000 random relabel mixed
-5-19	 73	gen random 200000 overflow relabel shuffled
+1-06	 14	gen single 2 zero keep reverse random-guess-bob-zero
+1-07	 15	gen single 2 root-max keep reverse random-guess-bob-root
+1-08	 16	gen single 2 single-even-max keep ordered random-guess-bob-even
+1-09	 17	gen single 2 even-only keep reverse random-guess-bob-even-only
+1-10	 18	gen single 2 binary-even keep ordered random-guess-bob-binary-even
+1-11	 19	gen single 2 xor-zero keep reverse random-guess-bob-xor
+1-12	 20	gen single 2 playout-zero keep ordered random-guess-bob-playout
+1-13	 21	gen single 2 playout-nonzero keep reverse random-guess-bob-playout-pairless
+1-14	 22	gen single 2 single-odd-two keep ordered random-guess-alice-two
+1-15	 23	gen single 2 max keep reverse random-guess-alice-max
+1-16	 24	gen single 2 ones keep ordered random-guess-alice-one
+1-17	 25	gen single 2 odd-pair-max keep reverse random-guess-alice-odd
+1-18	 26	gen single 2 binary-pair keep ordered random-guess-alice-binary-pair
+1-19	 27	gen single 2 internal-odd keep reverse random-guess-alice-internal
+1-20	 28	gen single 2 deep-odd keep ordered random-guess-alice-deep
+1-21	 29	gen single 2 binary-nonzero keep reverse random-guess-alice-explicit
+2-01	 33	gen star 3 odd-pair-max keep ordered
+2-02	 34	gen star 3 single-odd-two keep reverse
+2-03	 35	gen star 4 xor-zero keep mixed
+2-04	 36	gen star 17 powers keep shuffled
+2-05	 37	gen star 1000 max keep mixed
+2-06	 38	gen star 99991 xor-nonzero relabel shuffled
+2-07	 39	gen star 200000 root-max relabel mixed
+2-08	 40	gen star 200000 xor-zero relabel mixed
+2-09	 41	gen star 200000 overflow relabel shuffled
+2-10	 42	gen star 25 playout-zero relabel shuffled
+2-11	 43	gen star 25 playout-nonzero relabel mixed
+3-01	 47	gen path 3 single-even-max keep ordered
+3-02	 48	gen path 4 internal-odd keep reverse
+3-03	 49	gen path 5 odd-pair-max keep ordered
+3-04	 50	gen path 17 xor-zero keep reverse
+3-05	 51	gen path 18 xor-nonzero keep ordered
+3-06	 52	gen path 99991 powers keep reverse
+3-07	 53	gen path 199999 ones keep ordered
+3-08	 54	gen path 200000 root-max keep reverse
+3-09	 55	gen path 200000 even-only keep ordered
+3-10	 56	gen path 200000 random keep reverse
+3-11	 57	gen path 200000 overflow keep ordered
+3-12	 58	gen path 49 playout-zero keep reverse
+3-13	 59	gen path 49 playout-nonzero keep ordered
+4-01	 62	gen star 3 binary-pair keep mixed
+4-02	 63	gen path 7 binary-even keep shuffled
+4-03	 64	gen binary 31 binary-random relabel mixed
+4-04	 65	gen depth2 1000 binary-random relabel shuffled
+4-05	 66	gen broom 99991 binary-pair relabel mixed
+4-06	 67	gen caterpillar 100000 binary-random relabel mixed
+4-07	 68	gen deep-star 199999 binary-even relabel shuffled
+4-08	 69	gen random 200000 zero relabel mixed
+4-09	 70	gen random 200000 ones relabel shuffled
+4-10	 71	gen random 200000 binary-random relabel mixed
+4-11	 72	gen star 101 zero relabel mixed random-guess-bob-star-zero
+4-12	 73	gen star 101 binary-even relabel shuffled random-guess-bob-star-even
+4-13	 74	gen star 102 binary-pair relabel mixed random-guess-bob-star-pair
+4-14	 75	gen path 101 binary-pair keep reverse random-guess-bob-path-pair
+4-15	 76	gen depth2 100 binary-even relabel shuffled random-guess-bob-depth2-even
+4-16	 77	gen star 3 binary-nonzero keep mixed random-guess-alice-star-small
+4-17	 78	gen star 17 binary-nonzero relabel shuffled random-guess-alice-star
+4-18	 79	gen star 99991 binary-nonzero relabel mixed random-guess-alice-star-large
+4-19	 80	gen path 4 binary-nonzero keep reverse random-guess-alice-path-small
+4-20	 81	gen path 18 binary-nonzero keep ordered random-guess-alice-path
+4-21	 82	gen path 200000 binary-nonzero keep reverse random-guess-alice-path-large
+4-22	 83	gen binary 31 binary-nonzero relabel mixed random-guess-alice-binary
+4-23	 84	gen binary 1000 binary-nonzero relabel shuffled random-guess-alice-binary-large
+4-24	 85	gen depth2 73 binary-nonzero relabel mixed random-guess-alice-depth2
+4-25	 86	gen depth2 200000 binary-nonzero relabel shuffled random-guess-alice-depth2-large
+4-26	 87	gen random 99991 binary-nonzero relabel mixed random-guess-alice-random
+5-01	 91	gen binary 3 single-even-max keep ordered
+5-02	 92	gen binary 15 odd-pair-max relabel mixed
+5-03	 93	gen binary 200000 random relabel mixed
+5-04	 94	gen broom 17 internal-odd relabel shuffled
+5-05	 95	gen broom 200000 xor-zero relabel mixed
+5-06	 96	gen broom 200000 deep-odd relabel shuffled
+5-07	 97	gen caterpillar 99991 powers relabel mixed
+5-08	 98	gen caterpillar 200000 overflow relabel shuffled
+5-09	 99	gen depth2 6 even-only relabel mixed
+5-10	100	gen depth2 200000 odd-pair-max relabel shuffled
+5-11	101	gen deep-star 19 internal-odd relabel mixed
+5-12	102	gen deep-star 200000 root-max relabel shuffled
+5-13	103	gen deep-star 200000 xor-nonzero relabel mixed
+5-14	104	gen random 4 single-odd-two relabel mixed
+5-15	105	gen random 23 xor-zero relabel shuffled
+5-16	106	gen random 99991 small-random relabel mixed
+5-17	107	gen random 200000 even-only relabel shuffled
+5-18	108	gen random 200000 random relabel mixed
+5-19	109	gen random 200000 overflow relabel shuffled
+5-20	110	gen depth2 73 playout-zero relabel mixed
+5-21	111	gen depth2 73 playout-nonzero relabel shuffled
