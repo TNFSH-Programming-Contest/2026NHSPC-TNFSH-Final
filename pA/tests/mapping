@@ -12,6 +12,7 @@ brute 1-08
 brute 1-09
 brute 1-10
 brute 1-11
+brute 1-12
 dp 1-01
 dp 1-02
 dp 1-03
@@ -23,6 +24,7 @@ dp 1-08
 dp 1-09
 dp 1-10
 dp 1-11
+dp 1-12
 dp 2-01
 dp 2-02
 dp 2-03
@@ -35,6 +37,7 @@ no-weight 3-04
 no-weight 3-05
 no-weight 3-06
 no-weight 3-07
+no-weight 3-08
 km 1-01
 km 1-02
 km 1-03
@@ -46,6 +49,7 @@ km 1-08
 km 1-09
 km 1-10
 km 1-11
+km 1-12
 km 2-01
 km 2-02
 km 2-03
@@ -71,6 +75,7 @@ full 1-08
 full 1-09
 full 1-10
 full 1-11
+full 1-12
 full 2-01
 full 2-02
 full 2-03
@@ -83,6 +88,7 @@ full 3-04
 full 3-05
 full 3-06
 full 3-07
+full 3-08
 full 4-01
 full 4-02
 full 4-03
@@ -99,3 +105,4 @@ full 5-07
 full 5-08
 full 5-09
 full 5-10
+full 5-11
