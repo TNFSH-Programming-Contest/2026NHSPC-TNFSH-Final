@@ -1,9 +1,14 @@
-#!/bin/bash
+@echo off
+setlocal
 
-set -e
+set "input=..\examples\01.in"
 
-input=../examples/01.in
-if [ "$#" -ge 1 ]; then
-    input="$1"
-fi
-./Can_You_Blow_My_Whistle < "$input"
+if not "%~1"=="" (
+    set "input=%~1"
+)
+
+Can_You_Blow_My_Whistle.exe < "%input%"
+
+if %errorlevel% neq 0 (
+    exit /b %errorlevel%
+)
