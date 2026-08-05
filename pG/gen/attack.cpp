@@ -103,6 +103,33 @@ void generateTopCycle(Instance& in, int m) {
     }
 }
 
+void generateAnnealing(Instance& in, int m) {
+    if (in.n < 3 || m < in.n)
+        Instance::fail("annealing mode needs N >= 3 and M >= N");
+    in.addBackbone(false);
+    for (Edge& edge : in.edges) edge.cost = 1;
+
+    const int extra = m - (in.n - 1);
+    const int specialCount = min({
+        extra,
+        5000,
+        (in.n - 1) / 2
+    });
+    int turn = 0;
+    while (static_cast<int>(in.edges.size()) + specialCount < m) {
+        int vertex = 1 + turn % in.n;
+        in.addEdge(vertex, vertex, LOOP, 1);
+        ++turn;
+    }
+    // Large instances contain more indispensable improving chords than the
+    // fake solver's entire candidate budget, making failure seed-independent.
+    // With M=N this naturally degenerates to one unicyclic trap.
+    for (int index = 0; index < specialCount; ++index) {
+        int left = 2 * index + 1;
+        in.addEdge(left, left + 2, SPECIAL, 1000000000LL);
+    }
+}
+
 int main(int argc, char* argv[]) {
     registerGen(argc, argv, 1);
     requireCommonArguments(argc);
@@ -131,6 +158,8 @@ int main(int argc, char* argv[]) {
     }
     else if (mode == "top-cycle")
         generateTopCycle(in, m);
+    else if (mode == "annealing")
+        generateAnnealing(in, m);
     else
         Instance::fail("unknown attack mode: " + mode);
 

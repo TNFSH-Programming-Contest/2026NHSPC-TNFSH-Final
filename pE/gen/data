@@ -14,6 +14,8 @@ gen mixed 1999 random small mixed-small
 gen rotation 2000 2 random two-long-cycles
 gen random 2000 random-permutation
 gen near-involution 2000 random almost-matching
+gen sparse-cycle 2000 3 random hidden-triangle
+gen sparse-cycle 2000 5 alternating hidden-five-cycle
 
 @subtask one
 gen involution 2 identity 1 minimum
@@ -45,3 +47,6 @@ gen mixed 100000 random long mixed-long-cycles
 gen random 100000 maximum-random-a
 gen random 100000 maximum-random-b
 gen random 99991 prime-random
+gen sparse-cycle 100000 3 random maximum-hidden-triangle
+gen sparse-cycle 100000 7 alternating maximum-hidden-seven-cycle
+gen sparse-cycle 99991 31 random prime-hidden-cycle

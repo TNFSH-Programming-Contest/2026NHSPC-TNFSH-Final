@@ -83,6 +83,22 @@ void hallTrap() {
     in.print();
 }
 
+void annealingTrap(int n) {
+    if (n < 4) Instance::fail("annealing mode needs n >= 4");
+    const int side = n - 1;
+    Instance in(n);
+
+    // The first side edges form an obvious feasible matching.  The zero-cost
+    // edges form one long cycle and are globally optimal.  Moving from the
+    // first matching to the second requires changing the entire cycle at once:
+    // no swap of two assigned columns is even feasible.
+    for (int row = 0; row < side; ++row)
+        in.add(row + 1, row + 2, 1);
+    for (int row = 0; row < side; ++row)
+        in.add(row + 1, (row + 1) % side + 2, 0);
+    in.print();
+}
+
 }  // namespace
 
 int main(int argc, char* argv[]) {
@@ -101,6 +117,10 @@ int main(int argc, char* argv[]) {
     else if (mode == "shortest-path") shortestPathTrap();
     else if (mode == "binary-extension") binaryExtensionTrap();
     else if (mode == "hall") hallTrap();
+    else if (mode == "annealing") {
+        requireArguments(argc, 3, "attack annealing N");
+        annealingTrap(parseInt(argv[2], "N"));
+    }
     else Instance::fail("unknown attack mode: " + mode);
     return 0;
 }

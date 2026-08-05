@@ -83,6 +83,38 @@ void generateBarriers(Instance& instance) {
     instance.setCoordinatesFromWeights(weight);
 }
 
+void generateAnnealing(Instance& instance, int variant) {
+    const int64 need = instance.required();
+    if (need + 2 >= instance.n) {
+        Instance::fail("annealing mode needs 2M + 2 < N");
+    }
+
+    std::vector<int64> weight(instance.n - 1, 1);
+    for (int i = 1; i + 1 < instance.n; ++i)
+        instance.capacity[i] = need;
+
+    const int choices[] = {
+        instance.n / 7,
+        instance.n / 2,
+        instance.n * 6 / 7
+    };
+    if (variant < 0 || variant >= 3)
+        Instance::fail("annealing variant must be 0, 1, or 2");
+    int firstGap = choices[variant] - static_cast<int>(need) / 2;
+    firstGap = std::max(1, std::min(
+        firstGap, instance.n - 2 - static_cast<int>(need)));
+
+    // Exactly need consecutive large gaps form the unique best window.
+    // Its need-1 inner blocks have total capacity need-1, while extending
+    // across either neighbouring block immediately exceeds the budget.
+    for (int gap = firstGap; gap < firstGap + need; ++gap)
+        weight[gap] = 1000000000000LL;
+    for (int block = firstGap + 1; block < firstGap + need; ++block)
+        instance.capacity[block] = 1;
+
+    instance.setCoordinatesFromWeights(weight);
+}
+
 int main(int argc, char* argv[]) {
     registerGen(argc, argv, 1);
     if (argc < 4) {
@@ -111,6 +143,11 @@ int main(int argc, char* argv[]) {
         generatePairing(instance);
     } else if (mode == "barriers") {
         generateBarriers(instance);
+    } else if (mode == "annealing") {
+        if (argc < 5)
+            Instance::fail("usage: attack annealing N M VARIANT [seed-tag]");
+        generateAnnealing(instance, static_cast<int>(
+            parseInteger(argv[4], "VARIANT")));
     } else {
         Instance::fail("unknown attack mode: " + mode);
     }

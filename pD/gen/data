@@ -21,6 +21,7 @@ structured blocks      15  5  5  5 separated-firsts
 structured late-first  15  8  6  8 late-firsts
 structured once        15 15 10 15 all-distinct
 structured overflow    15 15  8 15 int-overflow-small
+structured annealing   15  4  2  4 annealing-small-barrier
 
 @subtask k1
 gen random              200000 200000 1 200000 dense
@@ -55,6 +56,7 @@ gen cycle       1000     97 17   97 many-returns
 structured blocks      1000  500 29  500 separated-firsts
 structured late-first  1000  500 30  500 late-firsts
 structured overflow    1000 1000 23 1000 int-overflow
+structured annealing   1000    4  2    4 annealing-wide-barrier
 
 @subtask full
 @include samples nh15 k1 kn hunkonce n1000

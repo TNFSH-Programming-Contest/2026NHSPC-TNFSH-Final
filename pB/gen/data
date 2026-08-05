@@ -52,6 +52,7 @@ gen 99 97 increasing small increasing
 attack boundary 50 100 exact-boundary
 attack priority 100 20 leftmost-priority
 attack window 100 100 long-window
+attack annealing 100 10 0 annealing-narrow-basin
 
 @subtask dp2
 gen 3 100000 full-uniform threshold tiny-max-m
@@ -69,6 +70,7 @@ attack overflow 2000 100000 prefix-overflow
 attack partials 2000 100000 partial-groups
 attack barriers 2000 100000 barriers
 attack window 2000 100000 quadratic-window
+attack annealing 2000 15 1 annealing-middle-basin
 
 @subtask full
 @include samples easy dp brute graph dp2
@@ -85,3 +87,6 @@ attack overflow 100000 100000 prefix-overflow
 attack partials 100000 100000 partial-groups
 attack barriers 100000 100000 barriers
 attack window 100000 100000 quadratic-window
+attack annealing 100000 15 0 annealing-left-basin
+attack annealing 100000 15 1 annealing-middle-basin
+attack annealing 100000 15 2 annealing-right-basin

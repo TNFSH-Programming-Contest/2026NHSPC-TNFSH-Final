@@ -54,5 +54,11 @@
             "samples": "correct",
             "brute": "correct"
         }
+    },
+    "fake-random-local-search.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct"
+        }
     }
 }

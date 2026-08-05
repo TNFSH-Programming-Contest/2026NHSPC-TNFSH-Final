@@ -55,5 +55,11 @@
     },
     "fake-full-assignment.cpp": {
         "verdict": "incorrect"
+    },
+    "fake-simulated-annealing.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct"
+        }
     }
 }

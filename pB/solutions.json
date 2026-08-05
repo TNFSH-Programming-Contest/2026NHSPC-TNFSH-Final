@@ -98,5 +98,13 @@
         "except": {
             "samples": "correct"
         }
+    },
+    "fake-simulated-annealing.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "easy": "correct",
+            "brute": "correct"
+        }
     }
 }

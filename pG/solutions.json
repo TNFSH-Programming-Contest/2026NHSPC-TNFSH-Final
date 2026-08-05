@@ -110,5 +110,14 @@
             "samples": "correct",
             "m20": "correct"
         }
+    },
+    "fake-random-edge-sampling.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "list": "correct",
+            "ce1": "correct",
+            "m20": "correct"
+        }
     }
 }

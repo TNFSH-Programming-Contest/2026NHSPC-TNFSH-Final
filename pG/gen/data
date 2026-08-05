@@ -42,6 +42,7 @@ gen unicyclic-long 100000 100000 increasing min shuffle long-cycle
 gen unicyclic-long 100000 100000 decreasing min keep dfs-worst-order
 gen unicyclic-long 100000 100000 overflow max shuffle overflow
 gen unicyclic-middle 17 17 ties random keep ties
+attack annealing 100000 100000 keep max keep rare-heavy-chord
 
 @subtask cactus
 @include unicyclic
@@ -52,6 +53,7 @@ gen cactus-cycles 100000 149999 random near-max shuffle many-triangles
 gen cactus-mixed 100000 200000 overflow max shuffle max-mixed
 gen cactus-loops 100000 200000 late-heavy min keep path-and-loops
 gen cactus-mixed 23 45 ties random shuffle small-mixed
+attack annealing 100000 200000 keep max keep rare-heavy-cactus
 
 @subtask full
 @include samples list ce1 m20 cactus
@@ -69,3 +71,5 @@ structured hub 100000 200000 late-heavy random shuffle nested-hub
 structured dense-core 100000 200000 alternating max shuffle structured-core
 attack theta 6 10 alternating random keep small-theta
 attack clique 7 21 increasing near-max shuffle small-complete
+attack annealing 100000 200000 keep max keep annealing-hidden-edge
+attack annealing 99991 199997 keep near-max keep annealing-prime-hidden-edge

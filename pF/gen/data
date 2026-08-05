@@ -15,6 +15,7 @@ gen blocks 2000 2000 shuffled-distinct block-boundaries
 gen quadratic 2000 2000 alternating quadratic-small
 gen compression 64 257 distinct path-compression
 gen move-values 63 257 distinct move-existing-values
+gen sampling 2000 2000 distinct rare-heavy-point
 
 @subtask range_only
 gen range-history 1 50000 same history-single
@@ -47,6 +48,7 @@ gen no-move 50000 49999 gaps gaps-no-move
 gen overflow 50000 50000 distinct overflow-no-move
 gen quadratic 50000 50000 random quadratic-no-move
 gen compression 50000 50000 distinct compression-no-move
+gen sampling 50000 50000 shuffled-distinct sampling-hidden-point
 
 @subtask full
 @include samples small range_only same_a a32 no_move

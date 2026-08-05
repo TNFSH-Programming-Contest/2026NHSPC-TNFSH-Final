@@ -16,6 +16,7 @@ attack no-potential no-potential-trap
 attack direction direction-trap
 attack shortest-path shortest-path-trap
 attack hall hall-trap
+attack annealing 7 annealing-local-minimum
 killer km 8 small-km-chain
 
 @subtask dp
@@ -33,6 +34,7 @@ gen random 1000 5000 1 alternating keep feasible feasible-binary
 gen impossible-out 1000 5000 1 one shuffle no-outgoing
 gen impossible-in 1000 5000 1 zero shuffle no-incoming
 attack binary-extension binary-extension
+attack annealing 1000 annealing-binary-local-minimum
 killer km 1000 km-chain
 
 @subtask km
@@ -54,5 +56,6 @@ gen impossible-out 2000 10000 100000 random shuffle no-outgoing
 gen impossible-in 2000 10000 100000 maximum shuffle no-incoming
 attack ordered 2000 arbitrary-matching-trap
 attack irrelevant 2000 irrelevant-road-trap
+attack annealing 2000 annealing-max-local-minimum
 killer km 2000 km-killer
 killer spfa 2000 1332 spfa-killer

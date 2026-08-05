@@ -216,6 +216,14 @@ int main(int argc, char* argv[]) {
         for (int i = 3; i + 1 < n; i += 2) {
             swap(permutation[order[i]], permutation[order[i + 1]]);
         }
+    } else if (mode == "sparse-cycle") {
+        if (argc < 5) {
+            cerr << "usage: gen sparse-cycle N LENGTH STYLE [seed-tag]\n";
+            return 1;
+        }
+        const int length = parseInt(argv[3], 2, n, "cycle length");
+        const vector<int> order = vertexOrder(n, argv[4]);
+        addCycle(permutation, order, 0, length);
     } else if (mode == "mixed") {
         if (argc < 5) {
             cerr << "usage: gen mixed N LABEL_STYLE LENGTH_STYLE [seed-tag]\n";

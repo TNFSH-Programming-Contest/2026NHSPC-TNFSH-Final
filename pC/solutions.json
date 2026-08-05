@@ -79,5 +79,11 @@
             "single": "correct",
             "star": "correct"
         }
+    },
+    "fake-monte-carlo.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "single": "correct"
+        }
     }
 }

@@ -48,6 +48,39 @@ void generateOverflow(Instance& in, int active) {
     }
 }
 
+void generateAnnealing(Instance& in) {
+    if (in.n < 12 || in.h < 4 || in.k != 2) {
+        cerr << "annealing mode needs N >= 12, H >= 4, K = 2\n";
+        exit(1);
+    }
+    for (int h = 1; h <= in.h; ++h) {
+        in.u[h] = 1;
+        in.w[h] = 1;
+    }
+    in.w[1] = in.w[3] = 1000000000;
+    in.w[2] = 1000;
+
+    in.add(1, 1);
+    in.add(2, 2);
+    in.add(3, 2);
+    in.add(4, 1);
+
+    const int middle = in.n / 2;
+    const auto addDummy = [&]() {
+        in.add(4, in.current[4] == 1 ? 2 : 1);
+    };
+    while (static_cast<int>(in.commits.size()) < middle - 1)
+        addDummy();
+    in.add(3, 1);
+    in.add(1, 2);
+
+    while (static_cast<int>(in.commits.size()) < in.n - 3)
+        addDummy();
+    in.add(1, 1);
+    in.add(2, 1);
+    addDummy();
+}
+
 int main(int argc, char* argv[]) {
     registerGen(argc, argv, 1);
     if (argc < 2) return 1;
@@ -64,6 +97,8 @@ int main(int argc, char* argv[]) {
         generateLateFirst(in, active);
     else if (mode == "overflow")
         generateOverflow(in, active);
+    else if (mode == "annealing")
+        generateAnnealing(in);
     else {
         cerr << "unknown structured mode: " << mode << '\n';
         return 1;

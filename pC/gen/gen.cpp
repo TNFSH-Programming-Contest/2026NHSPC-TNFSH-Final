@@ -241,6 +241,21 @@ vector<int> buildStones(
         }
         return stones;
     }
+    if (mode == "playout-zero" || mode == "playout-nonzero") {
+        // Nontrivial paired Nim heaps make the exact xor zero, but random
+        // playouts see an essentially balanced win rate.  The second mode
+        // changes one low bit, so a heuristic must distinguish two almost
+        // identical-looking positions exactly.
+        const size_t paired = oddVertices.size() / 2 * 2;
+        for (size_t i = 0; i < paired; i += 2) {
+            const int value = 2 + static_cast<int>((i / 2) % 29);
+            stones[oddVertices[i]] = value;
+            stones[oddVertices[i + 1]] = value;
+        }
+        if (mode == "playout-nonzero" && paired > 0)
+            stones[oddVertices[0]] ^= 1;
+        return stones;
+    }
     if (mode == "random") {
         for (int v = 1; v <= n; ++v) {
             stones[v] = rnd.next(0, MAX_A);

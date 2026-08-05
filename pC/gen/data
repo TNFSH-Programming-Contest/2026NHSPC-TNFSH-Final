@@ -23,6 +23,8 @@ gen star 99991 xor-nonzero relabel shuffled
 gen star 200000 root-max relabel mixed
 gen star 200000 xor-zero relabel mixed
 gen star 200000 overflow relabel shuffled
+gen star 25 playout-zero relabel shuffled
+gen star 25 playout-nonzero relabel mixed
 
 @subtask path
 @include single
@@ -37,6 +39,8 @@ gen path 200000 root-max keep reverse
 gen path 200000 even-only keep ordered
 gen path 200000 random keep reverse
 gen path 200000 overflow keep ordered
+gen path 49 playout-zero keep reverse
+gen path 49 playout-nonzero keep ordered
 
 @subtask binary
 gen star 3 binary-pair keep mixed
@@ -71,3 +75,5 @@ gen random 99991 small-random relabel mixed
 gen random 200000 even-only relabel shuffled
 gen random 200000 random relabel mixed
 gen random 200000 overflow relabel shuffled
+gen depth2 73 playout-zero relabel mixed
+gen depth2 73 playout-nonzero relabel shuffled

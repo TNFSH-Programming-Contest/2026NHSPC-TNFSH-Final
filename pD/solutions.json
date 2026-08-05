@@ -97,5 +97,14 @@
 			"kn": "correct",
 			"n1000": "correct"
 		}
+	},
+	"fake-simulated-annealing.cpp": {
+		"verdict": "incorrect",
+		"except": {
+			"samples": "correct",
+			"k1": "correct",
+			"kn": "correct",
+			"hunkonce": "correct"
+		}
 	}
 }

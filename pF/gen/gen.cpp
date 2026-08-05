@@ -88,6 +88,7 @@ public:
     int historySize() const { return static_cast<int>(history_.size()); }
     int n() const { return n_; }
     const vector<int>& sortedValues() const { return sorted_; }
+    int valueOf(int vertex) const { return values_[vertex]; }
 
     int rootOf(int vertex) const {
         int node = position_[vertex];
@@ -444,6 +445,20 @@ void generateMoveValueAttack(Builder& builder) {
     }
 }
 
+void generateSamplingAttack(Builder& builder) {
+    if (builder.n() < 130 || builder.n() > 50000) {
+        fillRandom(builder, true, false);
+        return;
+    }
+    for (int vertex = 2; vertex < builder.n() && !builder.full(); ++vertex)
+        builder.addUnion(1, vertex);
+
+    const int rare = builder.n() / 2;
+    builder.addRange(builder.valueOf(rare), builder.valueOf(rare), 1000000000LL);
+    builder.addQuery(1);
+    while (!builder.full()) builder.addQuery(1);
+}
+
 }  // namespace
 
 int main(int argc, char* argv[]) {
@@ -485,6 +500,8 @@ int main(int argc, char* argv[]) {
         generateCompressionAttack(builder);
     } else if (mode == "move-values") {
         generateMoveValueAttack(builder);
+    } else if (mode == "sampling") {
+        generateSamplingAttack(builder);
     } else {
         quitf(_fail, "unknown generator mode: %s", mode.c_str());
     }

@@ -88,5 +88,8 @@
 			"samples": "correct",
 			"small": "correct"
 		}
+	},
+	"fake-random-sampling.cpp": {
+		"verdict": "incorrect"
 	}
 }
