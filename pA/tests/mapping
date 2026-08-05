@@ -30,6 +30,7 @@ dp 2-02
 dp 2-03
 dp 2-04
 dp 2-05
+dp 2-06
 no-weight 3-01
 no-weight 3-02
 no-weight 3-03
@@ -55,6 +56,7 @@ km 2-02
 km 2-03
 km 2-04
 km 2-05
+km 2-06
 km 4-01
 km 4-02
 km 4-03
@@ -81,6 +83,7 @@ full 2-02
 full 2-03
 full 2-04
 full 2-05
+full 2-06
 full 3-01
 full 3-02
 full 3-03
