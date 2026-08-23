@@ -32,7 +32,7 @@
 | | 1 | 2 | 3 | 4 | 5 | 6 |
 | --- | --- | --- | --- | --- | --- | --- |
 | A | 8<br>$2 \le n \le 8, 1 \le m \le \min(30, n \times (n-1)), 0 \le d_i \le 100$ | 17<br>$2 \le n \le 18, 1 \le m \le \min(200, n \times (n-1)), 0 \le d_i \le 100$ | 22<br>$2 \le n \le 1000, 1 \le m \le \min(5000, n \times (n-1)), 0 \le d_i \le 1$ | 24<br>$2 \le n \le 200, 1 \le m \le \min(1000, n \times (n-1)), 0 \le d_i \le 10^5$ | 29<br>無額外限制 |
-| B | 7<br>$m = 1, a_i = 10^9$ | 18<br>$3 \le n \le 2000, m = 1, a_i = 1$ | 9<br>$3 \le n \le 7, 1 \le m \le 7$ | 20<br>$3 \le n \le 100, 1 \le m \le 100, \sum a_i \le 10^4$ | 22<br>$3 \le n \le 2000$ | 24<br>無額外限制 |
+| B | 7<br>$m = 1, a_i = 10^9$ | 18<br>$3 \le n \le 2000, m = 1, a_i = 1$ | 9<br>$3 \le n \le 7, 1 \le m \le 7$ | 20<br>$3 \le n \le 100, 1 \le m \le 100, \sum_{i=2}^{n-1}{a_i} \le 10^4$ | 22<br>$3 \le n \le 2000$ | 24<br>無額外限制 |
 | C | 10<br>$N \le 2$ | 15<br>除了根節點外，每個節點的親代皆為節點 $1$ | 20<br>對所有 $1 \le i < N$，第 $i$ 條邊連接節點 $i$ 與 $i+1$ | 20<br>對所有 $1 \le i \le N$，$0 \le A_i \le 1$ | 35<br>無額外限制 |
 | D | 8<br>$N,\ H \le 15$ | 8<br>$K = 1$ | 8<br>$K = N$ | 10<br>每個 hunk 最多只被修改一次 | 26<br>$N \le 1000$ | 40<br>無限制 |
 | E | 34<br>$1 \le n \le 2000$ | 15<br>保證 $opt = 1$ | 51<br>無額外限制 |
