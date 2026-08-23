@@ -6,6 +6,9 @@
 \caption{TODO: 圖片說明}
 \end{figure} -->
 
+TODO: https://discord.com/channels/@me/1243550874123505664/1540897404033826828
+https://media.discordapp.net/attachments/1243550874123505664/1540897403945623612/image.png?ex=6a8ba009&is=6a8a4e89&hm=830ef73d6a1486b65424ff4a2e9150959828267551c95dff0f410c5cda249c32&=&format=webp&quality=lossless&width=2082&height=650
+
 家豪（Charhao）身為台南一中的三好學生，平時最喜歡翹課出來參加彩虹遊行。顧名思義，彩虹遊行指的是一大群彩虹小馬愛好者聚在一起的盛大活動。
 
 今天的彩虹遊行在一座神奇的島嶼上舉辦，島上有 $n$ 個彩虹小馬景點，編號為 $1 \sim n$。島嶼的入口位於 $1$ 號景點，而開幕式場地則在 $n$ 號景點。

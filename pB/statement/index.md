@@ -6,6 +6,9 @@
 \caption{TODO: 圖片說明}
 \end{figure} -->
 
+TODO: https://discord.com/channels/@me/1243550874123505664/1540896880731361320
+https://media.discordapp.net/attachments/1243550874123505664/1540896880450605066/image.png?ex=6a8b9f8c&is=6a8a4e0c&hm=b81939c6e6ba50a9894c48f0bdd2eb1f6ed55676392ca3ce272bc39241effb46&=&format=webp&quality=lossless&width=2082&height=557
+
 車輛來來去去的馬路上有一條斑馬線。
 
 這條斑馬線的每個白色區塊(共 $n$ 個)可以視為在一維數線上依序排列，位置依序處於$x_1, x_2, \ldots , x_n$。
