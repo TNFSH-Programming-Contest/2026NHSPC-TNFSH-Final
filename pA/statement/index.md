@@ -37,7 +37,7 @@ tw87 想在滿足自己惡趣味的前提下，盡可能最小化總奇怪值，
 ## 輸入限制
  - $2 \le n \le 2000$
  - $1 \le m \le \min(10^4, n \times (n-1))$
- - $1 \le a_i, b_i, \le n, a_i \neq b_i$
+ - $1 \le a_i, b_i \le n, a_i \neq b_i$
  - $0 \le d_i \le 10^5$
 
 ## 子任務

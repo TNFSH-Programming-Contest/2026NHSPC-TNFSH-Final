@@ -30,7 +30,7 @@
         "graph": {
             "index": 4,
             "score": 20,
-            "text": "$3 \\le n \\le 100, 1 \\le m \\le 100, \\sum a_i \\le 10^4$",
+            "text": "$3 \\le n \\le 100, 1 \\le m \\le 100, \\sum_{i=2}^{n-1}{a_i} \\le 10^4$",
             "validators": ["validator.cpp graph"]
         },
         "dp2": {
