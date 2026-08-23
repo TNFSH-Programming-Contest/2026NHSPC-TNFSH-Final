@@ -50,7 +50,7 @@
 \setminted{fontsize=\codesize, linenos, frame=lines, mathescape, autogobble, tabsize=4}
 \setCJKmainfont[AutoFakeSlant,BoldFont=Noto Sans CJK TC Bold]{Noto Sans CJK TC}
 
-\setlength{\parskip}{\baselineskip} 
+\setlength{\parskip}{\baselineskip}
 \newcommand{\btitle}[1]{{\secname} -- #1}
 
 \theoremstyle{definition}
@@ -73,21 +73,26 @@
   \setbeamercolor{block body}{fg=black, bg=block title.bg!10!bg}
 }
 
+\newcommand{\sectionsubtitle}{}
+\newcommand{\setsubtitle}[1]{\renewcommand{\sectionsubtitle}{#1}}
 
 \AtBeginSection[]{
-%   \begin{frame}
-%     \tableofcontents[currentsection,hideallsubsections]
-%   \end{frame}
   \begin{frame}
   \vfill
   \centering
   \begin{beamercolorbox}[sep=6pt,center,shadow=true,rounded=true]{title}
     \usebeamerfont{title}\LARGE\insertsectionhead\par%
+    % 判斷 \sectionsubtitle 是否為空，如果不為空才渲染小字
+    \ifx\sectionsubtitle\empty\else
+      \vspace{4pt}% 微調大字與小字間距
+      {\footnotesize\sectionsubtitle}\par%
+    \fi
   \end{beamercolorbox}
   \vfill
   \end{frame}
+  % 每次進入新 Section 後自動重置小字，避免影響下一個 Section
+  \gdef\sectionsubtitle{}
 }
-
 
 \AtBeginSubsection[]{
   \begin{frame}

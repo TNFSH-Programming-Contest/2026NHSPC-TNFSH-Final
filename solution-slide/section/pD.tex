@@ -1,31 +1,7 @@
+\setsubtitle{author : tobiichi3227}
 \section{D. Merge, Rebase, Squash!}
 
-\begin{frame}[fragile]{\btitle{Fun Fact}}
-    \begin{columns}[T,onlytextwidth]
-        \begin{column}{0.48\textwidth}
-            \centering
-            \includegraphics[width=\linewidth,height=0.42\textheight,keepaspectratio]{../pD/statement/db-force-push-1.jpg}
-
-            \small Force push 1
-        \end{column}
-        \begin{column}{0.48\textwidth}
-            \centering
-            \includegraphics[width=\linewidth,height=0.42\textheight,keepaspectratio]{../pD/statement/db-force-push-2.jpg}
-
-            \small Force push 2
-        \end{column}
-    \end{columns}
-
-    \begin{center}
-        \begin{itemize}
-            \item 不要學 DB force push，真的會出事
-            \item 這題其實是我在思考甚麼情況下 Merge 與 Rebase 都會 Conflict，甚麼情況下只有 Rebase 會 Conflict 想出來的
-            \item 我覺得 wonderhoi 一定會寫這題，沒寫真的要哭了
-        \end{itemize}
-    \end{center}
-\end{frame}
-
-\begin{frame}[fragile]{\btitle{題目敘述}}
+\begin{frame}{\btitle{題目敘述}}
     \begin{itemize}
         \item \texttt{v2.0} 上有 $H$ 個 hunk；第 $h$ 個內容是 $U_h$，解 conflict 的成本是 $w_h$。
         \item \texttt{feat/fancy} 有 $N$ 個 commits；第 $i$ 個把 hunk $x_i$ 改成 $v_i$。
@@ -33,7 +9,18 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{Conflict}}
+\begin{frame}{\btitle{子任務}}
+    \begin{enumerate}
+        \item{$N,\ H\le 15$}
+        \item{$K = 1$}
+        \item{$K = N$}
+        \item{每個 hunk 最多修改一次}
+        \item{$N \le 1000$}
+        \item{無額外限制}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{\btitle{Conflict}}
     一個 patch $\text{old}\to\text{new}$ 遇到目前內容 $\text{current}$ 時：
     \[
         \text{conflict}
@@ -44,14 +31,14 @@
     目標：選擇切點，使 conflict 的總成本最小。
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{記號}}
+\begin{frame}{\btitle{記號}}
     \begin{itemize}
         \item $S_i[h]$：執行完前 $i$ 個 commits 後，\texttt{feat/fancy} 上 hunk $h$ 的內容。
         \item $f_h$：hunk $h$ 第一次被修改的 commit；若從未修改則不存在。
     \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{Squash 後的 patch}}
+\begin{frame}{\btitle{Squash 後的 patch}}
     區間 $(j,i]$ squash 後，hunk $h$ 的 patch 是
     \[
         S_j[h]\longrightarrow S_i[h].
@@ -60,7 +47,7 @@
     題目保證 hunk 不會被改回 $0$，所以包含 $f_h$ 的 squash commit 一定真的會修改 $h$。
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{第一次修改}}
+\begin{frame}{\btitle{第一次修改}}
     考慮包含 $f_h$ 的第一個 squash commit，假設其右端點為 $i$：
     \[
         0\longrightarrow S_i[h].
@@ -73,7 +60,7 @@
     \]
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{不會再次 conflict}}
+\begin{frame}{\btitle{不會再次 conflict}}
     解完後目前內容變成 $S_i[h]$。之後每個 squash commit 的
     \texttt{old} 都等於目前內容，因此不可能再次 conflict。
 
@@ -86,7 +73,7 @@
     \end{alertblock}
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{一段 squash commit 的成本}}
+\begin{frame}{\btitle{一段 squash commit 的成本}}
     定義 $C(j+1,i)$ 為把 commits $j+1,\ldots,i$ squash 成一段時，
     這一段新產生的 conflict 成本。
 
@@ -102,24 +89,7 @@
     所以所有段的 $C$ 相加，恰好就是整次 rebase 的總成本。
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{子任務}}
-    \small
-    \begin{tabularx}{\textwidth}{c|X|c}
-        子任務 & 限制 & 分數 \\
-        \hline
-        1 & $N,H\le 15$ & 8 \\
-        2 & $K=1$ & 8 \\
-        3 & $K=N$ & 8 \\
-        4 & 每個 hunk 最多修改一次 & 10 \\
-        5 & $N\le 1000$ & 26 \\
-        6 & 無額外限制 & 40
-    \end{tabularx}
-
-    \vspace{0.6em}
-    完整限制：$N,H\le 2\times 10^5$，$K\le 30$。
-\end{frame}
-
-\begin{frame}[fragile]{\btitle{子任務 1：枚舉切點}}
+\begin{frame}{\btitle{$N,\ H \le 15$}}
     從 $N-1$ 個空隙選出 $K-1$ 個切點：
     \[
         \binom{N-1}{K-1}\text{ 種分法}.
@@ -136,37 +106,40 @@
     \[
         O\!\left(\binom{N-1}{K-1}(N+KH)\right),
     \]
-    在 $N,H\le 15$ 時足夠。
+    在 $N,\ H\le 15$ 時足夠。
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{子任務 2：$K=1$}}
-    全部 squash 成 $(0,N]$。答案為
+\begin{frame}{\btitle{$K = 1$}}
+    全部 squash 成 $(0,N]$，答案為
     \[
-        \sum_{h:\;f_h\text{ 存在},\ S_N[h]\neq U_h}w_h.
+        \sum_{h:\;f_h\text{ 存在},\ S_N[h]\neq U_h}w_h
     \]
+
+    複雜度 $O(N+H)$。
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{子任務 3--4}}
-    \begin{itemize}
-        \item \textbf{$K=N$：}
-        每個 commit 單獨套用，只有第一次修改可能 conflict。答案為
-        \[
-            \sum_{h:\;f_h\text{ 存在},\ v_{f_h}\neq U_h}w_h.
-        \]
+\begin{frame}{\btitle{$K = N$}}
+    每個 commit 單獨套用，只有第一次修改可能 conflict。答案為
+    \[
+        \sum_{h:\;f_h\text{ 存在},\ v_{f_h}\neq U_h}w_h.
+    \]
 
-        \item \textbf{每個 hunk 最多修改一次：}
-        不論怎麼切，包含那次修改的區間終點值都相同；答案同樣是
-        $\sum_{h:\;f_h\text{ 存在},\ v_{f_h}\neq U_h}w_h$。
-    \end{itemize}
-
-    三者皆可在 $O(N+H)$ 完成。
+    複雜度 $O(N+H)$。
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{子任務 5：DP 定義}}
+
+\begin{frame}{\btitle{每個 hunk 最多修改一次}}
+    不論怎麼切，包含那次修改的區間終點值都相同；答案同樣是
+    $\sum_{h:\;f_h\text{ 存在},\ v_{f_h}\neq U_h}w_h$。
+
+    複雜度 $O(N+H)$。
+\end{frame}
+
+\begin{frame}{\btitle{$N \le 1000$}}
     定義
     \[
         dp[k][i]
-        =\text{前 }i\text{ 個 commits 分成恰好 }k\text{ 個非空段的最小成本}.
+        =\text{前}\ i\text{ 個 commits 分成恰好}\ k\text{ 個非空段的最小成本}.
     \]
 
     初始條件：
@@ -175,7 +148,7 @@
     \]
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{子任務 5：DP 轉移}}
+\begin{frame}{\btitle{$N \le 1000$}}
     枚舉最後一段前的切點 $j$：
     \[
         dp[k][i]
@@ -186,7 +159,7 @@
     最終答案是 $dp[K][N]$。
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{預處理：依 $f_h$ 分桶}}
+\begin{frame}{\btitle{$N \le 1000$}}
     固定右端點 $i$，把目前滿足 $S_i[h]\neq U_h$ 的 hunk，
     依照第一次修改位置 $f_h$ 分桶：
     \[
@@ -196,7 +169,7 @@
     每前進一個 commit，只會改變一個 hunk 所在桶子的值。
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{預處理：計算 $C$}}
+\begin{frame}{\btitle{$N \le 1000$}}
     由成本公式可得
     \[
         C(l,i)=\sum_{t=l}^{i} B_i[t].
@@ -210,7 +183,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{完整解：重新看一次轉移}}
+\begin{frame}{\btitle{無額外限制}}
     固定 DP 層 $k$，令
     \[
         prev[j]=dp[k-1][j],
@@ -224,7 +197,7 @@
     \]
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{需要的資料結構}}
+\begin{frame}{\btitle{無額外限制}}
     從左到右掃描右端點 $i$。我們需要維護所有切點 $j$ 的 $A_i[j]$，
     並支援：
     \begin{itemize}
@@ -232,10 +205,10 @@
         \item 查詢合法切點 $[k-1,i-1]$ 的最小值。
     \end{itemize}
 
-    這正是「區間加值、區間最小值」線段樹。
+    這可以用線段樹維護。
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{一次 commit 影響哪些切點？}}
+\begin{frame}{\btitle{無額外限制}}
     commit $i$ 修改 hunk $h$，令 $f=f_h$。
 
     hunk $h$ 會被 $C(j+1,i)$ 計入的必要條件是
@@ -243,12 +216,8 @@
         j<f.
     \]
 
-    因此當 $S_i[h]\neq U_h$ 的真假改變時，
-    它只會同時影響
-    \[
-        j=0,1,\ldots,f-1,
-    \]
-    恰好是一段前綴。
+    因此因 $S_i[h]\neq U_h$ 造成改變時，
+    它只會同時影響$j=0,1,\ldots,f-1$，這恰好是一段前綴。
 
     預先替每個 commit 算出
     \[
@@ -257,7 +226,7 @@
     掃到 $i$ 時對 $[0,right[i]]$ 加上 $delta[i]$。
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{$delta$：第一次修改}}
+\begin{frame}{\btitle{無額外限制}}
     第一次修改 hunk $h$（$i=f_h$）：
     \[
         right[i]=i-1,
@@ -271,7 +240,7 @@
     \]
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{$delta$：後續修改}}
+\begin{frame}{\btitle{無額外限制}}
     不是第一次修改，令 $old=S_{i-1}[h]$、$new=S_i[h]$：
     \[
         right[i]=f_h-1,
@@ -288,7 +257,7 @@
     也就是只追蹤「目前內容是否不等於 $U_h$」的狀態變化。
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{完整演算法（1/2）}}
+\begin{frame}{\btitle{無額外限制}}
     對 $k=1,2,\ldots,K$：
     \begin{enumerate}
         \item 用 $prev[0],\ldots,prev[N-1]$ 建立線段樹。
@@ -297,7 +266,7 @@
     \end{enumerate}
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{完整演算法（2/2）}}
+\begin{frame}{\btitle{無額外限制}}
     \begin{enumerate}
         \setcounter{enumi}{3}
         \item 若 $i\ge k$，查詢
@@ -311,7 +280,7 @@
     初始只有 $prev[0]=0$，其餘皆為 $+\infty$；答案是 $prev[N]$。
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{正確性}}
+\begin{frame}{\btitle{無額外限制}}
     \begin{block}{線段樹不變量}
         在某一層掃描完 commit $i$ 後，葉節點 $j$ 儲存的值恰為
         \[
@@ -325,12 +294,8 @@
     查詢 $[k-1,i-1]$ 就恰好枚舉所有合法的最後切點。
 \end{frame}
 
-\begin{frame}[fragile]{\btitle{複雜度}}
-    \[
-        \text{時間 }O(H+KN\log N),
-        \qquad
-        \text{空間 }O(H+N).
-    \]
+\begin{frame}{\btitle{無額外限制}}
+    時間複雜度 $O(H+KN\log_2 N)$，空間複雜度 $O(H+N)$。
 
-    成本總和最大可達 $2\times10^{14}$，必須使用 64-bit integer。
+    成本總和最大可達 $2\times10^{14}$，要用 long long。
 \end{frame}
