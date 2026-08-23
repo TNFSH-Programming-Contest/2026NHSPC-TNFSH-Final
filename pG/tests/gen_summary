@@ -8,7 +8,7 @@
 1-03	 12	gen list 99991 99990 decreasing near-max keep prime-size
 1-04	 13	gen list 100000 99999 one max keep max-one
 1-05	 14	gen list 100000 99999 overflow min keep max-overflow
-2-01	 17	gen random-multi 1 200000 one max shuffle all-loops
+2-01	 17	gen random-multi 2 200000 one max shuffle all-loops
 2-02	 18	gen random-multi 2 200000 one min shuffle parallel
 2-03	 19	gen random-simple 21 20 one random shuffle tree
 2-04	 20	gen random-simple 1000 2000 one near-max shuffle sparse
@@ -16,7 +16,7 @@
 2-06	 22	attack theta 100000 200000 one max shuffle max-theta
 2-07	 23	attack clique 100000 200000 one random shuffle max-clique
 3-01	 26	manual example-2.in
-3-02	 27	gen random-multi 1 20 overflow max shuffle loops
+3-02	 27	gen random-multi 2 20 overflow max shuffle loops
 3-03	 28	gen random-multi 2 20 alternating min shuffle parallel
 3-04	 29	gen random-simple 21 20 random near-max shuffle tree
 3-05	 30	gen random-simple 8 20 increasing random shuffle dense
@@ -34,7 +34,7 @@
 4-08	 44	gen unicyclic-middle 17 17 ties random keep ties
 4-09	 45	attack annealing 100000 100000 keep max keep rare-heavy-chord
 5-01	 49	manual example-4.in
-5-02	 50	gen cactus-loops 1 200000 loop-heavy max shuffle all-loops
+5-02	 50	gen cactus-loops 2 200000 loop-heavy max shuffle all-loops
 5-03	 51	gen cactus-parallel 100000 199998 alternating min shuffle two-cycles
 5-04	 52	gen cactus-cycles 100000 149999 random near-max shuffle many-triangles
 5-05	 53	gen cactus-mixed 100000 200000 overflow max shuffle max-mixed
