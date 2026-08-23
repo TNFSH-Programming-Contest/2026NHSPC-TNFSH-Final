@@ -33,7 +33,7 @@ struct Input {
 Input readInput() {
     Input input;
 
-    input.n = inf.readInt(1, MAX_N, "N");
+    input.n = inf.readInt(2, MAX_N, "N");
     inf.readSpace();
     input.m = inf.readInt(1, MAX_M, "M");
     inf.readSpace();

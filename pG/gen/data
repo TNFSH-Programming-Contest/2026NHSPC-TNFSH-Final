@@ -14,7 +14,7 @@ gen list 100000 99999 one max keep max-one
 gen list 100000 99999 overflow min keep max-overflow
 
 @subtask ce1
-gen random-multi 1 200000 one max shuffle all-loops
+gen random-multi 2 200000 one max shuffle all-loops
 gen random-multi 2 200000 one min shuffle parallel
 gen random-simple 21 20 one random shuffle tree
 gen random-simple 1000 2000 one near-max shuffle sparse
@@ -24,7 +24,7 @@ attack clique 100000 200000 one random shuffle max-clique
 
 @subtask m20
 manual example-2.in
-gen random-multi 1 20 overflow max shuffle loops
+gen random-multi 2 20 overflow max shuffle loops
 gen random-multi 2 20 alternating min shuffle parallel
 gen random-simple 21 20 random near-max shuffle tree
 gen random-simple 8 20 increasing random shuffle dense
@@ -47,7 +47,7 @@ attack annealing 100000 100000 keep max keep rare-heavy-chord
 @subtask cactus
 @include unicyclic
 manual example-4.in
-gen cactus-loops 1 200000 loop-heavy max shuffle all-loops
+gen cactus-loops 2 200000 loop-heavy max shuffle all-loops
 gen cactus-parallel 100000 199998 alternating min shuffle two-cycles
 gen cactus-cycles 100000 149999 random near-max shuffle many-triangles
 gen cactus-mixed 100000 200000 overflow max shuffle max-mixed
