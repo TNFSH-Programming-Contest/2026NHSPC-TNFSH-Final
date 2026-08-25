@@ -1,9 +1,10 @@
-#include "Can_You_Blow_My_Whistle.h"
-
 #include <vector>
 
+namespace {
+    int haha = 87;
+};
+
 void solve(int n, std::vector<int> a) {
-    (void)n;
-    (void)a;
+    haha = 67;
     // Implement your solution here.
 }

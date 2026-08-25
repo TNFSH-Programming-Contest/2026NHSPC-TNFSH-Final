@@ -2,13 +2,11 @@
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=4in]{photo.jpg}
+\includegraphics[width=5in]{photo.jpg}
 \caption{Can You Blow My Whistle Baby}
 \end{figure}
 
-# TODO: public/cpp/stub.cpp 要重寫，現在有官解
-
-本題採用函式互動形式。
+$\color{red}\text{本題是互動題型。}$
 
 國中營比賽當天，中午吃飯的時候，有 $n$ 個小學弟排成一列準備領便當。
 
@@ -24,28 +22,20 @@
 
 \clearpage
 
-## 函式介面
+## 實作細節
 
-你只需要提交實作 `solve` 函式的程式碼，不可以實作 `main` 函式。評測系統會將你的程式與 `stub.cpp` 一起編譯。\
-你的程式應包含以下標頭檔：
-
-```cpp
-#include "Can_You_Blow_My_Whistle.h"
-```
-
-評測系統會呼叫：
+你需要完成以下函式:
 
 - `void solve(int n, std::vector<int> a);`
     - `a` 的長度為 $n$，且是 $1$ 到 $n$ 的一個排列。
     - 對於 $0 \le i < n$，`a[i]` 表示一開始站在位置 $i+1$ 的學弟編號。
-    - 你需要在此函式中呼叫下列函式安排交換；不需要回傳任何值。
 
-你可以呼叫：
+上述程序的執行過程你需要呼叫以下函式:
 
 - `void swap_student(int u, int v);`
     - $1 \le u, v \le n$ 且 $u \neq v$。
     - 將「交換位置 $u$ 與位置 $v$」加入目前這一輪，但此時還不會立刻交換。
-    - 同一輪中，每個位置最多只能出現在一次 `swap_student` 呼叫中，否則會得到 \textbf{Wrong Answer(1)}。
+    - 同一輪中，每個位置最多只能出現在一次 `swap_student` 呼叫中。
 - `void blow_whistle();`
     - 同時執行目前這一輪加入的所有交換，接著開始新的一輪。
     - 即使這一輪沒有加入任何交換，呼叫此函式仍會計入一次哨音。
@@ -53,15 +43,21 @@
 傳入的 `a` 是普通的 `std::vector<int>`；呼叫上述函式不會自動修改你程式中的 `a`。\
 若 `solve` 結束時仍有尚未經過 `blow_whistle` 執行的交換，這些交換不會生效。
 
-## 輸入限制
+## 條件限制
 
 - $1 \le n \le 10^5$
 - $1 \le a_i \le n$
-- $a$ 是一個排列
+- $a$ 是一個 $1 \sim n$ 的排列
+
+## 子任務
+
+\subtasks
+
+\clearpage
 
 ## 給分方式
 
-假如你呼叫 `blow_whistle` 函式的次數超過了 $2n$ 次，則系統會中斷，並給出 \textbf{Wrong Answer(2)}。
+假如你呼叫 `blow_whistle` 函式的次數\textbf{超過了 $2n$ 次}，則系統會中斷，並給出 \textbf{Wrong Answer}。
 
 當你的 `solve` 函式結束時，系統會檢查學弟們是否已經正確排序。若最終沒有完成排序，該筆測資的得分倍率為 $0$。
 
@@ -70,21 +66,19 @@
 - 若 $A=opt$，則 $T=1$。
 - 若 $A>opt$，則 $T=\max(0,\ 0.5-0.02(A-opt))$。
 
-也就是說，只要哨音數不是最佳解，該筆測資的倍率最多為 $0.5$，且每多吹一次會再扣除 $0.02$，直到降為 $0$。\
+也就是說，只要哨音數不是最佳解，該筆測資的倍率最多為 $0.5$，且每多吹一次會再扣除 $0.02$，直到降為 $0$。
+
 對於滿分為 $P$ 的子任務，令 $T_{\min}$ 為你在該子任務所有測資中得到的最小倍率，則此子任務的得分為 $P \times T_{\min}$。
-
-## 子任務
-
-\subtasks
-
-\clearpage
 
 ## 範例
 
-\testfile{0-01.in}
+考慮以下呼叫。
 
-評測系統會以 `solve(5, {2, 1, 3, 5, 4})` 呼叫你的函式。\
-例如可以依序呼叫：
+```cpp
+solve(5, {2, 1, 3, 5, 4})
+```
+
+你可以在 `solve` 函式中依序呼叫：
 
 ```cpp
 swap_student(1, 2);
@@ -93,3 +87,57 @@ blow_whistle();
 ```
 
 前兩個呼叫將兩組交換加入同一輪；呼叫 `blow_whistle` 後，兩組交換同時執行，排列變成 $[1,2,3,4,5]$。此例最少需要一次哨音。
+
+\clearpage
+
+## 範例評分程式
+
+輸入格式 :
+
+\noindent\fbox{%
+\begin{minipage}{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}
+\raggedright
+$
+\begin{array}{l}
+    n \\
+    a_0, a_1, \ldots, a_{n-1}
+\end{array}
+$
+\end{minipage}%
+}
+
+若呼叫函式過程中不違法，則輸出格式如下:
+
+\noindent\fbox{%
+\begin{minipage}{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}
+\raggedright
+$
+\begin{array}{l}
+    A : \text{吹哨次數} \\
+    a'_0, a'_1, \ldots, a'_{n-1}
+\end{array}
+$
+\end{minipage}%
+}
+
+否則，格式為:
+
+\noindent\fbox{%
+\begin{minipage}{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}
+\raggedright
+$
+\begin{array}{l}
+    \text{Wrong Answer: MSG}
+\end{array}
+$
+\end{minipage}%
+}
+
+其中 MSG 是錯誤的原因，包含以下結果:
+
+ - `invalid swap` : 你呼叫 `swap_student` 的 `u, v` 是不合法的。
+ - `twice swap` : 有一個位置在同一輪交換中被 `swap_student` 函式呼叫到兩次以上了。
+
+範例評分程式會在發現以上錯誤時回報錯誤並立即結束程式。除了以上有提到的錯誤之外，範例評分程式\textbf{不會}另外檢查答案的正確性。
+
+正式的評分程式不一定採用以上程式輸入。請不要自行處理輸入輸出。

@@ -11,31 +11,31 @@
         },
         "single": {
             "index": 1,
-            "score": 10,
+            "score": 9,
             "text": "$N \\le 2$",
             "validators": ["validator.cpp single"]
         },
         "star": {
             "index": 2,
-            "score": 15,
+            "score": 16,
             "text": "除了根節點外，每個節點的親代皆為節點 $1$",
             "validators": ["validator.cpp star"]
         },
         "path": {
             "index": 3,
-            "score": 20,
+            "score": 17,
             "text": "對所有 $1 \\le i < N$，第 $i$ 條邊連接節點 $i$ 與 $i+1$",
             "validators": ["validator.cpp path"]
         },
         "binary": {
             "index": 4,
-            "score": 20,
+            "score": 21,
             "text": "對所有 $1 \\le i \\le N$，$0 \\le A_i \\le 1$",
             "validators": ["validator.cpp binary"]
         },
         "full": {
             "index": 5,
-            "score": 35,
+            "score": 37,
             "text": "無額外限制",
             "validators": []
         }
