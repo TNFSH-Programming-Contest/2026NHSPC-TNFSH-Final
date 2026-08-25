@@ -6,6 +6,8 @@
 \caption{Can You Blow My Whistle Baby}
 \end{figure}
 
+# TODO: public/cpp/stub.cpp 要重寫，現在有官解
+
 本題採用函式互動形式。
 
 國中營比賽當天，中午吃飯的時候，有 $n$ 個小學弟排成一列準備領便當。
