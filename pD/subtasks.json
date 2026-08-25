@@ -11,7 +11,7 @@
         },
         "nh15": {
             "index": 1,
-            "score": 8,
+            "score": 3,
             "text": "$N,\\ H \\le 15$",
             "validators": [
                 "base-validator.cpp 15 15"
@@ -19,7 +19,7 @@
         },
         "k1": {
             "index": 2,
-            "score": 8,
+            "score": 7,
             "text": "$K = 1$",
             "validators": [
                 "base-validator.cpp 200000 200000",
@@ -28,7 +28,7 @@
         },
         "kn": {
             "index": 3,
-            "score": 8,
+            "score": 9,
             "text": "$K = N$",
             "validators": [
                 "base-validator.cpp 200000 200000",
@@ -37,7 +37,7 @@
         },
         "hunkonce": {
             "index": 4,
-            "score": 10,
+            "score": 19,
             "text": "每個 hunk 最多只被修改一次",
             "validators": [
                 "base-validator.cpp 200000 200000",
@@ -46,7 +46,7 @@
         },
         "n1000": {
             "index": 5,
-            "score": 26,
+            "score": 13,
             "text": "$N \\le 1000$",
             "validators": [
                 "base-validator.cpp 1000 200000"
@@ -54,7 +54,7 @@
         },
         "full": {
             "index": 6,
-            "score": 40,
+            "score": 49,
             "text": "無限制",
             "validators": []
         }
