@@ -6,6 +6,8 @@ manual example-2.in
 manual example-3.in
 
 @subtask brute
+manual no-sol-1.in
+manual no-sol-2.in
 gen chain 2 100 maximum keep tiny
 gen random 8 30 100 alternating keep feasible alternating
 gen random 8 30 100 random shuffle feasible random
@@ -60,3 +62,7 @@ attack irrelevant 2000 irrelevant-road-trap
 attack annealing 2000 annealing-max-local-minimum
 killer km 2000 km-killer
 killer spfa 2000 1332 spfa-killer
+hackspfa classic-shuffle 2000 1332 spfa-classic-shuffled
+hackspfa grid 2000 8 200 spfa-residual-grid
+hackspfa flower 2000 900 spfa-chain-flower
+hackspfa tree 2000 1700 10000 spfa-near-tree

@@ -3,13 +3,33 @@
         "verdict": "model_solution"
     },
     "spfa.cpp": {
-        "verdict": "time_limit",
+        "verdict": "correct",
         "except": {
-            "samples": "correct",
-            "brute": "correct",
-            "dp": "correct",
-            "no-weight": "correct",
-            "km": "correct"
+            "full": "time_limit"
+        }
+    },
+    "spfa-lll.cpp": {
+        "verdict": "correct",
+        "except": {
+            "full": "time_limit"
+        }
+    },
+    "spfa-mcfx.cpp": {
+        "verdict": "correct",
+        "except": {
+            "full": "time_limit"
+        }
+    },
+    "spfa-random.cpp": {
+        "verdict": "correct",
+        "except": {
+            "full": "time_limit"
+        }
+    },
+    "spfa-slf.cpp": {
+        "verdict": "correct",
+        "except": {
+            "full": "time_limit"
         }
     },
     "km.cpp": {
