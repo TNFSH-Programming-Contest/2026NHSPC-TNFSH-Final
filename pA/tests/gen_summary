@@ -2,46 +2,52 @@
 0-01	  4	manual example-1.in
 0-02	  5	manual example-2.in
 0-03	  6	manual example-3.in
-1-01	  9	gen chain 2 100 maximum keep tiny
-1-02	 10	gen random 8 30 100 alternating keep feasible alternating
-1-03	 11	gen random 8 30 100 random shuffle feasible random
-1-04	 12	gen impossible-out 8 30 100 random shuffle no-outgoing
-1-05	 13	gen impossible-in 8 30 100 random shuffle no-incoming
-1-06	 14	attack greedy greedy-trap
-1-07	 15	attack no-potential no-potential-trap
-1-08	 16	attack direction direction-trap
-1-09	 17	attack shortest-path shortest-path-trap
-1-10	 18	attack hall hall-trap
-1-11	 19	attack annealing 7 annealing-local-minimum
-1-12	 20	killer km 8 small-km-chain
-2-01	 24	gen random 18 200 100 random shuffle feasible feasible-dense
-2-02	 25	gen random 18 200 100 decreasing keep feasible ordered
-2-03	 26	gen impossible-out 18 200 100 alternating shuffle no-outgoing
-2-04	 27	gen impossible-in 18 200 100 maximum shuffle no-incoming
-2-05	 28	killer km 18 km-chain
-2-06	 29	attack prune-k prune-8-per-row
-3-01	 32	gen chain 1000 1 one keep long-chain
-3-02	 33	gen random 1000 5000 1 zero shuffle feasible feasible-zero
-3-03	 34	gen random 1000 5000 1 alternating keep feasible feasible-binary
-3-04	 35	gen impossible-out 1000 5000 1 one shuffle no-outgoing
-3-05	 36	gen impossible-in 1000 5000 1 zero shuffle no-incoming
-3-06	 37	attack binary-extension binary-extension
-3-07	 38	attack annealing 1000 annealing-binary-local-minimum
-3-08	 39	killer km 1000 km-chain
-4-01	 43	gen random 200 1000 100000 random shuffle feasible feasible
-4-02	 44	gen random 200 1000 100000 alternating keep feasible extreme
-4-03	 45	gen impossible-out 200 1000 100000 random shuffle no-outgoing
-4-04	 46	gen impossible-in 200 1000 100000 maximum shuffle no-incoming
-4-05	 47	killer km 200 km-chain
-4-06	 48	killer spfa 200 132 spfa-chain
-5-01	 52	gen chain 2000 100000 increasing keep long-weighted-chain
-5-02	 53	gen random 2000 10000 100000 random shuffle feasible feasible-random
-5-03	 54	gen random 2000 10000 100000 alternating keep feasible feasible-extreme
-5-04	 55	gen random 1999 10000 100000 decreasing shuffle feasible feasible-prime
-5-05	 56	gen impossible-out 2000 10000 100000 random shuffle no-outgoing
-5-06	 57	gen impossible-in 2000 10000 100000 maximum shuffle no-incoming
-5-07	 58	attack ordered 2000 arbitrary-matching-trap
-5-08	 59	attack irrelevant 2000 irrelevant-road-trap
-5-09	 60	attack annealing 2000 annealing-max-local-minimum
-5-10	 61	killer km 2000 km-killer
-5-11	 62	killer spfa 2000 1332 spfa-killer
+1-01	  9	manual no-sol-1.in
+1-02	 10	manual no-sol-2.in
+1-03	 11	gen chain 2 100 maximum keep tiny
+1-04	 12	gen random 8 30 100 alternating keep feasible alternating
+1-05	 13	gen random 8 30 100 random shuffle feasible random
+1-06	 14	gen impossible-out 8 30 100 random shuffle no-outgoing
+1-07	 15	gen impossible-in 8 30 100 random shuffle no-incoming
+1-08	 16	attack greedy greedy-trap
+1-09	 17	attack no-potential no-potential-trap
+1-10	 18	attack direction direction-trap
+1-11	 19	attack shortest-path shortest-path-trap
+1-12	 20	attack hall hall-trap
+1-13	 21	attack annealing 7 annealing-local-minimum
+1-14	 22	killer km 8 small-km-chain
+2-01	 26	gen random 18 200 100 random shuffle feasible feasible-dense
+2-02	 27	gen random 18 200 100 decreasing keep feasible ordered
+2-03	 28	gen impossible-out 18 200 100 alternating shuffle no-outgoing
+2-04	 29	gen impossible-in 18 200 100 maximum shuffle no-incoming
+2-05	 30	killer km 18 km-chain
+2-06	 31	attack prune-k prune-8-per-row
+3-01	 34	gen chain 1000 1 one keep long-chain
+3-02	 35	gen random 1000 5000 1 zero shuffle feasible feasible-zero
+3-03	 36	gen random 1000 5000 1 alternating keep feasible feasible-binary
+3-04	 37	gen impossible-out 1000 5000 1 one shuffle no-outgoing
+3-05	 38	gen impossible-in 1000 5000 1 zero shuffle no-incoming
+3-06	 39	attack binary-extension binary-extension
+3-07	 40	attack annealing 1000 annealing-binary-local-minimum
+3-08	 41	killer km 1000 km-chain
+4-01	 45	gen random 200 1000 100000 random shuffle feasible feasible
+4-02	 46	gen random 200 1000 100000 alternating keep feasible extreme
+4-03	 47	gen impossible-out 200 1000 100000 random shuffle no-outgoing
+4-04	 48	gen impossible-in 200 1000 100000 maximum shuffle no-incoming
+4-05	 49	killer km 200 km-chain
+4-06	 50	killer spfa 200 132 spfa-chain
+5-01	 54	gen chain 2000 100000 increasing keep long-weighted-chain
+5-02	 55	gen random 2000 10000 100000 random shuffle feasible feasible-random
+5-03	 56	gen random 2000 10000 100000 alternating keep feasible feasible-extreme
+5-04	 57	gen random 1999 10000 100000 decreasing shuffle feasible feasible-prime
+5-05	 58	gen impossible-out 2000 10000 100000 random shuffle no-outgoing
+5-06	 59	gen impossible-in 2000 10000 100000 maximum shuffle no-incoming
+5-07	 60	attack ordered 2000 arbitrary-matching-trap
+5-08	 61	attack irrelevant 2000 irrelevant-road-trap
+5-09	 62	attack annealing 2000 annealing-max-local-minimum
+5-10	 63	killer km 2000 km-killer
+5-11	 64	killer spfa 2000 1332 spfa-killer
+5-12	 65	hackspfa classic-shuffle 2000 1332 spfa-classic-shuffled
+5-13	 66	hackspfa grid 2000 8 200 spfa-residual-grid
+5-14	 67	hackspfa flower 2000 900 spfa-chain-flower
+5-15	 68	hackspfa tree 2000 1700 10000 spfa-near-tree
