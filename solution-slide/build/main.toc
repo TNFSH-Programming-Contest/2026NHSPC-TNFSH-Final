@@ -1,8 +1,8 @@
-\beamer@sectionintoc {1}{Fun Fact}{2}{0}{1}
-\beamer@sectionintoc {2}{A. 彩虹遊行}{5}{0}{2}
-\beamer@sectionintoc {3}{B. 小雞過馬路}{8}{0}{3}
-\beamer@sectionintoc {4}{C. 一棵簡單的樹}{11}{0}{4}
-\beamer@sectionintoc {5}{D. Merge, Rebase, Squash!}{14}{0}{5}
-\beamer@sectionintoc {6}{E. 你可以幫我吹口哨嗎?}{40}{0}{6}
-\beamer@sectionintoc {7}{F. 礦石戰爭}{43}{0}{7}
-\beamer@sectionintoc {8}{G. Performance Analysis}{46}{0}{8}
+\beamer@sectionintoc {1}{Fun Fact}{3}{0}{1}
+\beamer@sectionintoc {2}{A. 彩虹遊行}{6}{0}{2}
+\beamer@sectionintoc {3}{B. 小雞過馬路}{9}{0}{3}
+\beamer@sectionintoc {4}{C. 一棵簡單的樹}{12}{0}{4}
+\beamer@sectionintoc {5}{D. Merge, Rebase, Squash!}{15}{0}{5}
+\beamer@sectionintoc {6}{E. 你可以幫我吹口哨嗎?}{41}{0}{6}
+\beamer@sectionintoc {7}{F. 礦石戰爭}{44}{0}{7}
+\beamer@sectionintoc {8}{G. Performance Analysis}{47}{0}{8}
