@@ -59,7 +59,7 @@ int main(int argc, char* argv[]) {
         const int to = inf.readInt(1, n, format("b[%d]", i + 1));
         ensuref(from != to, "road %d is a forbidden self-loop at %d", i + 1, from);
         inf.readSpace();
-        ensuref(!(se.count({from, to})));
+        ensure(!(se.count({from, to})));
         se.insert({from, to});
         inf.readInt(0, limits.cost, format("d[%d]", i + 1));
         inf.readEoln();
