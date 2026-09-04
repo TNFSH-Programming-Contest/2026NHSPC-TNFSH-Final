@@ -246,7 +246,7 @@ Squash 後的效果為：\
 此時目前內容為 $1$，可以正常套用。\
 因此總成本為 $0$。
 
-\hyperlink{LastPage}{點我跳過 Git 小教室}
+\hyperlink{statement-end-\problemLabel}{點我跳過 Git 小教室}
 
 \clearpage
 
