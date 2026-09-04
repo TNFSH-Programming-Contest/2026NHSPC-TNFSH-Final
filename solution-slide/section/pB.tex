@@ -2,7 +2,16 @@
 \section{B. 小雞過馬路}
 
 \begin{frame}{\btitle{題目敘述}}
-    TODO
+    數線上依序有 $n$ 個點
+
+    小雞從左出發到達右岸再回來
+
+    $n-2$ 個點有耐久，被踩光後就不能再走了
+
+    問最小的小雞最大移動距離範圍。
+
+    $3 \le n \le 10^5$
+    $1 \le m \le 10^5$
 \end{frame}
 
 \begin{frame}{\btitle{子任務}}
@@ -14,4 +23,20 @@
         \item{$3 \le n \le 2000$}
         \item{無額外限制}
     \end{enumerate}
+\end{frame}
+
+\begin{frame}{\btitle{無額外限制}}
+    首先關鍵觀察
+
+    \begin{property}
+        折返 $1 \to n \to 1$ 其實可以看成兩次 $1 \to n$
+    \end{property}
+
+    接著 Greedy
+
+    \begin{property}
+        每次肯定想要先讓落後的小雞盡可能的往前跳
+    \end{property}
+
+    所以做法就是 sliding window 掃過去 $O(n)$。
 \end{frame}

@@ -2,7 +2,13 @@
 \section{E. 你可以幫我吹口哨嗎?}
 
 \begin{frame}{\btitle{題目敘述}}
-    TODO
+    給你一個 $1 \sim n$ 的 permutation
+
+    每次可以挑些人出來互換
+
+    問最少幾次可以互換好，構造出來。
+
+    $1 \le n \le 10^5$
 \end{frame}
 
 \begin{frame}{\btitle{子任務}}
@@ -11,4 +17,14 @@
         \item{保證 $opt = 1$}
         \item{無額外限制}
     \end{enumerate}
+\end{frame}
+
+\begin{frame}{\btitle{無額外限制}}
+    把每個人想要到達的位置畫上一條邊
+
+    發現形成環你就燒雞了
+
+    所以遇到環就把其中一半挑出來先做交換
+
+    接著再重新檢查一次，直到排序好。
 \end{frame}

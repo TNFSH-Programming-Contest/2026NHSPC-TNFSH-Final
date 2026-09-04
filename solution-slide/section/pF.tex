@@ -2,7 +2,7 @@
 \section{F. 礦石戰爭}
 
 \begin{frame}{\btitle{題目敘述}}
-    TODO
+    題目很長。
 \end{frame}
 
 \begin{frame}{\btitle{子任務}}
@@ -14,4 +14,16 @@
         \item{不出現第 $2$ 類操作}
         \item{無額外限制}
     \end{enumerate}
+\end{frame}
+
+\begin{frame}{\btitle{無額外限制}}
+    兩個國家合併很像 DSU，所以我們用 DSU。
+
+    對於單點移動至其他聯通塊很麻煩，所以我們建虛點來處理。
+
+    地理位置可以先離散過，會比較好做。
+
+    對於操作三、四可以考慮用分塊做，複雜度是好的。
+
+    roll back 只是出出來噁心人的。
 \end{frame}

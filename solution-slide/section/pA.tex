@@ -2,14 +2,61 @@
 \section{A. 彩虹遊行}
 
 \begin{frame}{\btitle{題目敘述}}
-    TODO
+    給定一張 $n$ 點 $m$ 邊的簡單有向圖
+
+    在圖上構出一條 $1 \to n$ 的 path
+
+    其他沒在 path 上的點需要自己形成一個環。
+
+    問是否構的出來、最少邊權重總和是多少。
+
+    $2 \le n \le 2000$
+
+    $1 \le m \le min(10^4, n \times (n-1))$
 \end{frame}
 
 \begin{frame}{\btitle{子任務}}
     \begin{enumerate}
         \item{$2 \le n \le 8, 1 \le m \le \min(30, n \times (n-1)), 0 \le d_i \le 100$}
         \item{$2 \le n \le 18, 1 \le m \le \min(200, n \times (n-1)), 0 \le d_i \le 100$}
-        \item{$2 \le n \le 200, 1 \le m \le \min(1000, n \times (n-1)), 0 \le d_i \le 10^5$}
+        \item{$2 \le n \le 1000, 1 \le m \le \min(5000, n \times (n-1)), 0 \le d_i \le 1$}
+        \item{$2 \le n \le 200, 1 \le m \le \min(1000, n \times (n-1))$}
         \item{無額外限制}
     \end{enumerate}
+\end{frame}
+
+\begin{frame}{\btitle{$2 \le n \le 200, 1 \le m \le 1000$}}
+    先思考一個弱化版本的題目
+
+    \begin{problem}
+        給 $n$ 點 $m$ 邊的簡單有向圖
+
+        選一些邊出來，使得所有邊形成很多個環且覆蓋所有點。
+
+        求最小權重
+    \end{problem}\pause
+
+    發現就把點 $i$ 拆點，變成出點與入點
+
+    求二分圖最小權匹配。
+\end{frame}
+
+\begin{frame}{\btitle{$2 \le n \le 200, 1 \le m \le 1000$}}
+    把剛剛那張圖的 $1$ 入點、$n$ 出點拔掉
+
+    求二分圖最小權匹配就是解了。\pause
+
+    但 KM 只能在完全二分圖上跑欸? 我要怎麼讓他不要選到沒辦法選的邊?
+
+    KM 算法複雜度 $O(n^3)$，足夠過這個子任務。
+
+    做 spfa-MCMF 得到 $O(n^2 m)$ 的複雜度，也可以過。
+\end{frame}
+
+\begin{frame}{\btitle{$2 \le n \le 1000, 1 \le m \le 5000, 0 \le d_i \le 1$}}
+    二分圖匹配特例。
+\end{frame}
+
+\begin{frame}{\btitle{無額外條件}}
+    把 spfa-MCMF 改成 johnson MCMF 可以得到 $O(n m \log n)$ 的複雜度。
 \end{frame}

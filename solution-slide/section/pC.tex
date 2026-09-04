@@ -2,15 +2,23 @@
 \section{C. 一棵簡單的樹}
 
 \begin{frame}{\btitle{題目敘述}}
-    TODO
+    $n$ 點樹，$1$ 為根，上面有一些石頭。
+
+    輪流行動，每次選擇一個非空且不是根的節點，把石頭往上丟。
+
+    不能動的人是給。
 \end{frame}
 
 \begin{frame}{\btitle{子任務}}
     \begin{enumerate}
-        \item{$N \le 2$}
+        \item{$1 \le N \le 2$}
         \item{除了根節點外，每個節點的親代皆為節點 $1$}
         \item{對所有 $1 \le i < N$，第 $i$ 條邊連接節點 $i$ 與 $i+1$}
         \item{對所有 $1 \le i \le N$，$0 \le A_i \le 1$}
         \item{無額外限制}
     \end{enumerate}
+\end{frame}
+
+\begin{frame}{\btitle{無額外限制}}
+    發現只要把奇數深度的石頭數量 xor 起來就是整局遊戲的 SG value 了。
 \end{frame}
