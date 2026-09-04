@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <string>
+#include <set>
 
 using namespace std;
 
@@ -50,12 +51,16 @@ int main(int argc, char* argv[]) {
     const int m = inf.readInt(1, maximum_edges, "m");
     inf.readEoln();
 
+    set<pair<int, int> > se;
+
     for (int i = 0; i < m; ++i) {
         const int from = inf.readInt(1, n, format("a[%d]", i + 1));
         inf.readSpace();
         const int to = inf.readInt(1, n, format("b[%d]", i + 1));
         ensuref(from != to, "road %d is a forbidden self-loop at %d", i + 1, from);
         inf.readSpace();
+        ensuref(!(se.count({from, to})));
+        se.insert({from, to});
         inf.readInt(0, limits.cost, format("d[%d]", i + 1));
         inf.readEoln();
     }

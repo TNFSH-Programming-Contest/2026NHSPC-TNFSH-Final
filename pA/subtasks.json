@@ -30,7 +30,7 @@
         "km": {
             "index": 4,
             "score": 24,
-            "text": "$2 \\le n \\le 200, 1 \\le m \\le \\min(1000, n \\times (n-1)), 0 \\le d_i \\le 10^5$",
+            "text": "$2 \\le n \\le 200, 1 \\le m \\le \\min(1000, n \\times (n-1))$",
             "validators": ["validator.cpp km"]
         },
         "full": {
