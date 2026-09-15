@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2026.9.15)  15 SEP 2026 08:24
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2026.9.15)  15 SEP 2026 08:41
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1950,27 +1950,84 @@ Package xeCJK Warning: Unknown CJK family `\CJKttdefault' is being ignored.
 
 ] [55
 
-]
-! Undefined control sequence.
-\beamer@doifinframe ... 與 $1 - i$，這樣就會是 $i \arrow 
-                                                  -1 \arrow i + 1$。 \par 可以這...
-l.40 \end{frame}
-                
-? 
-! Emergency stop.
-\beamer@doifinframe ... 與 $1 - i$，這樣就會是 $i \arrow 
-                                                  -1 \arrow i + 1$。 \par 可以這...
-l.40 \end{frame}
-                
-End of file on the terminal!
+] [56
 
- 
+] [57
+
+]) (./section/pF.tex [58
+
+] [59
+
+] [60
+
+] [61
+
+])
+(./section/pG.tex [62
+
+] [63
+
+] [64
+
+] [65
+
+] [66
+
+] [67
+
+] [68
+
+] [69
+
+] [70
+
+] [71
+
+] [72
+
+]
+[73
+
+] [74
+
+] [75
+
+] [76
+
+] [77
+
+])
+\tf@nav=\write8
+\openout8 = `main.nav'.
+
+\tf@toc=\write9
+\openout9 = `main.toc'.
+
+\tf@snm=\write10
+\openout10 = `main.snm'.
+
+ (build/main.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2022/08/05>
+ ***********
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: 3EDA3E91845B5796C184D0D96E01A34A;704
+(rerunfilecheck)             After:  FA26D921AD71B9B5BF0DBE6C90573260;961.
+ ) 
 Here is how much of TeX's memory you used:
- 53573 strings out of 476839
- 1305897 string characters out of 5803422
+ 53718 strings out of 476839
+ 1309600 string characters out of 5803422
  1930627 words of memory out of 5000000
- 74457 multiletter control sequences out of 15000+600000
- 568246 words of font info for 103 fonts, out of 8000000 for 9000
+ 74591 multiletter control sequences out of 15000+600000
+ 568254 words of font info for 104 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 133i,14n,126p,734b,604s stack positions out of 10000i,1000n,20000p,200000b,200000s
-Output written on build/main.pdf (55 pages).
+ 133i,14n,126p,734b,789s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on build/main.pdf (77 pages).
