@@ -28,3 +28,19 @@
 
     接著再重新檢查一次，直到排序好。
 \end{frame}
+
+\begin{frame}{\btitle{無額外限制}}
+    交換的方式很多種，這邊提供一種作法。
+
+    在第一輪交換 $i$ 與 $-i$，在第二輪交換 $i$ 與 $1 - i$，這樣就會是 $i \arrow -1 \arrow i + 1$。
+
+    可以這樣交換是因為 $j \equiv -i (mod K),\ j \equiv 1 - i (mod K)$，$K$ 是環的長度。
+
+    這個作法不需要特別去判是不是二環。
+\end{frame}
+
+\begin{frame}{\btitle{無額外限制}}
+    可以證明最多只需要兩輪就能排序完成。
+
+    具體可以查 Any permutation is the product of two involutions，這邊不證明.
+\end{frame}
