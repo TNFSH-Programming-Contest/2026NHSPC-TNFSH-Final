@@ -22,7 +22,7 @@ tobiichi3227 是 TOJ 的維護者。TOJ 的程式碼由 $H$ 個互相獨立的 h
 
 王德宏想讓這項功能進到 TOJ 的 branch `v2.0`，於是請 tobiichi3227 進行審核。tobiichi3227 覺得 $N$ 個 commits 太多了，應該先用 squash 將它們整理成恰好 $K$ 個 squash commits，再依序 rebase 到 `v2.0`。
 
-不同的 squash 方式可能產生不同的 conflict 成本。然而，王德宏要去參加國際地理奧林匹亞（IGGO，全名 International GeoGuesser Olympiad），已經沒有時間處理了，於是把最小化 conflict 成本的任務交給正在看題目的你。
+不同的 squash 方式可能產生不同的 conflict 成本。然而，王德宏要去參加國際地理奧林匹亞（IGGO，全名 International GeoGuesser Olympiad），已經沒有時間處理了，於是把最小化 conflict 成本的任務交給正在看題目的您。
 
 不用擔心，下面會告訴您 branch rebase squash conflict 的定義。
 
@@ -32,11 +32,9 @@ tobiichi3227 是 TOJ 的維護者。TOJ 的程式碼由 $H$ 個互相獨立的 h
 
 ## Branch 與狀態
 
-`feat/fancy` 一開始的所有 hunk 內容皆為 $0$。令 $S_i[h]$ 表示執行完前 $i$ 次操作後，第 $h$ 個 hunk 的內容，因此：
+`feat/fancy` 一開始的所有 hunk 內容皆為 $0$。
 
-$$
-S_0[h]=0.
-$$
+令 $S_i[h]$ 表示執行完前 $i$ 次操作後，第 $h$ 個 hunk 的內容，因此 $S_0[h]=0$.
 
 第 $i$ 次操作會把第 $x_i$ 個 hunk 改成 $v_i$，也就是：
 
@@ -62,7 +60,7 @@ $$
 
 ## Squash
 
-你需要將這 $N$ 次操作依序切分成恰好 $K$ 個連續的區間（即 $K$ 個 squash commits）。
+您需要將這 $N$ 次操作依序切分成恰好 $K$ 個連續的區間（即 $K$ 個 squash commits）。
 
 假設其中一個區間包含了第 $L$ 到第 $R$ 次操作（$1\le L\le R\le N$），該區間對第 $h$ 個 hunk 的實質修改定義為：
 
@@ -71,13 +69,14 @@ $$
 
 若 $\text{old}=\text{new}$，則視為該區間對第 $h$ 個 hunk 沒有進行修改。
 
-等價地，可以選擇：
 
-$$
-0=p_0<p_1<\cdots<p_K=N,
-$$
-
-其中第 $g$ 個區間為 $[p_{g-1}+1,p_g]$。
+<!-- 等價地，可以選擇： -->
+<!---->
+<!-- $$ -->
+<!-- 0=p_0<p_1<\cdots<p_K=N, -->
+<!-- $$ -->
+<!---->
+<!-- 其中第 $g$ 個區間為 $[p_{g-1}+1,p_g]$。 -->
 
 \begin{figure}[h]
 \centering
@@ -91,11 +90,9 @@ $$
 
 ## Rebase
 
-這 $K$ 個區間會按照原本順序逐一套用。令 $\text{current}[h]$ 表示 `v2.0` 上第 $h$ 個 hunk 目前的內容；一開始：
+這 $K$ 個區間會按照原本順序逐一套用。
 
-$$
-\text{current}[h]=U_h.
-$$
+令 $\text{current}[h]$ 表示 `v2.0` 上第 $h$ 個 hunk 目前的內容，一開始$\text{current}[h]=U_h$
 
 處理一個區間時，會分別考慮每個 hunk 的 $\text{old}$、$\text{new}$ 與 $\text{current}[h]$。
 
@@ -113,23 +110,11 @@ $$
 
 若 $\text{old}=\text{new}$，該 hunk 沒有被區間修改，$\text{current}[h]$ 不變。
 
-否則，當且僅當：
+否則，只有當 $\text{current}[h] \ne \text{old}$ 且 $\text{current}[h] \ne \text{new}$ 時才會發生 conflict，並產生 $w_h$ 的成本。
 
-$$
-\text{current}[h]\ne\text{old}
-\quad\text{且}\quad
-\text{current}[h]\ne\text{new}
-$$
+不論是否發生 conflict，處理完這項實質修改後皆令 $\text{current}[h]\leftarrow\text{new}$。
 
-時會發生 conflict，並產生 $w_h$ 的成本。
-
-不論是否發生 conflict，處理完這項實質修改後皆令：
-
-$$
-\text{current}[h]\leftarrow\text{new}.
-$$
-
-每個區間、每個 hunk 的 conflict 成本分別計算；你的目標是選擇 $K$ 個區間，使總成本最小。
+每個區間、每個 hunk 的 conflict 成本分別計算。
 
 \begin{figure}[h]
 \centering
@@ -144,18 +129,15 @@ $$
 ## 輸入
 第一行包含三個整數 $N,\ H,\ K$，分別表示：
 
-- `feat/fancy` branch 上的 commit 數量；
-- hunk 的數量；
-- 需要切分出的連續區間數量。
+- `feat/fancy` branch 上的 commit 數量
+- hunk 的數量
+- 需要切分出的連續區間數量
 
-第二行包含 $H$ 個整數 $U_h\ (1\le h \le H)$\
-其中 $U_h$ 表示 `v2.0` branch 上第 $h$ 個 hunk 的最終內容。
+第二行包含 $H$ 個整數 $U_h\ (1\le h \le H)$，表示 `v2.0` branch 上第 $h$ 個 hunk 的最終內容。
 
-第三行包含 $H$ 個整數 $w_h\ ( 1 \le h \le H)$\
-其中 $w_h$ 表示解決第 $h$ 個 hunk 的 conflict 所需的成本。\
+第三行包含 $H$ 個整數 $w_h\ ( 1 \le h \le H)$，表示解決第 $h$ 個 hunk 的 conflict 所需的成本。
 
-接下來 $N$ 行，第 $i\ (1 \le i \le N)$ 行包含兩個整數 $x_i$ 與 $v_i$\
-表示第 $i$ 個 commit 將第 $x_i$ 個 hunk 的內容改成 $v_i$。\
+接下來 $N$ 行，第 $i\ (1 \le i \le N)$ 行包含兩個整數 $x_i$ 與 $v_i$，表示第 $i$ 個 commit 將第 $x_i$ 個 hunk 的內容改成 $v_i$。
 
 ## 輸出
 輸出一個整數，表示最小的 conflict 解決總成本。
@@ -168,7 +150,7 @@ $$
 - $1\le x_i\le H$
 - $1\le v_i\le 10^9$
 - 對於每個 commit $i$：$v_i\ne S_{i-1}[x_i]$
-- 保證每個 commit 都會實際改變該 hunk 的內容，且 `feat/fancy` branch 不會將任何 hunk 改回 $0$。
+- 保證每個 commit 都會實際改變該 hunk 的內容，且不會將任何 hunk 改回 $0$。
 
 \clearpage
 
@@ -182,32 +164,14 @@ $$
 \testfile{0-01.out}
 
 ## 範例說明
-`feat/fancy` branch 上兩個 hunk 的狀態依序如下：
-```text
-commit 0：  (0, 0)
-commit 1：  (1, 0)
-commit 2：  (1, 2)
-commit 3：  (2, 2)
-commit 4：  (2, 4)
-commit 5：  (3, 4)
-```
-可以將 commits 分成：
-```text
-[1] [2, 3, 4, 5]
-```
-第一個 squash commit 將 hunk 1：
-```text
-0 -> 1
-```
-套用到 `v2.0` branch 時，hunk 1 的目前內容已經是 $1$，因此不會發生 conflict。\
-第二個 squash commit 的效果為：\
-```text
-hunk 1：1 -> 3
-hunk 2：0 -> 4
-```
-此時 hunk 1 的目前內容為 $1$，可以正常套用。\
-hunk 2 的目前內容已經是 $4$，因此也不會發生 conflict。\
-總成本為 $0$。
+`feat/fancy` branch 上兩個 hunk 的狀態依序如下：\
+$(0,\ 0) \to (1,\ 0) \to (1,\ 2) \to (2,\ 2) \to (2,\ 4) \to (3,\ 4)$
+
+可以將 commits 分成 $(1),\ (2,\ 3,\ 4,\ 5)$。
+
+第一個 squash commit 將 $h_1$ 從 $0$ 改成 $1$，套用到 `v2.0` branch 時，$h_1$ 的目前內容已經是 $1$，因此不會發生 conflict。
+
+第二個 squash commit 的將 $h_1$ 從 $1$ 改成 $3$，將 $h_2$ 從 $0$ 改成 $4$， 此時 $h_1$ 的目前內容為 $1$，可以正常套用，$h_2$ 的目前內容已經是 $4$，因此也不會發生 conflict， 總成本為 $0$。
 
 \clearpage
 
@@ -218,13 +182,9 @@ hunk 2 的目前內容已經是 $4$，因此也不會發生 conflict。\
 \testfile{0-02.out}
 
 ## 範例說明
-因為 $K=1$，兩個 commits 必須全部 squash 在一起。\
-Squash 後的效果為：\
-```text
-0 -> 2
-```
-但 `v2.0` branch 上該 hunk 的內容為 $1$。\
-目前內容既不是 patch 的舊內容 $0$，也不是新內容 $2$，因此發生 conflict，成本為 $7$。
+因為 $K=1$，兩個 commits 必須全部 squash 在一起，squash 後的效果為將 $0$ 改成 $2$。
+
+但 `v2.0` branch 上該 hunk 的內容為 $1$， 目前內容既不是 patch 的舊內容 $0$，也不是新內容 $2$，因此發生 conflict，總成本為 $7$。
 
 ## 範例輸入
 \testfile{0-03.in}
@@ -234,16 +194,9 @@ Squash 後的效果為：\
 
 ## 範例說明
 因為 $K=2$，兩個 commits 分別套用。\
-第一個 commit 的效果為：
-```text
-0 -> 1
-```
+第一個 commit 將 $0$ 改成 $1$
 而 `v2.0` branch 上目前的內容已經是 $1$，因此不會發生 conflict。\
-第二個 commit 的效果為：
-```text
-1 -> 2
-```
-此時目前內容為 $1$，可以正常套用。\
+第二個 commit 將 $1$ 改成 $2$， 此時目前內容為 $1$，可以正常套用。\
 因此總成本為 $0$。
 
 \clearpage
@@ -266,7 +219,7 @@ Squash 後的效果為：\
 - **staging area**：下一個 commit 要收進去的內容。
 - **commit**：某個時間點的檔案狀態，以及它的前一個 commit。
 - **branch**：指向某個 commit 的名稱。建立新 commit 後，branch 會跟著往前走，例如 `v2.0`、`feat/fancy`。
-- **HEAD**：你現在所在的位置，通常是某個 branch。
+- **HEAD**：您現在所在的位置，通常是某個 branch。
 - **remote**：另一個 repository 的名稱。它可以在網路上，也可以只是本機的一個路徑。
 
 平常用到的命令大概是這些：
@@ -551,7 +504,7 @@ git rebase --continue
 ```
 
 
-這裡的 git add 不只是「準備 commit」，也代表你已經告訴 Git：這個 conflict 處理好了。
+這裡的 git add 不只是「準備 commit」，也代表您已經告訴 Git：這個 conflict 處理好了。
 
 如果 `git rebase --continue` 開啟 commit message 編輯器，確認後儲存並關閉即可。
 
@@ -602,7 +555,7 @@ git push --force-with-lease origin feat/fancy
 
 `--force-with-lease` 和單純的 `--force` 不太一樣。
 
-它會先確認 remote branch 還是你預期的狀態。如果有人在這段時間更新過 remote，push 就會被拒絕，而不是直接把對方的 commits 蓋掉。
+它會先確認 remote branch 還是您預期的狀態。如果有人在這段時間更新過 remote，push 就會被拒絕，而不是直接把對方的 commits 蓋掉。
 
 不過這仍然是在改寫 remote 歷史。多人共用的 branch 在這麼做之前，還是要先確認其他人沒有正在使用它。
 
