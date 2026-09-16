@@ -9,7 +9,6 @@
 		"verdict": "incorrect",
 		"except": {
 			"k1": "correct",
-			"kn": "correct",
 			"hunkonce": "correct"
 		}
 	},
@@ -18,7 +17,6 @@
 		"except": {
 			"samples": "correct",
 			"k1": "correct",
-			"kn": "correct",
 			"hunkonce": "correct"
 		}
 	},
@@ -27,7 +25,6 @@
 		"except": {
 			"samples": "correct",
 			"k1": "correct",
-			"kn": "correct",
 			"hunkonce": "correct"
 		}
 	},
@@ -36,7 +33,6 @@
 		"except": {
 			"samples": "correct",
 			"k1": "correct",
-			"kn": "correct",
 			"hunkonce": "correct"
 		}
 	},
@@ -51,7 +47,6 @@
 		"except": {
 			"samples": "correct",
 			"k1": "correct",
-			"kn": "correct",
 			"hunkonce": "correct"
 		}
 	},
@@ -65,21 +60,13 @@
 		"verdict": "time_limit",
 		"except": {
 			"samples": "correct",
-			"nh15": "correct",
-			"kn": "correct"
+			"nh15": "correct"
 		}
 	},
 	"k1.cpp": {
 		"verdict": "incorrect",
 		"except": {
 			"k1": "correct",
-			"hunkonce": "correct"
-		}
-	},
-	"kn.cpp": {
-		"verdict": "incorrect",
-		"except": {
-			"kn": "correct",
 			"hunkonce": "correct"
 		}
 	},
@@ -94,7 +81,6 @@
 		"except": {
 			"samples": "correct",
 			"nh15": "correct",
-			"kn": "correct",
 			"n1000": "correct"
 		}
 	},
@@ -103,7 +89,6 @@
 		"except": {
 			"samples": "correct",
 			"k1": "correct",
-			"kn": "correct",
 			"hunkonce": "correct"
 		}
 	},
@@ -116,7 +101,6 @@
 			"samples": "correct",
 			"nh15": "correct",
 			"k1": "correct",
-			"kn": "correct",
 			"hunkonce": "correct"
 		}
 	}

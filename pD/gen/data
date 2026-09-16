@@ -32,14 +32,6 @@ structured late-first  200000 100000 1 100000 late-firsts
 structured overflow    200000 200000 1 200000 int-overflow
 gen random                   1 200000 1      1 huge-h
 
-@subtask kn
-gen random       30 200000 30 30 huge-h
-gen toggle       30      1 30  1 one-hunk
-gen cycle        30      7 30  7 repeated
-structured late-first 30 30 30 30 late-firsts
-structured overflow   30 30 30 30 int-overflow
-gen random        1 200000  1  1 singleton
-
 @subtask hunkonce
 structured once              1 200000  1      1 singleton
 structured once           1000 200000 30   1000 sparse
@@ -59,7 +51,7 @@ structured overflow    1000 1000 23 1000 int-overflow
 structured annealing   1000    4  2    4 annealing-wide-barrier
 
 @subtask full
-@include samples nh15 k1 kn hunkonce n1000
+@include samples nh15 k1 hunkonce n1000
 gen random      200000 200000 30 200000 dense
 gen random      200000 200000  2    101 sparse
 gen toggle      200000      1 30      1 one-hunk

@@ -26,18 +26,9 @@
                 "k-limit-validator.cpp 200000 200000 1"
             ]
         },
-        "kn": {
-            "index": 3,
-            "score": 9,
-            "text": "$K = N$",
-            "validators": [
-                "base-validator.cpp 200000 200000",
-                "k-limit-validator.cpp 200000 200000 -1"
-            ]
-        },
         "hunkonce": {
-            "index": 4,
-            "score": 19,
+            "index": 3,
+            "score": 28,
             "text": "每個 hunk 最多只被修改一次",
             "validators": [
                 "base-validator.cpp 200000 200000",
@@ -45,7 +36,7 @@
             ]
         },
         "n1000": {
-            "index": 5,
+            "index": 4,
             "score": 13,
             "text": "$N \\le 1000$",
             "validators": [
@@ -53,7 +44,7 @@
             ]
         },
         "full": {
-            "index": 6,
+            "index": 5,
             "score": 49,
             "text": "無限制",
             "validators": []
