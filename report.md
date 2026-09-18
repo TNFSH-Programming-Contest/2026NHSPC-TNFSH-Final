@@ -14,7 +14,7 @@
 | name |  [:white_check_mark:](pA/problem.json)<br>Rainbow_Parade | [:white_check_mark:](pB/problem.json)<br>Chicks_Go | [:white_check_mark:](pC/problem.json)<br>Simple_Tree | [:white_check_mark:](pD/problem.json)<br>Git | [:white_check_mark:](pE/problem.json)<br>Can_You_Blow_My_Whistle | [:white_check_mark:](pF/problem.json)<br>Redstone_NOOOOO | [:white_check_mark:](pG/problem.json)<br>Compiler |
 | title |  [:white_check_mark:](pA/problem.json)<br>彩虹遊行 | [:white_check_mark:](pB/problem.json)<br>小雞過馬路 | [:white_check_mark:](pC/problem.json)<br>一棵簡單的樹 | [:white_check_mark:](pD/problem.json)<br>Merge, Rebase, Squash! | [:white_check_mark:](pE/problem.json)<br>你可以幫我吹口哨嗎? | [:white_check_mark:](pF/problem.json)<br>礦石戰爭 | [:white_check_mark:](pG/problem.json)<br>Performance Analysis |
 | memory_limit |  512 | 512 | 512 | 512 | 512 | 512 | 512 |
-| time_limit |  2.0 | 1.0 | 1.0 | 3.5 | 1.0 | 1.0 | 1.0 |
+| time_limit |  2.0 | 1.0 | 1.0 | 5 | 1.0 | 1.0 | 1.0 |
 | has_checker |  False | False | False | False | False | False | False |
 | gen | [:x:](pA/gen)<br>[jngen.h](pA/gen/jngen.h) | [:white_check_mark:](pB/gen) | [:white_check_mark:](pC/gen) | [:white_check_mark:](pD/gen) | [:white_check_mark:](pE/gen) | [:white_check_mark:](pF/gen) | [:x:](pG/gen)<br>[jngen.h](pG/gen/jngen.h) |
 | solution | [:white_check_mark:](pA/solution) | [:white_check_mark:](pB/solution) | [:white_check_mark:](pC/solution) | [:white_check_mark:](pD/solution) | [:white_check_mark:](pE/solution) | [:white_check_mark:](pF/solution) | [:white_check_mark:](pG/solution) |
