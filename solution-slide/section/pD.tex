@@ -3,90 +3,24 @@
 
 \begin{frame}{\btitle{題目敘述}}
     \begin{itemize}
-        \item \texttt{v2.0} 上有 $H$ 個 hunk；第 $h$ 個內容是 $U_h$，解 conflict 的成本是 $w_h$。
-        \item \texttt{feat/fancy} 有 $N$ 個 commits；第 $i$ 個把 hunk $x_i$ 改成 $v_i$。
-        \item 在相鄰 commits 間放 $K-1$ 個切點，得到恰好 $K$ 個 squash commits，再依序 rebase。
+        \item{有 $H$ 個變數，初始值皆為 $0$，給定 $N$ 次依序的修改，每次將某個變數改成指定的值}
+        \item{給定另一組初始值 $U_h$ 與每個變數的衝突成本 $w_h$，將這 $N$ 次修改切成 $K$ 個連續區間，每個區間只保留各變數在區間前後的變化，並依序套用這 $K$ 組變化}
+        \item{若套用某個變化 $a \rightarrow b$ 時目前值既不是 $a$ 也不是 $b$，則付出該變數的 $w_h$，套用後目前值變成 $b$，求最小總成本}
     \end{itemize}
+
+    $N,\ H \le 2 \times 10^5,\ K \le 30$
 \end{frame}
+
 
 \begin{frame}{\btitle{子任務}}
     \begin{enumerate}
         \item{$N,\ H\le 15$}
         \item{$K = 1$}
-        \item{$K = N$}
+        % \item{$K = N$}
         \item{每個 hunk 最多修改一次}
         \item{$N \le 1000$}
         \item{無額外限制}
     \end{enumerate}
-\end{frame}
-
-\begin{frame}{\btitle{Conflict}}
-    一個 patch $\text{old}\to\text{new}$ 遇到目前內容 $\text{current}$ 時：
-    \[
-        \text{conflict}
-        \iff
-        \text{current}\notin\{\text{old},\text{new}\}.
-    \]
-
-    目標：選擇切點，使 conflict 的總成本最小。
-\end{frame}
-
-\begin{frame}{\btitle{記號}}
-    \begin{itemize}
-        \item $S_i[h]$：執行完前 $i$ 個 commits 後，\texttt{feat/fancy} 上 hunk $h$ 的內容。
-        \item $f_h$：hunk $h$ 第一次被修改的 commit；若從未修改則不存在。
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{\btitle{Squash 後的 patch}}
-    區間 $(j,i]$ squash 後，hunk $h$ 的 patch 是
-    \[
-        S_j[h]\longrightarrow S_i[h].
-    \]
-
-    題目保證 hunk 不會被改回 $0$，所以包含 $f_h$ 的 squash commit 一定真的會修改 $h$。
-\end{frame}
-
-\begin{frame}{\btitle{第一次修改}}
-    考慮包含 $f_h$ 的第一個 squash commit，假設其右端點為 $i$：
-    \[
-        0\longrightarrow S_i[h].
-    \]
-
-    此時 \texttt{v2.0} 的內容仍是 $U_h$。又因 $U_h\neq 0$，所以
-    \[
-        h\text{ 發生 conflict}
-        \iff S_i[h]\neq U_h.
-    \]
-\end{frame}
-
-\begin{frame}{\btitle{不會再次 conflict}}
-    解完後目前內容變成 $S_i[h]$。之後每個 squash commit 的
-    \texttt{old} 都等於目前內容，因此不可能再次 conflict。
-
-    上面很抽象，可以感性理解一下，顯然你 Merge 時只要在某個 commit 解決衝突後，後面的 commit 就不可能衝突了。
-
-    因為後面都是你自己的 commit，你不會 commit 會衝突的東西上去，這樣要怎麼 commit 成功。
-
-    \begin{alertblock}{結論}
-        hunk $h$ 的成本，只由「包含第一次修改 $f_h$ 的那一段」決定。
-    \end{alertblock}
-\end{frame}
-
-\begin{frame}{\btitle{一段 squash commit 的成本}}
-    定義 $C(j+1,i)$ 為把 commits $j+1,\ldots,i$ squash 成一段時，
-    這一段新產生的 conflict 成本。
-
-    它只需要計算第一次修改落在這段內的 hunks：
-    \[
-        \boxed{
-        C(j+1,i)=
-        \sum_{\substack{h:\;j<f_h\le i\\S_i[h]\neq U_h}} w_h
-        }
-    \]
-
-    因為每個 hunk 只會在包含 $f_h$ 的那段被計算一次，
-    所以所有段的 $C$ 相加，恰好就是整次 rebase 的總成本。
 \end{frame}
 
 \begin{frame}{\btitle{$N,\ H \le 15$}}
@@ -97,42 +31,85 @@
 
     對每種分法直接模擬：
     \begin{enumerate}
-        \item 預先算出每個 commit 後的狀態 $S_i$。
-        \item 對每段 squash commit 產生 patch。
-        \item 按題目的規則 rebase，累加 conflict 成本。
+        \item 預先算出每個 commit 後的狀態 $S_i$
+        \item 對每段 squash commit 產生 patch
+        \item 按題目的規則 rebase，累加 conflict 成本
     \end{enumerate}
 
     時間複雜度
     \[
-        O\!\left(\binom{N-1}{K-1}(N+KH)\right),
+        O\!\left(\binom{N-1}{K-1}(N+KH)\right)
     \]
-    在 $N,\ H\le 15$ 時足夠。
 \end{frame}
 
 \begin{frame}{\btitle{$K = 1$}}
-    全部 squash 成 $(0,N]$，答案為
-    \[
-        \sum_{h:\;f_h\text{ 存在},\ S_N[h]\neq U_h}w_h
-    \]
+    合併成一個 squash commit，直接檢查跟 $U_h$ 有沒有衝突
 
-    複雜度 $O(N+H)$。
+    複雜度 $O(N+H)$
 \end{frame}
 
-\begin{frame}{\btitle{$K = N$}}
-    每個 commit 單獨套用，只有第一次修改可能 conflict。答案為
-    \[
-        \sum_{h:\;f_h\text{ 存在},\ v_{f_h}\neq U_h}w_h.
-    \]
-
-    複雜度 $O(N+H)$。
-\end{frame}
-
+% \begin{frame}{\btitle{每個 hunk 最多修改一次}}
+%     不論怎麼切，包含那次修改的區間終點值都相同；答案同樣是
+%     $\sum_{h:\;f_h\text{ 存在},\ v_{f_h}\neq U_h}w_h$$
+%
+%     複雜度 $O(N+H)$
+% \end{frame}
 
 \begin{frame}{\btitle{每個 hunk 最多修改一次}}
-    不論怎麼切，包含那次修改的區間終點值都相同；答案同樣是
-    $\sum_{h:\;f_h\text{ 存在},\ v_{f_h}\neq U_h}w_h$。
+    不論怎麼切，hunk 都只會被改一次，所以可以當成 $K=1$ 的子任務
 
-    複雜度 $O(N+H)$。
+    合併成一個 squash commit，直接檢查跟 $U_h$ 有沒有衝突
+
+    複雜度 $O(N+H)$
+\end{frame}
+
+\begin{frame}{\btitle{記號}}
+    \begin{itemize}
+        \item $S_i[h]$：執行完前 $i$ 個 commits 後，\texttt{feat/fancy} 上 hunk $h$ 的內容
+        \item $f_h$：hunk $h$ 第一次被修改的 commit，若尚未修改則不存在
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\btitle{第一次修改}}
+    考慮包含 $f_h$ 的第一個 squash commit，假設其右端點為 $i$：
+    \[
+        0\longrightarrow S_i[h].
+    \]
+
+    此時 \texttt{v2.0} 的內容仍是 $U_h$又因 $U_h\neq 0$，所以
+    \[
+        h\text{ 發生 conflict}
+        \iff S_i[h]\neq U_h.
+    \]
+\end{frame}
+
+\begin{frame}{\btitle{不會再次 conflict}}
+    解完後目前內容變成 $S_i[h]$，之後每個 squash commit 的
+    \texttt{old} 都等於目前內容，因此不可能再次 conflict
+
+    上面有點抽象，可以感性理解一下，顯然你 Merge 時只要在某個 commit 解決衝突後，後面的 commit 就不可能衝突了
+
+    因為後面都是你自己的 commit，你不會 commit 會衝突的修改上去，這樣要怎麼 commit 成功
+
+    \begin{alertblock}{結論}
+        hunk $h$ 的成本，只由「包含第一次修改 $f_h$ 的那一段」決定
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{\btitle{一段 squash commit 的成本}}
+    定義 $C(j+1,i)$ 為把 commits $j+1,\ldots,i$ squash 成一段時，
+    這一段新產生的 conflict 成本
+
+    它只需要計算第一次修改落在這段內的 hunks：
+    \[
+        \boxed{
+        C(j+1,i)=
+        \sum_{\substack{h:\;j<f_h\le i\\S_i[h]\neq U_h}} w_h
+        }
+    \]
+
+    因為每個 hunk 只會在包含 $f_h$ 的那段被計算一次，
+    所以將所有段的 $C$ 相加，就會是整次 rebase 的總成本
 \end{frame}
 
 \begin{frame}{\btitle{$N \le 1000$}}
@@ -153,10 +130,10 @@
     \[
         dp[k][i]
         =\min_{k-1\le j<i}
-        \bigl(dp[k-1][j]+C(j+1,i)\bigr).
+        \bigl\{dp[k-1][j]+C(j+1,i)\bigr\}.
     \]
 
-    最終答案是 $dp[K][N]$。
+    最終答案是 $dp[K][N]$
 \end{frame}
 
 \begin{frame}{\btitle{$N \le 1000$}}
@@ -166,7 +143,7 @@
         B_i[t]=\sum_{h:\;f_h=t,\ S_i[h]\neq U_h}w_h.
     \]
 
-    每前進一個 commit，只會改變一個 hunk 所在桶子的值。
+    每前進一個 commit，只會改變一個 hunk 所在桶子的值
 \end{frame}
 
 \begin{frame}{\btitle{$N \le 1000$}}
@@ -175,7 +152,7 @@
         C(l,i)=\sum_{t=l}^{i} B_i[t].
     \]
 
-    再對 $B_i$ 做一次後綴和，就能在 $O(N)$ 算出所有 $C(l,i)$。
+    再對 $B_i$ 做一次後綴和，就能在 $O(N)$ 算出所有 $C(l,i)$
 
     \begin{itemize}
         \item 預處理：$O(N^2+H)$
@@ -193,23 +170,23 @@
 
     則
     \[
-        dp[k][i]=\min_{k-1\le j<i}A_i[j].
+        dp[k][i]=\min_{k-1\le j<i}{\{A_i[j]\}}.
     \]
 \end{frame}
 
 \begin{frame}{\btitle{無額外限制}}
-    從左到右掃描右端點 $i$。我們需要維護所有切點 $j$ 的 $A_i[j]$，
+    從左到右掃描右端點 $i$我們需要維護所有切點 $j$ 的 $A_i[j]$，
     並支援：
     \begin{itemize}
-        \item 一段切點同時加上相同成本；
-        \item 查詢合法切點 $[k-1,i-1]$ 的最小值。
+        \item 一段切點同時加上相同成本
+        \item 查詢合法切點 $[k-1,\ i-1]$ 的最小值
     \end{itemize}
 
-    這可以用線段樹維護。
+    這可以用線段樹維護
 \end{frame}
 
 \begin{frame}{\btitle{無額外限制}}
-    commit $i$ 修改 hunk $h$，令 $f=f_h$。
+    commit $i$ 修改 hunk $h$，令 $f=f_h$
 
     hunk $h$ 會被 $C(j+1,i)$ 計入的必要條件是
     \[
@@ -217,13 +194,13 @@
     \]
 
     因此因 $S_i[h]\neq U_h$ 造成改變時，
-    它只會同時影響$j=0,1,\ldots,f-1$，這恰好是一段前綴。
+    它只會同時影響$j=0,1,\ldots,f-1$，這恰好是一段前綴
 
     預先替每個 commit 算出
     \[
         right[i]=f_h-1,\qquad delta[i]=\text{成本變化},
     \]
-    掃到 $i$ 時對 $[0,right[i]]$ 加上 $delta[i]$。
+    掃到 $i$ 時對 $[0,right[i]]$ 加上 $delta[i]$
 \end{frame}
 
 \begin{frame}{\btitle{無額外限制}}
@@ -254,15 +231,15 @@
         \end{cases}
     \]
 
-    也就是只追蹤「目前內容是否不等於 $U_h$」的狀態變化。
+    也就是只追蹤「目前內容是否不等於 $U_h$」的狀態變化
 \end{frame}
 
 \begin{frame}{\btitle{無額外限制}}
     對 $k=1,2,\ldots,K$：
     \begin{enumerate}
-        \item 用 $prev[0],\ldots,prev[N-1]$ 建立線段樹。
-        \item 依序掃描 $i=1,2,\ldots,N$。
-        \item 對 $[0,right[i]]$ 加上 $delta[i]$。
+        \item 用 $prev[0],\ldots,prev[N-1]$ 建立線段樹
+        \item 依序掃描 $i=1,2,\ldots,N$
+        \item 對 $[0,right[i]]$ 加上 $delta[i]$
     \end{enumerate}
 \end{frame}
 
@@ -274,10 +251,10 @@
             cur[i]=\min_{k-1\le j<i}A_i[j]
                   =\operatorname{rangeMin}(k-1,i-1).
         \]
-        \item 掃完後交換 $prev$ 與 $cur$。
+        \item 掃完後交換 $prev$ 與 $cur$
     \end{enumerate}
 
-    初始只有 $prev[0]=0$，其餘皆為 $+\infty$；答案是 $prev[N]$。
+    初始只有 $prev[0]=0$，其餘皆為 $+\infty$，答案是 $prev[N]$
 \end{frame}
 
 \begin{frame}{\btitle{無額外限制}}
@@ -289,13 +266,11 @@
     \end{block}
 
     每個 hunk 對 $C(j+1,i)$ 的貢獻，只在它的狀態跨過 $U_h$ 時改變，
-    且只影響 $j<f_h$；因此 prefix range add 完整維護了不變量。
+    且只影響 $j<f_h$；因此 prefix range add 完整維護了不變量
 
-    查詢 $[k-1,i-1]$ 就恰好枚舉所有合法的最後切點。
+    查詢 $[k-1,i-1]$ 就恰好枚舉所有合法的最後切點
 \end{frame}
 
 \begin{frame}{\btitle{無額外限制}}
-    時間複雜度 $O(H+KN\log_2 N)$，空間複雜度 $O(H+N)$。
-
-    成本總和最大可達 $2\times10^{14}$，要用 long long。
+    時間複雜度 $O(H+KN\log_2 N)$，空間複雜度 $O(H+N)$
 \end{frame}
