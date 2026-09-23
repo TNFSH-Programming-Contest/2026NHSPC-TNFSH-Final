@@ -92,6 +92,393 @@ $1 \to 2 \to 4$ 或 $1 \to 3 \to 4$ \
 
 ## 編譯器小教室：從 C Code 到 CFG
 
+C 的 if、while、for 很適合人看，但對編譯器來說，這些語法還是太有結構了。做最佳化時，通常會先把它們拆成幾種比較單純的控制流操作：
+
+goto L
+if condition goto L_true else goto L_false
+return value
+
+
+把原本的結構化控制流拆成 label 和 jump，通常叫做 lowering。
+
+下面使用的 goto-style 是教學用的 pseudo IR。它和 LLVM IR 一樣，會用 label 和明確的 branch 表示控制流，但它不是合法的 LLVM IR。真正的 LLVM IR 還有型別、SSA、phi 等規則，而且 terminator 使用的是 br、ret、switch 等指令。
+
+兩者可以先這樣理解：
+
+goto L
+    <=> br label %L
+
+if c goto T else goto F
+    <=> br i1 %c, label %T, label %F
+
+return x
+    <=> ret i32 %x
+
+
+把大括號裡的 if、迴圈等結構拆成 label 和 goto，概念上就是 TOJ 756
+ 在做的事情。
+
+考場沒有網路也沒關係，下面的內容不需要依賴那個連結；它只是方便課後繼續看。
+
+Basic Block（BB）
+
+Basic block 是一段最大且連續的指令序列。它有幾個基本條件：
+
+控制流只能從 block 的第一條指令進入，不能跳到中間。
+block 執行到最後之前，不會跳到其他地方。
+一旦進入 block，就會依序執行裡面的指令，直到遇到 terminator。
+
+在 LLVM-like IR 中，每個 BB 從 label 開始，最後以一條 terminator 結束。terminator 會決定下一個 BB，或者直接結束函式。
+
+如果現在手上只有一串 goto-style 指令，可以先找 leaders：
+
+函式的第一條指令是 leader。
+每個 jump 的目標 label 是 leader。
+if、goto、return 後面如果還有指令，那條下一條指令也是 leader。
+
+找到 leaders 之後，從一個 leader 開始，一直到下一個 leader 前的指令，都屬於同一個 BB。
+
+實作時通常還會再處理 unreachable blocks，並視情況合併不必要的空 block。
+
+從 BB 建立 CFG
+
+CFG 的每個節點就是一個 BB。
+
+如果執行完 $BB_u$ 後，下一步可能執行 $BB_v$，就在圖上加一條有向邊 $u\to v$。
+
+goto BB2：加入一條邊到 $BB_2$。
+if c goto BB2 else BB3：加入 $BB_2$ 和 $BB_3$ 兩條邊。
+return：沒有函式內的 successor。
+如果 IR 允許 fall-through，就把邊接到文字順序的下一個 BB。
+
+本文會把 jump 都直接寫出來，所以不考慮隱藏的 fall-through。
+
+也就是說，前面兩個步驟可以分開看：label 決定 BB 怎麼切，terminator 決定 CFG 的邊。
+
+\clearpage
+
+常見 C 控制結構如何 Lower？
+
+下面先把 C 程式改成 goto-style，再從 terminator 直接看 CFG。
+
+1. 直線程式
+x = a + b;
+y = x * 2;
+return y;
+
+
+沒有 branch，所以整段就是一個 BB：
+
+BB1:
+    x = a + b
+    y = x * 2
+    return y
+
+
+return 是 terminator。執行到這裡函式就結束了，因此後面不能再接其他可執行指令。
+
+2. if / else
+if (x < 0)
+    y = -x;
+else
+    y = x;
+use(y);
+
+
+Lowering 後可以寫成：
+
+BB1: if x < 0 goto BB2 else goto BB3
+BB2: y = -x; goto BB4
+BB3: y = x;  goto BB4
+BB4: use(y); ...
+
+
+所以 CFG 有 $1\to2$、$1\to3$、$2\to4$、$3\to4$。
+
+$BB_4$ 是兩條分支重新接上的地方，也就是 join point。
+
+如果原始程式只有 if 沒有 else，false edge 就可以直接接到後面的 join point。
+
+3. while
+while (x > 0) {
+    sum += x;
+    --x;
+}
+use(sum);
+
+
+可以拆成：
+
+BB1:
+    goto BB2
+
+BB2:
+    if x > 0 goto BB3 else goto BB4
+
+BB3:
+    sum += x
+    --x
+    goto BB2
+
+BB4:
+    use(sum)
+    ...
+
+
+$BB_2$ 是 loop header。每次進入下一輪之前，都會在這裡重新檢查條件。
+
+$BB_3\to BB_2$ 形成 cycle；$BB_2\to BB_4$ 則是離開迴圈的 exit edge。
+
+\clearpage
+
+4. do / while
+do {
+    read_next();
+} while (!ok);
+use_data();
+
+
+Lowering 後：
+
+BB1:
+    read_next()
+    goto BB2
+
+BB2:
+    if !ok goto BB1 else goto BB3
+
+BB3:
+    use_data()
+    ...
+
+
+這裡條件檢查在 body 後面，所以第一次一定會先執行 read_next()。
+
+這就是它和 while 在 CFG 上最明顯的差別。
+
+\clearpage
+
+5. for、break 與 continue
+for (int i = 0; i < n; ++i) {
+    if (a[i] < 0) continue;
+    if (a[i] == 0) break;
+    sum += a[i];
+}
+use(sum);
+
+
+for (init; cond; step) body 可以拆成 init、condition、body、step 和 exit：
+
+BB1: i = 0; goto BB2
+BB2: if i < n       goto BB3 else goto BB7
+BB3: if a[i] < 0    goto BB6 else goto BB4
+BB4: if a[i] == 0   goto BB7 else goto BB5
+BB5: sum += a[i]; goto BB6
+BB6: ++i; goto BB2
+BB7: use(sum); ...
+
+
+這裡很容易寫錯 continue。
+
+continue 應該跳到 step 的 $BB_6$，不能直接跳回 condition。否則 ++i 不會執行。
+
+break 則直接跳到 loop exit $BB_7$。
+
+\clearpage
+
+6. Short-circuit：&& 與 ||
+if (a != 0 && b / a > 2)
+    hit();
+next();
+
+
+&& 的右邊只有在左邊為 true 時才會計算，因此兩個條件會落在不同的 BB：
+
+BB1:
+    if a != 0 goto BB2 else goto BB4
+
+BB2:
+    if b / a > 2 goto BB3 else goto BB4
+
+BB3:
+    hit()
+    goto BB4
+
+BB4:
+    next()
+    ...
+
+
+所以當 a == 0 時，控制流直接從 $BB_1$ 到 $BB_4$，不會執行 b / a。
+
+a || b 則剛好反過來。左邊如果已經是 true，就不需要再算右邊；只有左邊為 false 時才會繼續。
+
+\clearpage
+
+7. switch
+switch (op) {
+case 0: y = 10; break;
+case 1: y = 20; break;
+default: y = -1;
+}
+use(y);
+
+
+最簡單的 lowering 可以寫成一串比較：
+
+BB1: if op == 0 goto BB3 else goto BB2
+BB2: if op == 1 goto BB4 else goto BB5
+BB3: y = 10; goto BB6
+BB4: y = 20; goto BB6
+BB5: y = -1; goto BB6
+BB6: use(y); ...
+
+
+實際的編譯器不一定真的產生這麼多比較。也可能保留多路的 switch terminator，或者進一步做成 jump table。
+
+但不管最後的機器碼長什麼樣，CFG 上的 dispatch block 都可能有多個 successors，各個 case 最後可以再接回共同的 join point。
+
+8. 提早 return
+
+每個 return 都會結束目前的 BB，所以在函式內沒有 successor。
+
+如果某個 compiler pass 希望函式只有一個出口，可以把回傳值先存起來，再全部跳到同一個出口：
+
+BB_return_negative:
+    result = -1
+    goto BB_exit
+
+BB_return_answer:
+    result = answer
+    goto BB_exit
+
+BB_exit:
+    return result
+
+
+這種做法常見於 CFG normalization，但不是所有 compiler 都需要這樣處理。
+
+\clearpage
+
+完整範例：從 C、goto-style 到 CFG
+
+下面這個 function 把前面的幾個概念放在一起：
+
+int calc(int x) {
+    int score = 0;
+    while (x > 0) {
+        if (x & 1)
+            score += x;
+        else
+            score += 1;
+        --x;
+    }
+    return score;
+}
+
+
+先把它改成只有明確 jump 的 pseudo IR：
+
+BB1: score = 0; goto BB2
+BB2: if x > 0 goto BB3 else goto BB7
+BB3: if x & 1 goto BB4 else goto BB5
+BB4: score += x; goto BB6
+BB5: score += 1; goto BB6
+BB6: --x; goto BB2
+BB7: return score
+
+
+\begin{center}
+\centering
+\includegraphics[width=0.52\linewidth]{control-flow-graph.pdf}\
+\small 上述 goto-style pseudo IR 建立出的 CFG。
+\end{center}
+
+$BB_4$ 和 $BB_5$ 是不同的 branch targets，所以不能直接合併。
+
+接下來的 $BB_6$ 則是兩條分支重新接上的地方。它有 $BB_4$、$BB_5$ 兩個 predecessors，因此不能把它和其中一邊直接合在一起。
+
+最後，$BB_6\to BB_2$ 又回到 loop header，形成迴圈。
+
+支配關係（Dominance）
+
+在有 entry 的 CFG 中，如果從 entry 到 $v$ 的每一條路徑都會經過 $u$，就說 $u$ 支配 $v$，記作 $u\operatorname{dom}v$。
+
+幾個基本性質：
+
+每個節點都支配自己。
+若 $u\ne v$ 且 $u$ 支配 $v$，就是 strict dominance。
+$v$ 的 immediate dominator 記為 $\operatorname{idom}(v)$。它是離 $v$ 最近的 strict dominator。
+
+以前面的七個 BB 為例：
+
+節點	Dominators	$\operatorname{idom}$
+$BB_1$	${BB_1}$	無
+$BB_2$	${BB_1,BB_2}$	$BB_1$
+$BB_3$	${BB_1,BB_2,BB_3}$	$BB_2$
+$BB_4$	${BB_1,BB_2,BB_3,BB_4}$	$BB_3$
+$BB_5$	${BB_1,BB_2,BB_3,BB_5}$	$BB_3$
+$BB_6$	${BB_1,BB_2,BB_3,BB_6}$	$BB_3$
+$BB_7$	${BB_1,BB_2,BB_7}$	$BB_2$
+
+例如 $BB_4$ 不支配 $BB_6$。因為可以走 $BB_3\to BB_5\to BB_6$，完全不經過 $BB_4$。
+
+$BB_5$ 也是一樣。
+
+但不管走哪條 branch，都必須先經過 $BB_3$，所以 $\operatorname{idom}(BB_6)=BB_3$。
+
+\clearpage
+
+Dominator Tree
+
+把每個非 entry 節點 $v$ 接到它的 $\operatorname{idom}(v)$，就會得到 dominator tree：
+
+\begin{center}
+\centering
+\includegraphics[width=0.44\linewidth]{dominator-tree.pdf}\
+\small 完整範例的 dominator tree。父節點是子節點的 immediate dominator。
+\end{center}
+
+在 dominator tree 裡，如果 $u$ 是 $v$ 的 ancestor，就代表 $u$ 支配 $v$。
+
+要注意的是，dominator tree 的 edge 不一定是原本 CFG 裡真的存在的 control-flow edge。它表示的是「哪些節點一定會先經過」這件事。
+
+Dominator 會出現在很多 compiler analysis 裡。例如：
+
+判斷 SSA value 的 definition 是否支配它的 uses；
+配合 dominance frontier 決定 phi 要放在哪些 join points；
+判斷某些運算能不能安全移動；
+找出 loop header 和 natural loop。
+Dominance 與 Loop
+
+對一條 CFG edge $u\to h$，如果 $h$ 支配 $u$，這條 edge 就叫做 back edge。在一般的 reducible CFG 裡，$h$ 通常就是 loop header。
+
+在上面的完整範例中，$BB_2$ 支配 $BB_6$，所以 $BB_6\to BB_2$ 是 back edge。
+
+這條 back edge 對應的 natural loop 是：
+
+{ BB2, BB3, BB4, BB5, BB6 }
+
+
+$BB_2$ 是 header，$BB_6$ 是跳回 header 的 latch；$BB_2\to BB_7$ 則是離開迴圈的 exit edge。
+
+因此 $BB_7$ 不屬於這個 loop。
+
+一般有向圖裡的 cycle 不一定都有一個支配整個 cycle 的 header。這種 CFG 可以是 irreducible。
+
+相較之下，while、for 這類結構化語法通常會產生比較容易分析的 reducible CFG。
+
+回到本題
+
+這題已經直接給出 CFG，所以不需要自己把 C code 再 lowering 一次。
+
+輸入中的每個點就是一個 BB，每條有向邊代表一種可能的控制轉移。程式執行時，就沿著 CFG 從 entry $1$ 往下走，直到 exit $N$。
+
+題目中的性能計數器統計的，就是這些 control-flow edges 實際被走過多少次。
+
+<!--
+## 編譯器小教室：從 C Code 到 CFG
+
 C 的 `if`、`while`、`for` 等語法適合人類閱讀，但編譯器進行最佳化時，更希望控制流只有少數幾種明確操作：
 
 ```text
@@ -475,3 +862,4 @@ $BB_7$ 不在 loop 內。
 本題已經直接給出 CFG，不需要自行把 C code lowering 成 goto-style。
 輸入的每個點就是一個 BB，每條有向邊就是一種可能的控制轉移；一次程式執行，就是從 entry $1$ 沿 CFG 走到 exit $N$。
 性能計數器所測量的，正是這些 control-flow edges 實際被通過的次數。
+-->
