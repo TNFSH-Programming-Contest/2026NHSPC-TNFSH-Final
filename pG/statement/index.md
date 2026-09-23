@@ -94,7 +94,7 @@ $1 \to 2 \to 4$ 或 $1 \to 3 \to 4$ \
 
 C 的 `if`、`while`、`for` 很適合人看，但對編譯器來說，這些語法還是太有結構了。做最佳化時，通常會先把它們拆成幾種比較單純的控制流操作：
 
-```text
+```c
 goto L
 if condition goto L_true else goto L_false
 return value
@@ -124,6 +124,7 @@ return x
 ### Basic Block（BB）
 
 Basic block 是一段**最大且連續**的指令序列。它有幾個基本條件：
+
 - 控制流只能從 block 的第一條指令進入，不能跳到中間
 - block 執行到最後之前，不會跳到其他地方。
 - 一旦進入 block，就會依序執行裡面的指令，直到遇到 terminator。
@@ -171,15 +172,15 @@ return y;
 
 沒有 branch，所以整段就是一個 BB：
 
-```text
+```c
 BB1:
-    x = a + b
-    y = x * 2
-    return y
+    x = a + b;
+    y = x * 2;
+    return y;
 ```
 
 
-`return`` 是 terminator。執行到這裡函式就結束了，因此後面不能再接其他可執行指令。
+`return` 是 terminator。執行到這裡函式就結束了，因此後面不能再接其他可執行指令。
 
 #### 2. `if` / `else`
 ```c
@@ -193,7 +194,7 @@ use(y);
 
 Lowering 後可以寫成：
 
-```text
+```c
 BB1: if x < 0 goto BB2 else goto BB3
 BB2: y = -x; goto BB4
 BB3: y = x;  goto BB4
@@ -219,7 +220,7 @@ use(sum);
 
 可以拆成：
 
-```text
+```c
 BB1:
     goto BB2
 
@@ -227,12 +228,12 @@ BB2:
     if x > 0 goto BB3 else goto BB4
 
 BB3:
-    sum += x
-    --x
+    sum += x;
+    --x;
     goto BB2
 
 BB4:
-    use(sum)
+    use(sum);
     ...
 ```
 
@@ -253,16 +254,16 @@ use_data();
 
 Lowering 後：
 
-```text
+```c
 BB1:
-    read_next()
+    read_next();
     goto BB2
 
 BB2:
     if !ok goto BB1 else goto BB3
 
 BB3:
-    use_data()
+    use_data();
     ...
 ```
 
@@ -286,7 +287,7 @@ use(sum);
 
 `for (init; cond; step) body` 可以拆成 init、condition、body、step 和 exit：
 
-```text
+```c
 BB1: i = 0; goto BB2
 BB2: if i < n       goto BB3 else goto BB7
 BB3: if a[i] < 0    goto BB6 else goto BB4
@@ -315,7 +316,7 @@ next();
 
 `&&` 的右邊只有在左邊為 true 時才會計算，因此兩個條件會落在不同的 BB：
 
-```text
+```c
 BB1:
     if a != 0 goto BB2 else goto BB4
 
@@ -323,11 +324,11 @@ BB2:
     if b / a > 2 goto BB3 else goto BB4
 
 BB3:
-    hit()
+    hit();
     goto BB4
 
 BB4:
-    next()
+    next():
     ...
 ```
 
@@ -351,7 +352,7 @@ use(y);
 
 最簡單的 lowering 可以寫成一串比較：
 
-```text
+```c
 BB1: if op == 0 goto BB3 else goto BB2
 BB2: if op == 1 goto BB4 else goto BB5
 BB3: y = 10; goto BB6
@@ -366,33 +367,28 @@ BB6: use(y); ...
 但不管最後的機器碼長什麼樣，CFG 上的 dispatch block 都可能有多個 successors，各個 case 最後可以再接回共同的 join point。
 
 #### 8. 提早 return
+```c
+BB_return_negative:
+    result = -1;
+    goto BB_exit
+
+BB_return_answer:
+    result = answer;
+    goto BB_exit
+
+BB_exit:
+    return result;
+```
 
 每個 `return` 都會結束目前的 BB，所以在函式內沒有 successor。
 
 如果某個 compiler pass 希望函式只有一個出口，可以把回傳值先存起來，再全部跳到同一個出口：
 
-```text
-BB_return_negative:
-    result = -1
-    goto BB_exit
-
-BB_return_answer:
-    result = answer
-    goto BB_exit
-
-BB_exit:
-    return result
-```
-
-
 這種做法常見於 CFG normalization，但不是所有 compiler 都需要這樣處理。
 
 \clearpage
 
-#### 完整範例：從 C、goto-style 到 CFG
-
-下面這個 function 把前面的幾個概念放在一起：
-
+### 完整範例：從 C、goto-style 到 CFG
 ```c
 int calc(int x) {
     int score = 0;
@@ -410,7 +406,7 @@ int calc(int x) {
 
 先把它改成只有明確 jump 的 pseudo IR：
 
-```text
+```c
 BB1: score = 0; goto BB2
 BB2: if x > 0 goto BB3 else goto BB7
 BB3: if x & 1 goto BB4 else goto BB5
@@ -423,7 +419,7 @@ BB7: return score
 
 \begin{center}
 \centering
-\includegraphics[width=0.52\linewidth]{control-flow-graph.pdf}\
+\includegraphics[width=0.52\linewidth]{control-flow-graph.pdf}\\
 \small 上述 goto-style pseudo IR 建立出的 CFG。
 \end{center}
 
@@ -470,8 +466,8 @@ $BB_5$ 也是一樣。
 
 \begin{center}
 \centering
-\includegraphics[width=0.44\linewidth]{dominator-tree.pdf}\
-\small 完整範例的 dominator tree。父節點是子節點的 immediate dominator。
+\includegraphics[width=0.44\linewidth]{dominator-tree.pdf}\\
+\small{完整範例的 dominator tree。父節點是子節點的 immediate dominator。}
 \end{center}
 
 在 dominator tree 裡，如果 $u$ 是 $v$ 的 ancestor，就代表 $u$ 支配 $v$。
