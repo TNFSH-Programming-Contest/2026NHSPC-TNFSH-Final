@@ -13,4 +13,11 @@ exclude:
   - pF/tests/
   - pG/scripts/
   - pG/tests/
+  - pA/statement
+  - pB/statement
+  - pC/statement
+  - pD/statement
+  - pE/statement
+  - pF/statement
+  - pG/statement
 # NEWPROBLEM
