@@ -34,6 +34,8 @@ gen 7 7 alternating one all-fragile
 gen 7 7 random max all-durable
 gen 7 7 full-uniform threshold threshold
 gen 7 7 clusters alternating mixed
+gen 7 7 alternating small alternating
+gen 7 7 gap-middle small huge-middle-gap
 attack boundary 7 7 exact-boundary
 attack priority 7 7 leftmost-priority
 attack partials 7 7 partial-groups
@@ -55,6 +57,7 @@ attack window 100 100 long-window
 attack annealing 100 10 0 annealing-narrow-basin
 
 @subtask dp2
+@include samples dp brute graph
 gen 3 100000 full-uniform threshold tiny-max-m
 gen 2000 1 random random max-n-m1
 gen 2000 100000 random random max-nm-random
@@ -73,7 +76,7 @@ attack window 2000 100000 quadratic-window
 attack annealing 2000 15 1 annealing-middle-basin
 
 @subtask full
-@include samples easy dp brute graph dp2
+@include easy dp2
 gen 100000 100000 random random max-random
 gen 100000 100000 full-uniform alternating alternating-capacity
 gen 100000 100000 gap-middle blocks huge-gap-blocks
