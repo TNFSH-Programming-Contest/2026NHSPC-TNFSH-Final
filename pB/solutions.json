@@ -126,5 +126,13 @@
             "dp": "correct",
             "brute": "correct"
         }
+    },
+    "hans.cpp": {
+        "verdict": "incorrect",
+        "except": {
+            "samples": "correct",
+            "easy": "correct",
+            "dp": "correct"
+        }
     }
 }

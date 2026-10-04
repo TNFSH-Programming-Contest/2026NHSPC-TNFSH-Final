@@ -27,6 +27,7 @@ gen 2000 1 decreasing one decreasing-gaps
 gen 2000 1 clusters one clustered
 
 @subtask brute
+manual hack-hans-1.in
 gen 3 1 unit one tiny
 gen 3 7 gap-middle threshold one-middle
 gen 7 1 random random random-m1
