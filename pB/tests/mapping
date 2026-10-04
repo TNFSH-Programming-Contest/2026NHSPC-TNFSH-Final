@@ -31,6 +31,7 @@ brute 3-10
 brute 3-11
 brute 3-12
 brute 3-13
+brute 3-14
 graph 4-01
 graph 4-02
 graph 4-03
@@ -69,6 +70,7 @@ dp2 3-10
 dp2 3-11
 dp2 3-12
 dp2 3-13
+dp2 3-14
 dp2 4-01
 dp2 4-02
 dp2 4-03
@@ -131,6 +133,7 @@ full 3-10
 full 3-11
 full 3-12
 full 3-13
+full 3-14
 full 4-01
 full 4-02
 full 4-03
